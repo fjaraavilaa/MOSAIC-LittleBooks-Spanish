@@ -1,0 +1,51 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.10)  12 JUL 2017 11:31
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./authNote.sty
+(./authNote.sty
+LaTeX2e <2017-04-15>
+Babel <3.12> and hyphenation patterns for 84 language(s) loaded.
+
+LaTeX Warning: You have requested package `',
+               but the package provides `authNote'.
+
+Package: authNote 2005/06/14 1.0 (RJP)
+(c:/texlive/2017/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\tempTok=\toks14
+\c@noteNum=\count79
+
+
+! LaTeX Error: No counter 'section' defined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.156 \newcounter{noteNum}[section]
+                                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+\noteFile=\write3
+\openout3 = `authNote.notes'.
+
+)
+! Emergency stop.
+<*> ./authNote.sty
+                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 112 strings out of 492990
+ 1186 string characters out of 6136334
+ 54148 words of memory out of 5000000
+ 3765 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,14p,97b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!

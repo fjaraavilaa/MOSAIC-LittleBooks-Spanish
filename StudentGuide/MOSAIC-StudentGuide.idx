@@ -1,0 +1,310 @@
+\indexentry{vignettes|hyperpage}{13}
+\indexentry{installing packages|hyperpage}{14}
+\indexentry{install.packages()@\texttt  {install.packages()}|hyperpage}{14}
+\indexentry{loading packages|hyperpage}{14}
+\indexentry{require()@\texttt  {require()}|hyperpage}{14}
+\indexentry{reproducible analysis|hyperpage}{14}
+\indexentry{markdown|hyperpage}{14}
+\indexentry{knitr|hyperpage}{14}
+\indexentry{sessionInfo()@\texttt  {sessionInfo()}|hyperpage}{19}
+\indexentry{RStudio.Version()@\texttt  {RStudio.Version()}|hyperpage}{19}
+\indexentry{HELPrct dataset|hyperpage}{27}
+\indexentry{options()@\texttt  {options()}|hyperpage}{27}
+\indexentry{require()@\texttt  {require()}|hyperpage}{27}
+\indexentry{mosaic package@\texttt  {mosaic package}|hyperpage}{27}
+\indexentry{Start Teaching with R@\emph  {Start Teaching with R}|hyperpage}{27}
+\indexentry{Teaching with R@\emph  {Teaching with R}|hyperpage}{27}
+\indexentry{Start Modeling with R@\emph  {Start Modeling with R}|hyperpage}{27}
+\indexentry{Modeling with R@\emph  {Modeling with R}|hyperpage}{27}
+\indexentry{with()@\texttt  {with()}|hyperpage}{27}
+\indexentry{mean()@\texttt  {mean()}|hyperpage}{27}
+\indexentry{sd()@\texttt  {sd()}|hyperpage}{28}
+\indexentry{var()@\texttt  {var()}|hyperpage}{28}
+\indexentry{quantiles|hyperpage}{28}
+\indexentry{median()@\texttt  {median()}|hyperpage}{28}
+\indexentry{quantile()@\texttt  {quantile()}|hyperpage}{28}
+\indexentry{favstats()@\texttt  {favstats()}|hyperpage}{28}
+\indexentry{histogram()@\texttt  {histogram()}|hyperpage}{29}
+\indexentry{tally()@\texttt  {tally()}|hyperpage}{29}
+\indexentry{format option@\texttt  {format option}|hyperpage}{29}
+\indexentry{stem()@\texttt  {stem()}|hyperpage}{29}
+\indexentry{filter()@\texttt  {filter()}|hyperpage}{29}
+\indexentry{dplyr package@\texttt  {dplyr package}|hyperpage}{29}
+\indexentry{dplyr package@\texttt  {dplyr package}|hyperpage}{30}
+\indexentry{tidyr package@\texttt  {tidyr package}|hyperpage}{30}
+\indexentry{fit option@\texttt  {fit option}|hyperpage}{30}
+\indexentry{layout option@\texttt  {layout option}|hyperpage}{31}
+\indexentry{nint option@\texttt  {nint option}|hyperpage}{31}
+\indexentry{width option@\texttt  {width option}|hyperpage}{32}
+\indexentry{dotPlot()@\texttt  {dotPlot()}|hyperpage}{32}
+\indexentry{densityplot()@\texttt  {densityplot()}|hyperpage}{33}
+\indexentry{ladd()@\texttt  {ladd()}|hyperpage}{33}
+\indexentry{panel.mathdensity()@\texttt  {panel.mathdensity()}|hyperpage}{33}
+\indexentry{panel.abline()@\texttt  {panel.abline()}|hyperpage}{33}
+\indexentry{col option@\texttt  {col option}|hyperpage}{33}
+\indexentry{grid.text()@\texttt  {grid.text()}|hyperpage}{33}
+\indexentry{lty option@\texttt  {lty option}|hyperpage}{33}
+\indexentry{lwd option@\texttt  {lwd option}|hyperpage}{33}
+\indexentry{polygons|hyperpage}{34}
+\indexentry{freqpolygon()@\texttt  {freqpolygon()}|hyperpage}{34}
+\indexentry{t.test()@\texttt  {t.test()}|hyperpage}{35}
+\indexentry{confint()@\texttt  {confint()}|hyperpage}{35}
+\indexentry{bootstrapping|hyperpage}{36}
+\indexentry{resampling|hyperpage}{36}
+\indexentry{resample()@\texttt  {resample()}|hyperpage}{36}
+\indexentry{do()@\texttt  {do()}|hyperpage}{36}
+\indexentry{qdata()@\texttt  {qdata()}|hyperpage}{36}
+\indexentry{categorical variables|hyperpage}{39}
+\indexentry{contingency tables|hyperpage}{39}
+\indexentry{tables|hyperpage}{39}
+\indexentry{tally()@\texttt  {tally()}|hyperpage}{39}
+\indexentry{margins option@\texttt  {margins option}|hyperpage}{39}
+\indexentry{binomial test|hyperpage}{39}
+\indexentry{binom.test()@\texttt  {binom.test()}|hyperpage}{39}
+\indexentry{confint()@\texttt  {confint()}|hyperpage}{40}
+\indexentry{pval()@\texttt  {pval()}|hyperpage}{40}
+\indexentry{print()@\texttt  {print()}|hyperpage}{40}
+\indexentry{prop.test()@\texttt  {prop.test()}|hyperpage}{41}
+\indexentry{correct option@\texttt  {correct option}|hyperpage}{41}
+\indexentry{chisq.test()@\texttt  {chisq.test()}|hyperpage}{42}
+\indexentry{sum()@\texttt  {sum()}|hyperpage}{43}
+\indexentry{pchisq()@\texttt  {pchisq()}|hyperpage}{43}
+\indexentry{plotDist()@\texttt  {plotDist()}|hyperpage}{43}
+\indexentry{xchisq.test()@\texttt  {xchisq.test()}|hyperpage}{43}
+\indexentry{scatterplots|hyperpage}{45}
+\indexentry{lowess|hyperpage}{45}
+\indexentry{smoothers|hyperpage}{45}
+\indexentry{linearity|hyperpage}{45}
+\indexentry{xyplot()@\texttt  {xyplot()}|hyperpage}{45}
+\indexentry{pch option@\texttt  {pch option}|hyperpage}{45}
+\indexentry{cex option@\texttt  {cex option}|hyperpage}{45}
+\indexentry{lwd option@\texttt  {lwd option}|hyperpage}{45}
+\indexentry{type option@\texttt  {type option}|hyperpage}{45}
+\indexentry{function()@\texttt  {function()}|hyperpage}{46}
+\indexentry{panel.labels()@\texttt  {panel.labels()}|hyperpage}{46}
+\indexentry{panel.text()@\texttt  {panel.text()}|hyperpage}{46}
+\indexentry{rownames()@\texttt  {rownames()}|hyperpage}{46}
+\indexentry{correlation|hyperpage}{47}
+\indexentry{cor()@\texttt  {cor()}|hyperpage}{47}
+\indexentry{Pearson correlation|hyperpage}{47}
+\indexentry{Spearman correlation|hyperpage}{47}
+\indexentry{pairs plot|hyperpage}{48}
+\indexentry{scatterplot matrix|hyperpage}{48}
+\indexentry{splom()@\texttt  {splom()}|hyperpage}{48}
+\indexentry{linear regression|hyperpage}{48}
+\indexentry{regression|hyperpage}{48}
+\indexentry{lm()@\texttt  {lm()}|hyperpage}{48}
+\indexentry{coef()@\texttt  {coef()}|hyperpage}{48}
+\indexentry{significance stars|hyperpage}{48}
+\indexentry{msummary()@\texttt  {msummary()}|hyperpage}{48}
+\indexentry{confint()@\texttt  {confint()}|hyperpage}{48}
+\indexentry{rsquared()@\texttt  {rsquared()}|hyperpage}{48}
+\indexentry{coef()@\texttt  {coef()}|hyperpage}{48}
+\indexentry{class()@\texttt  {class()}|hyperpage}{49}
+\indexentry{residuals()@\texttt  {residuals()}|hyperpage}{49}
+\indexentry{density option@\texttt  {density option}|hyperpage}{49}
+\indexentry{qqmath()@\texttt  {qqmath()}|hyperpage}{49}
+\indexentry{alpha option@\texttt  {alpha option}|hyperpage}{50}
+\indexentry{mplot()@\texttt  {mplot()}|hyperpage}{50}
+\indexentry{which option@\texttt  {which option}|hyperpage}{50}
+\indexentry{scale versus location|hyperpage}{51}
+\indexentry{Cook's distance|hyperpage}{52}
+\indexentry{leverage|hyperpage}{52}
+\indexentry{cross classification tables|hyperpage}{55}
+\indexentry{contingency tables|hyperpage}{55}
+\indexentry{tables|hyperpage}{55}
+\indexentry{tally()@\texttt  {tally()}|hyperpage}{55}
+\indexentry{oddsRatio()@\texttt  {oddsRatio()}|hyperpage}{56}
+\indexentry{CrossTable()@\texttt  {CrossTable()}|hyperpage}{56}
+\indexentry{mosaicplot()@\texttt  {mosaicplot()}|hyperpage}{56}
+\indexentry{chisq.test()@\texttt  {chisq.test()}|hyperpage}{58}
+\indexentry{xchisq.test()@\texttt  {xchisq.test()}|hyperpage}{58}
+\indexentry{Fisher's exact test|hyperpage}{59}
+\indexentry{fisher.test()@\texttt  {fisher.test()}|hyperpage}{59}
+\indexentry{mean()@\texttt  {mean()}|hyperpage}{61}
+\indexentry{favstats()@\texttt  {favstats()}|hyperpage}{61}
+\indexentry{bwplot()@\texttt  {bwplot()}|hyperpage}{61}
+\indexentry{xyplot()@\texttt  {xyplot()}|hyperpage}{62}
+\indexentry{alpha option@\texttt  {alpha option}|hyperpage}{62}
+\indexentry{cex option@\texttt  {cex option}|hyperpage}{62}
+\indexentry{t.test()@\texttt  {t.test()}|hyperpage}{63}
+\indexentry{var.equal option@\texttt  {var.equal option}|hyperpage}{63}
+\indexentry{msummary()@\texttt  {msummary()}|hyperpage}{64}
+\indexentry{summary()@\texttt  {summary()}|hyperpage}{64}
+\indexentry{wilcox.test()@\texttt  {wilcox.test()}|hyperpage}{64}
+\indexentry{resampling|hyperpage}{64}
+\indexentry{permutation test|hyperpage}{64}
+\indexentry{diffmean()@\texttt  {diffmean()}|hyperpage}{65}
+\indexentry{shuffle()@\texttt  {shuffle()}|hyperpage}{65}
+\indexentry{xlim option@\texttt  {xlim option}|hyperpage}{65}
+\indexentry{groups option@\texttt  {groups option}|hyperpage}{65}
+\indexentry{one-way ANOVA|hyperpage}{66}
+\indexentry{analysis of variance|hyperpage}{66}
+\indexentry{bwplot()@\texttt  {bwplot()}|hyperpage}{66}
+\indexentry{aov()@\texttt  {aov()}|hyperpage}{67}
+\indexentry{anova()@\texttt  {anova()}|hyperpage}{67}
+\indexentry{model comparison|hyperpage}{68}
+\indexentry{Tukey's HSD|hyperpage}{68}
+\indexentry{honest significant differences|hyperpage}{68}
+\indexentry{multiple comparisons|hyperpage}{68}
+\indexentry{TukeyHSD()@\texttt  {TukeyHSD()}|hyperpage}{68}
+\indexentry{factor()@\texttt  {factor()}|hyperpage}{68}
+\indexentry{levels option@\texttt  {levels option}|hyperpage}{68}
+\indexentry{labels option@\texttt  {labels option}|hyperpage}{68}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{68}
+\indexentry{lm()@\texttt  {lm()}|hyperpage}{68}
+\indexentry{mplot()@\texttt  {mplot()}|hyperpage}{69}
+\indexentry{logistic regression|hyperpage}{71}
+\indexentry{glm()@\texttt  {glm()}|hyperpage}{71}
+\indexentry{family option@\texttt  {family option}|hyperpage}{71}
+\indexentry{exp()@\texttt  {exp()}|hyperpage}{71}
+\indexentry{msummary()@\texttt  {msummary()}|hyperpage}{71}
+\indexentry{anova()@\texttt  {anova()}|hyperpage}{72}
+\indexentry{test option@\texttt  {test option}|hyperpage}{72}
+\indexentry{survival analysis|hyperpage}{75}
+\indexentry{failure time analysis|hyperpage}{75}
+\indexentry{time to event analysis|hyperpage}{75}
+\indexentry{Kaplan-Meier plot|hyperpage}{75}
+\indexentry{survfit()@\texttt  {survfit()}|hyperpage}{75}
+\indexentry{Surv()@\texttt  {Surv()}|hyperpage}{75}
+\indexentry{conf.int option@\texttt  {conf.int option}|hyperpage}{75}
+\indexentry{xlab option@\texttt  {xlab option}|hyperpage}{75}
+\indexentry{Cox proportional hazards model|hyperpage}{76}
+\indexentry{proportional hazards model|hyperpage}{76}
+\indexentry{coxph()@\texttt  {coxph()}|hyperpage}{76}
+\indexentry{median()@\texttt  {median()}|hyperpage}{79}
+\indexentry{bwplot()@\texttt  {bwplot()}|hyperpage}{79}
+\indexentry{factor()@\texttt  {factor()}|hyperpage}{79}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{79}
+\indexentry{aov()@\texttt  {aov()}|hyperpage}{79}
+\indexentry{auto.key option@\texttt  {auto.key option}|hyperpage}{80}
+\indexentry{multiple regression|hyperpage}{80}
+\indexentry{multivariate relationships|hyperpage}{80}
+\indexentry{msummary()|hyperpage}{80}
+\indexentry{anova()|hyperpage}{81}
+\indexentry{interactions|hyperpage}{81}
+\indexentry{plotFun()@\texttt  {plotFun()}|hyperpage}{82}
+\indexentry{makeFun()@\texttt  {makeFun()}|hyperpage}{82}
+\indexentry{xyplot()@\texttt  {xyplot()}|hyperpage}{82}
+\indexentry{auto.key option@\texttt  {auto.key option}|hyperpage}{82}
+\indexentry{ylab option@\texttt  {ylab option}|hyperpage}{82}
+\indexentry{groups option@\texttt  {groups option}|hyperpage}{82}
+\indexentry{add option@\texttt  {add option}|hyperpage}{82}
+\indexentry{coefficient plots|hyperpage}{83}
+\indexentry{mplot()@\texttt  {mplot()}|hyperpage}{83}
+\indexentry{residual diagnostics|hyperpage}{83}
+\indexentry{regression diagnostics|hyperpage}{83}
+\indexentry{resid()@\texttt  {resid()}|hyperpage}{83}
+\indexentry{fitted()@\texttt  {fitted()}|hyperpage}{83}
+\indexentry{abs()@\texttt  {abs()}|hyperpage}{83}
+\indexentry{abs()@\texttt  {abs()}|hyperpage}{84}
+\indexentry{cex option@\texttt  {cex option}|hyperpage}{84}
+\indexentry{type option@\texttt  {type option}|hyperpage}{84}
+\indexentry{random variables|hyperpage}{87}
+\indexentry{qnorm()@\texttt  {qnorm()}|hyperpage}{88}
+\indexentry{dnorm()@\texttt  {dnorm()}|hyperpage}{88}
+\indexentry{pnorm()@\texttt  {pnorm()}|hyperpage}{88}
+\indexentry{xpnorm()@\texttt  {xpnorm()}|hyperpage}{88}
+\indexentry{rnorm()@\texttt  {rnorm()}|hyperpage}{88}
+\indexentry{integrate()@\texttt  {integrate()}|hyperpage}{88}
+\indexentry{plotDist()@\texttt  {plotDist()}|hyperpage}{90}
+\indexentry{groups option@\texttt  {groups option}|hyperpage}{91}
+\indexentry{type option@\texttt  {type option}|hyperpage}{91}
+\indexentry{under option@\texttt  {under option}|hyperpage}{91}
+\indexentry{lwd option@\texttt  {lwd option}|hyperpage}{91}
+\indexentry{pch option@\texttt  {pch option}|hyperpage}{91}
+\indexentry{makeFun()@\texttt  {makeFun()}|hyperpage}{92}
+\indexentry{rexp()@\texttt  {rexp()}|hyperpage}{92}
+\indexentry{plotFun()@\texttt  {plotFun()}|hyperpage}{92}
+\indexentry{histogram()@\texttt  {histogram()}|hyperpage}{92}
+\indexentry{width option@\texttt  {width option}|hyperpage}{92}
+\indexentry{center option@\texttt  {center option}|hyperpage}{92}
+\indexentry{add option@\texttt  {add option}|hyperpage}{92}
+\indexentry{pbinom()@\texttt  {pbinom()}|hyperpage}{96}
+\indexentry{data management|hyperpage}{99}
+\indexentry{thinking with data|hyperpage}{99}
+\indexentry{read.file()|hyperpage}{99}
+\indexentry{inspecting dataframes|hyperpage}{99}
+\indexentry{dataframes!inspecting|hyperpage}{99}
+\indexentry{inspect()@\texttt  {inspect()}|hyperpage}{99}
+\indexentry{dataframe|hyperpage}{100}
+\indexentry{select()@\texttt  {select()}|hyperpage}{100}
+\indexentry{iris dataset|hyperpage}{100}
+\indexentry{adding variables|hyperpage}{100}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{100}
+\indexentry{cut()@\texttt  {cut()}|hyperpage}{100}
+\indexentry{pipe operator|hyperpage}{100}
+\indexentry{\%>\%@\texttt  {\%>\%}|hyperpage}{100}
+\indexentry{head()@\texttt  {head()}|hyperpage}{100}
+\indexentry{display first few rows|hyperpage}{100}
+\indexentry{CPS85 dataset|hyperpage}{100}
+\indexentry{CPS85 dataset|hyperpage}{101}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{101}
+\indexentry{dropping variables|hyperpage}{101}
+\indexentry{filter()@\texttt  {filter()}|hyperpage}{101}
+\indexentry{select option@\texttt  {select option}|hyperpage}{101}
+\indexentry{renaming variables|hyperpage}{102}
+\indexentry{rename()@\texttt  {rename()}|hyperpage}{102}
+\indexentry{row.names()@\texttt  {row.names()}|hyperpage}{102}
+\indexentry{names()@\texttt  {names()}|hyperpage}{102}
+\indexentry{faithful dataset|hyperpage}{102}
+\indexentry{faithful dataset|hyperpage}{102}
+\indexentry{data()@\texttt  {data()}|hyperpage}{102}
+\indexentry{creating subsets|hyperpage}{103}
+\indexentry{subsetting dataframes|hyperpage}{103}
+\indexentry{dataframes!subsetting|hyperpage}{103}
+\indexentry{sorting dataframes|hyperpage}{103}
+\indexentry{dataframes!sorting|hyperpage}{103}
+\indexentry{arrange()@\texttt  {arrange()}|hyperpage}{103}
+\indexentry{merging dataframes|hyperpage}{103}
+\indexentry{dataframes!merging|hyperpage}{103}
+\indexentry{arrange()@\texttt  {arrange()}|hyperpage}{104}
+\indexentry{arrange()@\texttt  {arrange()}|hyperpage}{104}
+\indexentry{all.x option@\texttt  {all.x option}|hyperpage}{104}
+\indexentry{by.x option@\texttt  {by.x option}|hyperpage}{104}
+\indexentry{tidyr package@\texttt  {tidyr package}|hyperpage}{104}
+\indexentry{fusion1 dataset|hyperpage}{104}
+\indexentry{reshaping dataframes|hyperpage}{105}
+\indexentry{dataframes!reshaping|hyperpage}{105}
+\indexentry{transforming dataframes|hyperpage}{105}
+\indexentry{transposing dataframes|hyperpage}{105}
+\indexentry{gather()@\texttt  {gather()}|hyperpage}{105}
+\indexentry{spread()@\texttt  {spread()}|hyperpage}{106}
+\indexentry{select()@\texttt  {select()}|hyperpage}{106}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{106}
+\indexentry{paste()@\texttt  {paste()}|hyperpage}{106}
+\indexentry{derived variables|hyperpage}{106}
+\indexentry{cut()@\texttt  {cut()}|hyperpage}{106}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{106}
+\indexentry{include.lowest option@\texttt  {include.lowest option}|hyperpage}{106}
+\indexentry{breaks option@\texttt  {breaks option}|hyperpage}{106}
+\indexentry{ntiles()@\texttt  {ntiles()}|hyperpage}{106}
+\indexentry{derivedFactor()@\texttt  {derivedFactor()}|hyperpage}{107}
+\indexentry{reordering factors|hyperpage}{107}
+\indexentry{factor reordering|hyperpage}{107}
+\indexentry{relevel()@\texttt  {relevel()}|hyperpage}{107}
+\indexentry{mutate()@\texttt  {mutate()}|hyperpage}{107}
+\indexentry{coef()@\texttt  {coef()}|hyperpage}{107}
+\indexentry{tally()@\texttt  {tally()}|hyperpage}{107}
+\indexentry{group-wise statistics|hyperpage}{107}
+\indexentry{select()@\texttt  {select()}|hyperpage}{107}
+\indexentry{favstats()@\texttt  {favstats()}|hyperpage}{107}
+\indexentry{group\_by()@\texttt  {group\_by()}|hyperpage}{107}
+\indexentry{left\_join()@\texttt  {left\_join()}|hyperpage}{107}
+\indexentry{summarise()@\texttt  {summarise()}|hyperpage}{107}
+\indexentry{nrow()@\texttt  {nrow()}|hyperpage}{107}
+\indexentry{missing data|hyperpage}{108}
+\indexentry{incomplete data|hyperpage}{108}
+\indexentry{select()@\texttt  {select()}|hyperpage}{108}
+\indexentry{dim()@\texttt  {dim()}|hyperpage}{108}
+\indexentry{NA character@\texttt  {NA character}|hyperpage}{108}
+\indexentry{HELPmiss dataset|hyperpage}{108}
+\indexentry{with()@\texttt  {with()}|hyperpage}{109}
+\indexentry{na.omit()@\texttt  {na.omit()}|hyperpage}{109}
+\indexentry{favstats()@\texttt  {favstats()}|hyperpage}{109}
+\indexentry{is.na()@\texttt  {is.na()}|hyperpage}{109}
+\indexentry{sum()@\texttt  {sum()}|hyperpage}{109}
+\indexentry{nrow()@\texttt  {nrow()}|hyperpage}{109}
+\indexentry{ncol()@\texttt  {ncol()}|hyperpage}{109}
+\indexentry{HELP study|hyperpage}{111}
+\indexentry{Health Evaluation and Linkage to Primary Care study|hyperpage}{111}

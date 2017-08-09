@@ -1,0 +1,3969 @@
+\documentclass{tufte-book} %[openany] option unselected
+
+
+\usepackage{../include/RBook}
+\usepackage{pdfpages}
+%\usepackage[shownotes]{authNote}
+\usepackage[hidenotes]{../include/authNote}
+\usepackage{../include/language}
+\usepackage{hyperref}
+\usepackage{fancyhdr} % DTK added for header.
+\usepackage[T1]{fontenc}
+\usepackage{selinput}
+
+
+% Larger font sizes (from size12.clo)
+\makeatletter% allows us to use macros with @ in their names
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize\@xiipt{14.5}%
+   \abovedisplayskip 12\p@ \@plus3\p@ \@minus7\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
+   \belowdisplayskip \abovedisplayskip
+   \let\@listi\@listI}
+\renewcommand\small{%
+   \@setfontsize\small\@xipt{13.6}%
+   \abovedisplayskip 11\p@ \@plus3\p@ \@minus6\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 9\p@ \@plus3\p@ \@minus5\p@
+               \parsep 4.5\p@ \@plus2\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\renewcommand\footnotesize{%
+   \@setfontsize\footnotesize\@xpt\@xiipt
+   \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 6\p@ \@plus2\p@ \@minus2\p@
+               \parsep 3\p@ \@plus2\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\renewcommand\scriptsize{\@setfontsize\scriptsize\@viiipt{9.5}}
+\renewcommand\tiny{\@setfontsize\tiny\@vipt\@viipt}
+\renewcommand\large{\@setfontsize\large\@xivpt{18}}
+\renewcommand\Large{\@setfontsize\Large\@xviipt{22}}
+\renewcommand\LARGE{\@setfontsize\LARGE\@xxpt{25}}
+\renewcommand\huge{\@setfontsize\huge\@xxvpt{30}}
+\let\Huge=\huge
+\setlength\leftmargini   {1.5em}
+\setlength\leftmarginii  {1.5em}
+\setlength\leftmarginiii {1.5em}
+\setlength\leftmarginiv  {1.5em}
+\setlength\leftmarginv   {1.5em}
+\setlength\leftmarginvi  {1.5em}
+\setlength\labelsep      {.5pc}
+\setlength\labelwidth    {\leftmargini}
+\addtolength\labelwidth{-\labelsep}
+\setlength{\parindent}{1.5em}%
+\renewcommand{\@tufte@reset@par}{%
+  \setlength{\RaggedRightParindent}{1.5em}%
+  \setlength{\JustifyingParindent}{1.5em}%
+  \setlength{\parindent}{1.5em}%
+  \setlength{\parskip}{0pt}%
+}
+\@tufte@reset@par
+\renewcommand{\@tufte@margin@par}{%
+  \setlength{\RaggedRightParindent}{1.0em}%
+  \setlength{\JustifyingParindent}{1.0em}%
+  \setlength{\parindent}{1.0em}%
+  \setlength{\parskip}{0pt}%
+}
+\makeatother% restores meaning of @
+
+% For the printed version.  Commented out for Web version
+\renewcommand{\variable}[1]{{\color{black}\texttt{#1}}}
+\renewcommand{\dataframe}[1]{{\color{black}\texttt{#1}}}
+\renewcommand{\function}[1]{{\color{blue}\texttt{\StrSubstitute{#1}{()}{}()}}}
+\renewcommand{\option}[1]{{\color{black}\texttt{#1}}}
+\renewcommand{\pkg}[1]{{\color{black}\texttt{#1}}}
+\renewcommand{\code}[1]{{\color{black}\texttt{#1}}}
+
+
+
+\title{Una Guía de Estudiantes para R}
+\author[Horton, Kaplan, Pruim]{ Nicholas J. Horton, Daniel Kaplan, and Randall Pruim} 
+\date{Noviembre 2015}
+
+\usepackage{Sweave}
+\begin{document}
+\input{MOSAIC-StudentGuide-concordance}
+\def\cplabel{^X} 
+
+\def\tilde{\texttt{\~}}
+% stupid hack to get rid of unwanted space before next line when there is not
+% a blank line following an R chunk.
+
+
+
+
+\maketitle
+%\includepdf[trim=0 0 3.5cm 0]{Cover/frontice}
+
+\newpage
+\vspace*{2in}
+
+\parbox{4in}{\noindent La traducción al español de este libro fue realizada por Francisco Javier Jara Ávila. En caso de encontrar errores en la misma, siéntase libre de escribir a fjaraavila@gmail.com}
+
+\bigskip
+
+\parbox{4in}{\noindent Copyright (c) 2015 by Nicholas J. Horton, Randall Pruim, \& Daniel Kaplan.}
+\medskip
+
+\parbox{4in}{\noindent Edition 1.2, November 2015}
+
+\bigskip
+
+\parbox{4in}{\noindent This material is copyrighted by the authors under a Creative Commons Attribution 3.0 Unported License. You are free to \emph{Share} (to copy, distribute and transmit the work) and to \emph{Remix} (to adapt the work) if you attribute our work. More detailed information about the licensing is available at this web page:
+\url{http://www.mosaic-web.org/go/teachingRlicense.html}.
+}
+
+
+\vspace*{2.in}
+
+\parbox{4in}{\noindent {\bf Cover Photo}: Maya Hanna.}
+
+
+\hspace*{1.3cm}\tableofcontents
+
+
+\chapter*{Acerca de estas notas}
+
+Aquí presentamos un abordaje a la enseñanza introductoria e intermedia en cursos de estadística, la cual está acoplada importantemente con la computación general, y con \R\ y \RStudio\ RStudio en particular. Estas actividades y ejemplos tienen la intención de resaltar el abordaje moderno de la enseñanza estadística que se concentra en el modelaje, la inferencia basada en el re-muestreo y las técnicas de gráficos multivariados. Una meta secundaria es facilitar los cálculos con datos mediante el uso de pequeños estudios de simulaciones y el flujo de trabajo de análisis estadístico apropiado. Esto sigue la filosofía descrita por Nolan y Temple Lang1\cite{nola:temp:2010}. La importancia de la computación moderna \marginnote{$\ $} en la educación estadística consiste en que esta es un componente principal de los  lineamientos de currículo recientemente adoptados de la Asociación Americana de Estadística\cite{ASAcurriculum2014}.
+
+En este libro (y en sus volúmenes acompañantes), introduciremos múltiples actividades, algunas apropiadas para un curso introductorio, otras maleables para niveles superiores, que demuestran conceptos claves de estadística y modelaje, mientras también ofrecen ayuda al material de base de cursos más tradicionales.
+
+\subsection*{Un trabajo en progreso}
+
+\Caution{A pesar de nuestros mejores esfuerzos, VA a encontrar fallas en este documento y en nuestro código. Por favor háganos saber cuándo las encuentre para poder resolverlas..}%
+
+Estos materiales fueron construidos para un taller llamado
+\emph{Teaching Statistics Using R} (Enseñando estadística con R) anterior a la  United States Conference on Teaching Statistics y fue corregido para USCOTS 2011, USCOTS 2013, eCOTS 2014, ICOTS 9, and USCOTS 2015.
+
+Organizamos todos estos talleres para ayudar a los instructores a integrar \R\ R (así como otras tecnologías relacionadas) en los cursos de estadística de todos los niveles.
+
+Recibimos una gran retroalimentación y bastantes buenas ideas por parte de participantes y por parte de aquellos con los que compartimos este material en 
+los talleres.
+
+Considere las notas como un trabajo en progreso.
+%\SuggestionBox{En ocasiones vamos a marcar 
+%partes en las cuales nos gustaría retroalimentación con este buzón de sugerencias
+%Pero no lo haremos en todas las secciones que queremos retroalimentación porque si no,
+% no tendríamos espacio para nada más.}%
+Apreciaremos cualquier retroalimentación que esté dispuesto a compartirnos, conforme continuamos el trabajo en estos materiales y el acompañante del material, el paquete \pkg{mosaic}.  
+Envíenos un email a \url{pis@mosaic-web.org} con cualquier comentario, sugerencia, corrección, etc
+
+Versiones actualizadas del paquete serán publicadas en  \url{http://mosaic-web.org}.
+
+\subsection*{Dos audiencias}
+
+Inicialmente desarrollamos estos materiales para instructores y profesores de estadística a nivel universitario. Otra audiencia para la cual desarrollamos el material son los estudiantes a quién estos instructores o profesores enseñan. Algunas de las secciones, algunos de los ejemplos y  algunos ejercicios están pensados para una u otra de estas audiencias, con una mayor claridad en el énfasis que se le da a la audiencia. Esto significa que:
+\begin{enumerate}
+\item Algunos materiales son utilizados esencialmente para los estudiantes.
+\item Algunos materiales apuntan a equipar al instructor a explotar sus propias capacidades en \R\ and \RStudio\ para desarrollar su propio material de enseñanza.
+\end{enumerate}
+
+Aunque la distinción puede volverse confusa, y lo que funciona "así" en una condición puede no funcionar "así" en otras, intentaremos indicarle cuales partes se ajustan  a cual audiencia conforme vayamos por ella.
+
+\subsection*{R, RStudio y los paquetes de R}
+
+\R\ puede ser obtenido  \url{http://cran.r-project.org/}.  
+La descarga e instalación es abierta y sencilla para máquinas con MAC, PC o linux
+
+\RStudio\ es una interfaz de desarrollo integrada (IDE por sus siglas en inglés) que facilita el uso de \R\ tanto para usuarios sin experiencia como usuarios expertos.  Lo hemos adaptado como nuestra interfaz standard de enseñanza puesto que simplifica drásticamente el uso de \R\ para instructores y estudiantes.%
+
+\Pointer[-3cm]{Algunas cosas sólo pueden ser ejecutadas en RStudio, como la función \function{manipulate} y la herramienta de RStudio para la investigación reproducible.}%
+
+\RStudio\ está disponible en \url{http://www.rstudio.org/}.
+
+\RStudio\ . RStudio puede instalarse como aplicación de escritorio o como una aplicación en un servidor accesible a los usuarios vía Internet.\FoodForThought[-.5cm]{La versión en un servidor web de RStudio funciona bien con estudiantes que están iniciando. Lo único que se  necesita es un navegador web, evadiendo todos los potenciales problemas con particularidades de la computadora personal de cada estudiante.}
+
+Además de \R\ y \RStudio\, haremos uso de algunos paquetes que necesitan ser instalados y cargados separadamente. El paquete \pkg{mosaic} (y sus dependencias) serán utilizados en todo momento. Otros paquetes aparecerán esporádicamente.
+\subsection*{Notas marginales}
+Las notas marginales aparecerán por aquí y por allá
+%\DiggingDeeper{Some marginal notes will look like this one and provide
+%some additional information that you may find of interest.}%
+\marginnote{¿Tiene alguna sugerencia para una nota marginal? Compártala con nosotros.}%
+En ocasiones estas son comentarios extra que deseábamos hacer, pero no queríamos interrumpir el flujo de la lectura y mencionarlos en el texto principal. Otras proveen consejos para la enseñanza o precauciones acerca de trampas, caídas y 'jugadas'.
+%\Caution{Sin embargo, las alertas están ajustadas diferentes, asegúrese de prestarles atención.}%
+
+\subsection*{Lo que es nuestro, es suyo, hasta cierto punto}
+Este material se encuentra en copyright por los autores, bajo 'Creative Commons Attribution 3.0 Unported License'.
+Está libre para \emph{compartirlo} (copiarlo, distribuirlo y transferir el trabajo) y \emph{mezclarlo} 
+(adaptar el trabajo) si nos atribuye el  trabajo realizado.
+Para información más detallada sobre esto, está disponible en el siguiente sitio web:
+\url{http://www.mosaic-web.org/go/teachingRlicense.html}.
+
+
+\DiggingDeeper{Si usted conoce LaTeX tan bien como R, entonces el paquete knitr ofrece una buena solución para mezclar ambos. Nosotros utilizamos este sistema para producir este libro. También lo utilizamos para nuestra propia investigación y para introducir a estudiantes de nivel superior a métodos de análisis reproducible. Para principiantes, introducimos knitr con RMarkdown, el cual produce archivos en formato PDF, HTML o Word utilizando sintaxis sencilla}
+
+\subsection*{Creación del documento}
+
+El documento original fue creado el 12 de Agosto de 2016, utilizando: knitr, versión 1.13.2 mosaic, versión 0.14.9000 *R version 3.3.0 (2016-05-03)
+
+Inevitablemente, cada una de estas va ser actualizada en ciertas ocasiones. Si usted encuentra cosas que se ven diferente en su computadora, asegúrese que su versión de \R{} y sus paquetes estén actualizados y revise versiones más nuevas de este documento
+
+Honores y agradecimientos a Joseph Cappelleri por sus comentarios útiles en los primeros borradores de este material
+
+chapter*{Proyecto MOSAIC}
+Este libro es producto del Proyecto MOSAIC, una comunidad de educadores trabajando para desarrollar nuevas formas de introducir las matemáticas, la estadística, la computación y el modelaje de datos a estudiantes universitarios.
+
+\bigskip
+
+La meta del proyecto MOSAIC es ayudar a compartir ideas y recursos para mejorar la enseñanza, y desarrollar una estructura curricular y valorativa para dar apoyo a la diseminación y evaluación de estos esfuerzos. Nuestra meta es proveer un amplio acercamiento a los estudios cuantitativos que brindan una mejor herramienta al trabajo en la ciencia y tecnología. El proyecto resalta e integra diversos aspectos del trabajo cuantitativo que los estudiantes de ciencia, tecnología e ingeniería necesitarán en sus vidas profesionales, pero que actualmente es usual que sean enseñados de forma aislada, si es que acaso se enseñan. En particular, nos concentramos en:
+
+\vspace{.1in}
+
+En particular nos enfocamos en:
+\begin{description}
+	\item[Modelaje] La habilidad de crear, manipular e investigar representaciones matemáticas útiles e informativas de situaciones del mundo real.
+
+	\item[Estadística] El análisis de variabilidad que se esboza de nuestra habilidad de cuantificar la incertidumbre y generar inferencias lógicas de observación y experimentación.
+
+    \item[Computación] 
+	La capacidad de pensar algorítmicamente, de manejar datos en gran escala, visualizar e interactuar con modelos, y automatizar tareas para la eficiencia, precisión y reproducibilidad.
+
+    \item[Cálculo] 
+	El punto de entrada tradicional para estudiantes universitarios y un tema que todavía hoy tiene la capacidad de dotar de nociones importantes a los estudiantes
+	\end{description}
+
+Tomando el apoyo de la Fundación Nacional de Ciencia de Estados Unidos (NSF DUE-0920350), 
+Proyecto MOSAIC apoya algunas iniciativas para ayudar a lograr estas metas, 
+incluyendo:
+\begin{description}
+\item
+[Desarrollo de facultades y oportunidad de entrenamiento] 
+así como en USCOTS 2011, USCOTS 2013, eCOTS 2014, e ICOTS9 en los talleres
+\emph{'Teaching Statistics Using \R\ y \RStudio}, en 2010 nuestro Proyecto MOSAIC inició talleres en el Instituto de Matemática y sus aplicaciones, y nuestro taller  \emph{Modeling: Early and Often in Undergraduate Calculus}
+AMS PREP fueron ofrecidos en 2012,  2013, and 2015.
+
+\item
+[M-casts,] 
+una serie de seminarios web programados regularmente, dados vía Internet,  
+en el que se creó foro para que los instructores puedan compartir sus observaciones e innovaciones 
+y desarrollar colaboraciones para refinar y desarrollar las mismas.
+Las grabaciones de los M-casts están
+disponibles en el sitio web del Proyecto MOSAIC, \url{http://mosaic-web.org}.
+\item[La construcción de un programa y materiales] 
+para cursos que enseña MOSAIC con tópicos integrados de la mejor manera. Estos
+Estos cursos y materiales podrían ser completamente nuevas construcciones,
+o podrían ser modificaciones de 
+recursos existentes que se aproximen 
+a las conexiones entre los tópicos de MOSAIC.
+\end{description}
+
+Más detalles pueden ser encontrados en \url{http://www.mosaic-web.org}.
+Le damos la bienvenida e incitamos su participación en todas estas iniciativas.
+
+\chapter*{Estadística computacional}
+
+Hay al menos dos formas en las cuales se puede introducir un software
+estadístico en un curso de estadística.  En el primer abordaje, el curso debe ser enseñado esencialmente como 
+se hacía anterior a la utilización de los software estadísticos, pero utilizando la computadora para hacer más rápidos algunos cálculos y generar gráficos de alta calidad displays.  PProbablemente el tamaño de los conjuntos de datos también deba ser incrementado. Nos referiremos a este enfoque como
+\term{computación estadística} 
+puesto que la computadora funciona primariamente como una herramienta de cálculo para reemplazar los cálculos en lápiz y papel, además del dibujo manual de los gráficos.
+
+En el segundo abordaje, cambios más importantes en el curso resultan de la introducción de la computadora. Algunos temas nuevos son cubiertos, algunos temas anteriores son omitidos. Algunos temas anteriores son tratados en formas muy diferentes, y quizás en diferentes etapas en el curso.  A este abordaje nos referiremos como \term{estadística computacional} bporque la disponibilidad de la computación está moldeando como la estadística es construida y enseñada. La estadística computacional es un componente clave de la  \term{ciencia de los datos}, definida como la habilidad de usar datos para responder preguntas y comunicar resultados.
+
+\FoodForThought{Los estudiantes necesitan ver los aspectos de la computación y la ciencia de los datos de manera pronta y cotidiana para desarrollar habilidades profundas. Establecer bases en cursos introductorios ayuda a que inicien de mejor manera.}%
+
+En la práctica, la mayoría de los cursos van a incorporar elementos de ambas, la estadística computacional y la computación estadística, pero las proporciones relativas pueden diferir drásticamente de curso a curso. En qué parte del espectro se encuentra el curso va depender de muchos factores, incluyendo las metas del curso, la disponibilidad de tecnología para el uso de los estudiantes, la perspectiva del libro utilizado y el nivel de 'comfort' que sienta el instructor con la estadística y la computación.
+
+Entre los varios paquetes de software estadístico disponible, \R\ está incrementando su popularidad. La reciente adición de \RStudio\ ha hecho R más poderoso y accesible. Como \R\ y \RStudio\ son gratis, ambos se han vuelto ampliamente utilizados en la investigación y la industria. Entrenar en \R\ y \RStudio\ es normalmente visto como una habilidad adicional importante que un curso de estadística puede desarrollar. Por esto, un alto número de instructores están utilizando \R\ para su propio trabajo estadístico; por lo que es natural que inicien a integrarlo en la enseñanza también. Al mismo tiempo, el desarrollo de \R\ y \RStudio\ (una interfaz opcional e integrada al desarrollo de un entorno para \R) están haciendo cada vez más fácil iniciar la utilización de \R.
+
+\FoodForThought{La información sobre el paquete \pkg{mosaic}, incluyendo ejemplos de características y material suplementario (así como este libro) puede encontrarla en \url{https://cran.r-project.org/web/packages/mosaic}.}
+Desarrollamos el paquete de \R\ \pkg{mosaic} (disponible en CRAN), para hacer ciertos aspectos de la computación estadística y la estadística computacional más simple para inexpertos, sin limitar su habilidad a utilizar características del lenguaje.  El paquete \pkg{mosaic} incluye un acercamiento al modelaje, que utiliza la misma sintaxis general para calcular estadísticas descriptivas, crear gráficos y ajustar modelos lineales.
+
+\chapter{Introducción}
+
+\vspace*{-.5cm}
+
+En este libro de referencia, resumidamente repasamos comandos y funciones necesarias para analizar datos desde cursos introductorios hasta secundarios de estadística  . Esto con la intención de complementar los libros \emph{Empiece a enseñar con R} and \emph{Start Modeling with R} books.
+
+La mayoría de nuestros ejemplos van a utilizar datos del estudio HELP (Health Evaluation and Linkage to Primary Care): un ensayo clínico aleatorizado buscando conectar pacientes en riesgo con el cuidado primario de salud. Más información del conjunto de datos se puede encontrar en el capítulo 14.
+
+
+Como la selección y el orden de los temas pueden variar de libro a libro y de instructor a instructor, hemos decidido organizar este material por tipo de datos que están siendo analizados. Esto debe hacerse dirigido a encontrar lo que se está buscando. Algunas habilidades en manejo de datos pueden ser necesitadas por los estudiantes\cite{hort:2015}. Una introducción básica a expresiones clave se da en el capítulo 13.
+\ref{sec:manipulatingData}.
+
+\myindex{vignettes}%
+Este proyecto se aventaja de las iniciativas tomadas por el Proyecto MOSAIC (\url{http://www.mosaic-web.org}), un esfuerzo financiado por la NSF para mejorar la enseñanza de la estadística, el cálculo, la ciencia y la computación en el currículo de los programas de grado. En particular, utilizamos el paquete \pkg{mosaic}, el cual fue escrito para simplificar el uso de \R\ para los cursos introductorios de estadística, y el paquete \pkg{mosaicData} que incluye algunos archivos de datos. Un pequeño resumen de los comandos de \R\ necesarios para la enseñanza de estadística introductoria puede ser encontrado en el siguiente sitio:
+\url{https://cran.r-project.org/web/packages/mosaic}.
+
+Otros recursos relacionados del Proyecto MOSAIC pueden ser de ayuda, incluyendo un conjunto de ejemplos anotados de la quinta edción de Moore, McCabe y Craig \emph{Introduction to the Practice of Statistics}\cite{moor:mcca:2007} (ver \url{http://www.amherst.edu/~nhorton/ips6e}), la segunda y tercera edición de  \emph{Statistical Sleuth}\cite{Sleuth2} (ver \url{http://www.amherst.edu/~nhorton/sleuth}), and \emph{Statistics: Unlocking the Power of Data} por Lock et al (see \url{https://github.com/rpruim/Lock5withR}).
+
+\myindex{installing packages}%
+\Rindex{install.packages()}%
+Para usar el paquete dentro de R, este debe ser instalado (una vez), y cargado (cada sesión). El paquete \pkg{mosaic} puede ser instalado utilizando el siguiente comando: 
+\begin{Schunk}
+\begin{Sinput}
+> install.packages("mosaic")  # Observe las comillas
+\end{Sinput}
+\end{Schunk}
+\FoodForThought[-1.5cm]{\Rstudio\ dispone forma más simplificada de instalación de paquetes (en el panel de arriba a la derecha).} El {\tt \#} es un comentario en R, y todo el texto después de ese símbolo es ignorado a la hora de ejecutar el código.
+
+\myindex{loading packages}%
+\Rindex{require()}%
+O Una vez que el paquete es instalado (una única vez), puede ser cargado ejecutando el siguiente comando:
+\begin{Schunk}
+\begin{Sinput}
+> require(mosaic)
+\end{Sinput}
+\end{Schunk}
+
+\FoodForThought[-3cm]{El sistema \pkg{knitr}/\LaTeX\ permite combinar \R\ y \LaTeX\ en el mismo documento.  La recompensa por aprender este sistema más complicado es un control más fino sobre el formato del documento de salida. Pero RMarkdown es más sencillo de aprender y adecuar incluso en el trabajo a nivel profesional.}%
+
+
+\myindex{reproducible analysis}%
+\myindex{markdown}%
+\myindex{knitr}%
+\marginnote[.4cm]{Usar Markdown o \pkg{knitr}/\LaTeX\ requiere que el paquete \pkg{markdown} esté instalado.}%
+TEl sistema de RMarkdown aporta una adición en el lenguaje y produce documentos en PDF, Word o HTML. Esto permite a los estudiantes tomar sus análisis utilizando un flujo de trabajo que facilita la "reproducibilidad" y evita copiar y pegar errores.
+
+Usualmente introducimos a los estudiantes a RMarkdown de forma muy pronta, pidiéndoles que lo utilicen para tareas y reportes\cite{baum:2014}.
+
+
+\chapter{Empezando con RStudio}
+\label{chap:RStudio}
+
+\RStudio\ es un entorno integrado de desarrollo (IDE por sus siglas en inglés) para \R\ que proporciona una alternativa de interface de \R, que tiene algunas ventajas sobre la interfaz predeterminada de \R: 
+\FoodForThought{Una serie de videos para iniciar con R está disponible en: \url{http://www.amherst.edu/~nhorton/rstudio}.}
+\begin{itemize}
+	\item \RStudio\ es ejecutable en máquinas Mac, PC o Linux y brinda  
+	  una interfaz simplificada que
+	  \emph{se ve y se siente idéntico en todas ellas.}
+La interface predeterminada de \R\ es un poco diferente en las distintas plataformas.  Esto
+		es un distractor para los estudiantes y agrega una responsabilidad extra de conocimiento 
+		al instructor
+	\item
+		\RStudio\ puede ejecutarse desde un navegador web.
+
+		Además de la versión para escritorio, RStudio puede ser utilizado y configurado 
+		como una aplicación en un servidor al que se tiene acceso vía internet  
+
+		La interfaz web es prácticamente idéntica a la versión de escritorio.%
+		\Caution{La versión de escritorio y la versión del servidor de \RStudio\ son tan similares
+		tendrá que prestar mucha atención y asegúrarse
+		de que este trabajando en la que tenía intención de trabajar.}
+		Como con otros servicios web, el usuario debe hacer un inicio de sesión para acceder a su cuenta.
+		Si los estudiantes cierran sesión y abren sesión después, incluso en una máquina diferente,
+	la sesión es restaurada y pueden continuar sus análisis
+		justo donde los dejaron.
+		Con un poco de ajustes avanzados, los instructores pueden salvar el registro de su utilización de \R\ 
+		classroom \R\ use and students en clase y pueden cargar estos archivos de registro en su propio 
+		entorno.%
+		\Note{Usar \RStudio\ en un navegador es como Facebook para estadística
+		Cada vez que el usuario vuelve, la sesión previa es restaurada
+		y puede continuar el trabajo donde lo dejó. Los usuarios pueden iniciar sesión desde cualquier dispositivo  
+		con acceso a internet.}%
+	\item
+		\RStudio\ brinda apoyo para la investigación reproducible..
+
+		\RStudio\ RStudio facilita incluir texto, análisis estadístico (código de \R\ 
+		 y salidas de \R), y gráficos, todo en un mismo documento.
+		 El sistema de RMarkdown proporciona una adición en el lenguaje y 
+		 produce documentos en HTML. El sistema \pkg{knitr}/\LaTeX\ 
+		 permite a los usuarios combinar  \R\ y \LaTeX\ en el mismo documento.  La
+		 rrecompensa por aprender este sistema más complicado es un control más fino 
+		 sobre el formato del documento de salida. Dependiendo del nivel del curso, 
+		los estudiantes pueden usar esto para tareas y proyectos.  
+		 \authNote{NH (via rjp): Add some pointers to more information?}
+		 \marginnote{Para usar Markdown o \pkg{knitr}/\LaTeX\ se requiere que 
+		 el paquete  \pkg{knitr} esté instalado en su sistema.  }
+		 
+
+	 \item
+		 \RStudio\ pofrece una opción integrada para editar y ejecutar
+		 código de \R\, y documentos.
+
+	 \item
+		 \RStudio\ provee una interfaz funcional de gráficos para el usuario.
+
+		 \RStudio\ RStudio no es un GUI para \R\, pero este sí brinda una GUI 
+		 que simplifica cosas como instalar y actualizar los paquetes; monitorear, guardar y cargar 
+		 entornos; importar y exportar datos; navegar y exportar gráficos; y navegar por archivos y documentación.
+
+
+	 \item
+		 \RStudio\ permite el acceso al paquete \pkg{manipulate} 
+
+		 El paquete \pkg{manipulate} brinda una forma de crear aplicaciones gráficas interactivas
+		 de forma rápida y sencilla.
+
+\end{itemize}
+
+Realmente se puede usar  \R\ sin usar \RStudio, sin embargo, \RStudio\ hace una cantidad considerable de cosas
+más sencillas, recomendamos vigorosamente la utilización de  \RStudio.  Además puesto que \RStudio\
+RStudio está en desarrollo activo, tenemos la expectativa de más características útiles en el futuro.
+
+
+Primordialmente utilizamos una versión online de \Rstudio\ .  \RStudio\ es una interfaz innovadora y poderosa para \R\, que se ejecuta en un navegador web o en su computadora.
+Ejecutarlo en el navegador tiene la ventaja de que no se necesita instalar 
+o configurar nada.  . Solo inicia sesión y está listo.  Entonces, , RStudio va "recordar" lo que estuvo haciendo cada vez que inicie sesión (incluso en una máquina diferente), 
+usted puede elegir iniciar justo donde usted lo dejó.
+Esto es "\R\ en la nube" y funciona un poco como GoogleDocs o Facebook para \R.
+
+\R\ se puede obtener también de \url{http://cran.r-project.org/}.  
+La descarga y la instalación son dirigidas a máquinas Mac, PC o Linux
+\RStudio\ RStudio está disponible en \url{http://www.rstudio.org/}.
+
+\section{Conectándose al servidor de RStudio}
+
+Los servidores de \RStudio\ han sido ajustados en algunas escuelas para facilitar la computación basada en la nube.
+\FoodForThought{Los servidores de \RStudio\ han sido instalados en muchas instituciones. Más detalles
+acerca de licencias académicas (gratuitas) para 'RStudio Server Pro' como también instrucciones de ajuste se pueden encontrar en \url{http://www.rstudio.com/resources/faqs} en la viñeta {\tt Academic}
+}
+
+Una vez que se conecte al servidor, usted va ver una pantalla de inicio de sesión:
+\FoodForThought{El servidor de \RStudio\ no suele funcionar bien con Internet Explorer}
+
+
+\includegraphics[width=4.34in]{rstudio-login.png}
+
+Una vez que se identifique, usted debería ver la interfaz de \RStudio\
+
+
+\includegraphics[width=4.34in]{rstudio-init.png}
+
+Observe que \Rstudio\ divide su universo en 4 paneles. 
+Algunos de estos paneles después son subdivididos en viñetas múltiples. Qué viñetas aparecen en los paneles pueden ser personalizados por el usuario.
+\R\ puede hacer muchísimo más que una simple calculadora, y vamos a introducir características 
+adicionales en el debido tiempo. Sin embargo, hacer cálculos sencillos en \R\ es una
+buena forma de iniciar el conocimiento de las características de \RStudio.
+
+Los comandos ingresados en la ventana de la \tab{Consola} son inmediatamente ejecutados por \R.
+AUna buena forma de familiarizarse con la consola es hacer algunos 
+cálculos sencillos.  La mayoría de este trabajo lo podría esperar de una calculadora típica. Intente escribir los siguientes comandos en el panel de la consola:
+
+\begin{Schunk}
+\begin{Sinput}
+> 5 + 3
+\end{Sinput}
+\begin{Soutput}
+[1] 8
+\end{Soutput}
+\begin{Sinput}
+> 15.3 * 23.4
+\end{Sinput}
+\begin{Soutput}
+[1] 358.02
+\end{Soutput}
+\begin{Sinput}
+> sqrt(16)                  # raíz cuadrada
+\end{Sinput}
+\begin{Soutput}
+[1] 4
+\end{Soutput}
+\end{Schunk}
+
+
+Este último ejemplo demuestra como las funciones son llamadas dentro de \R\ como también el uso de comentarios
+Los comentarios son anticipados por el símbolo \verb!#!.
+Los comentarios pueden ser de mucha ayuda cuando se escriben scripts con múltiples comandos o para anotar código de ejemplo para sus estudiantes.
+
+Usted puede guardar valores en variables nombradas para reutilización posterior.
+\FoodForThought{Es probablemente mejor establecer el uso de uno u otro operador de asignación en lugar de estar cambiándolo. Personalmente preferimos el operador de la flecha, porque representa visualmente lo que está pasando en la asignación además porque deja clara la distinción entre el operador de asignación, el uso de \code{=}
+en este caso es para dar valores a los argumentos de funciones, y el uso de \code{==} para probar la igualdad.}%
+
+\begin{Schunk}
+\begin{Sinput}
+> product = 15.3 * 23.4   # Guardar el resultado
+> product                 # Desplegar el resultado
+\end{Sinput}
+\begin{Soutput}
+[1] 358.02
+\end{Soutput}
+\begin{Sinput}
+> product <- 15.3 * 23.4  # <- Puede ser utilizado 
+>                         #en lugar de =
+> product                     
+\end{Sinput}
+\begin{Soutput}
+[1] 358.02
+\end{Soutput}
+\end{Schunk}
+
+
+Una vez que las variables son definidas, pueden ser referenciadas en otras operaciones y funciones.
+
+\begin{Schunk}
+\begin{Sinput}
+> 0.5 * product               # La mitad del producto
+\end{Sinput}
+\begin{Soutput}
+[1] 179.01
+\end{Soutput}
+\begin{Sinput}
+> log(product)                # log (natural) del producto
+\end{Sinput}
+\begin{Soutput}
+[1] 5.880589
+\end{Soutput}
+\begin{Sinput}
+> log10(product)              # log base 10 del producto
+\end{Sinput}
+\begin{Soutput}
+[1] 2.553907
+\end{Soutput}
+\begin{Sinput}
+> log2(product)               # log base 2 del producto
+\end{Sinput}
+\begin{Soutput}
+[1] 8.483896
+\end{Soutput}
+\begin{Sinput}
+> log(product, base=2)        # log base 2 del producto, de otra forma
+\end{Sinput}
+\begin{Soutput}
+[1] 8.483896
+\end{Soutput}
+\end{Schunk}
+
+El punto y coma puede ser utilizado para ubicar comandos múltiples en una sola línea.  
+Un uso frecuente de esto puede ser para salvar y después imprimir un valor, en una sola línea.
+
+\begin{Schunk}
+\begin{Sinput}
+> product <- 15.3 * 23.4; product    # Salva el resultado y lo muestra
+\end{Sinput}
+\begin{Soutput}
+[1] 358.02
+\end{Soutput}
+\end{Schunk}
+
+
+\subsection{Información de la versión}
+
+\Rindex{sessionInfo()}%
+\Rindex{RStudio.Version()}%
+En algunos momentos, puede ser útil revisar qué versión del paquete \pkg{mosaic}, \R y \RStudio está usando. Ejecutando \function{sessionInfo()} se va desplegar información de R , los paquetes que están cargados y \function{RStudio.Version()} le proveerá información sobre la versión de \RStudio.
+
+\begin{Schunk}
+\begin{Sinput}
+> sessionInfo()
+\end{Sinput}
+\begin{Soutput}
+R version 3.4.1 (2017-06-30)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 15063)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=Spanish_Costa Rica.1252 
+[2] LC_CTYPE=Spanish_Costa Rica.1252   
+[3] LC_MONETARY=Spanish_Costa Rica.1252
+[4] LC_NUMERIC=C                       
+[5] LC_TIME=Spanish_Costa Rica.1252    
+
+attached base packages:
+[1] grid      stats     graphics  grDevices utils     datasets 
+[7] methods   base     
+
+other attached packages:
+[1] knitr_1.16        fastR_0.10.2      mosaic_0.14.4    
+[4] Matrix_1.2-10     mosaicData_0.14.0 ggplot2_2.2.1    
+[7] dplyr_0.7.1       lattice_0.20-35   MASS_7.3-47      
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_0.12.11     bindr_0.1        magrittr_1.5    
+ [4] splines_3.4.1    munsell_0.4.3    colorspace_1.3-2
+ [7] R6_2.2.2         ggdendro_0.1-20  rlang_0.1.1     
+[10] stringr_1.2.0    plyr_1.8.4       tools_3.4.1     
+[13] gtable_0.2.0     lazyeval_0.2.0   assertthat_0.2.0
+[16] tibble_1.3.3     bindrcpp_0.2     gridExtra_2.2.1 
+[19] tidyr_0.6.3      evaluate_0.10.1  glue_1.1.1      
+[22] stringi_1.1.5    compiler_3.4.1   scales_0.4.1    
+[25] pkgconfig_2.0.1 
+\end{Soutput}
+\end{Schunk}
+
+
+\section{Trabajando con archivos}
+
+\subsection{Trabajando con archivos \R\ script}
+Como alternativa, los comandos de \R\ pueden ser almacenados en un archivo. \RStudio\ ofrece un editor integrado para editar este tipo de documentos y facilita ejecutar algunos o todos los comandos. Para crear un archivo, seleccione en el menú de \RStudio\: \tab{File}, después \tab{New File}, después \tab{R Script}. Una ventana del editor de archivos se va abrir en el panel de \tab{Source}. El código de \R\ puede ser escrito ahí, y botones e ítems de menú son provistos para correr todo el código (llamado abastecer el documento) o ejecutar el código en una sola línea o en una sección seleccionada del documento. 
+
+\subsection{Trabajando con RMarkdown, y knitr/\LaTeX}
+Una tercera alternativa es tomar ventaja del apoyo que brinda \RStudio para la investigación reproducible. 
+Si usted ya conoce \LaTeX, va a querer investigar las capacidades de \pkg{knitr}/\LaTeX.
+Para aquellos que no conocen \LaTeX todavía, el sistema más sencillo de RMarkdown proporciona una entrada fácil en el mundo de los métodos de la investigación reproducible. Además brinda una buena estructura para que los estudiantes creen sus tareas y reportes que incluyen texto, código de \R, salidas de \R y gráficos.
+
+Para crear un nuevo archivo de RMarkdown, seleccione la pestaña de \tab{File}, después \tab{New File}, después \tab{RMarkdown}. El archivo va ser abierto con un pequeño documento de plantilla que ilustra la especificación que tiene el lenguaje
+
+\includegraphics[width=4.34in]{markdown1.png}
+
+El paquete mosaic incluye dos plantillas útiles de RMarkdown para empezar: {\tt fancy} que es fina y exquisita (y esa era la intención, para dar una observación de las características) mientras que {\tt plain} es útil como un punto de inicio para un nuevo análisis. A estos se puede acceder usando la opción de {\tt Template} cuando se crea un nuevo archivo de RMarkdown.
+
+\includegraphics[width=4.34in]{markdown2.png}
+
+
+Presione el botón de \tab{Knit} para convertir a archivo HTML, PDF, o Word.
+
+\includegraphics[width=4.34in]{markdown3.png}
+
+Esto va generar una versión con formato del documento.
+
+\includegraphics[width=4.34in]{markdown4.png}
+
+Hay un botón (marcado con un signo de pregunta) que provee una pequeña descripción de las especificaciones del comando especificado. El sitio web de \RStudio\ incluye tutoriales más extensivos sobre la utilización de RMarkdown.
+
+\Caution{Los archivosRMarkdown, and \pkg{knitr}/\LaTeX\ no tienen acceso al entorno de la consola, 
+entonces el código debe ser autocontenido.}
+
+%
+Es importante recordar que contrario a los scripts de \R que son ejecutados en la consola y tiene acceso al entorno de la consola, los archivos de RMarkdown y \pkg{knitr}/\LaTeX no tienen acceso al entorno de la consola. Esto es una buena característica puesto que  obliga a los archivos a ser auto-contenidos, lo cual los hace transferibles y respeta las buenas prácticas de la investigación reproducible. Pero en el caso de los principiantes, especialmente si adoptan una estrategia de probar cosas en la consola, y copiar y pegar código de la consola en su documento, crean archivos que son incompletos y por esto no compilan correctamente.
+
+
+\section{Otros paneles y viñetas}
+
+\subsection{La viñeta de History(historial)}
+
+Como los comandos son ingresados en la consola, así aparecen en la viñeta de \tab{History}. 
+Estas "historias" o historiales pueden ser guardados y cargados, hay una opción de búsqueda para encontrar comandos previos, y líneas individuales previas o secciones pueden ser transferidas de vuelta a la consola. Mantener la viñeta de \tab{History} abierta le permite ir atrás y ver varios comandos anteriores. Esto puede ser especialmente útil cuando ciertos comandos producen una salida grande entonces la pantalla se mueve hacia abajo rápidamente.
+
+\subsection{Comunicación entre viñetas}
+
+\RStudio\ brinda varias formas de mover código de \R\ entre las viñetas. Presionar el botón de Run en el panel de edición para un script de \R\ o RMarkdown o algún otro documento va copiar líneas de código en la consola y ejecutarlas.
+
+\subsection{La viñeta de files(archivos)}
+La viñeta de \tab{Files} provee un manejador de datos simples. En esta se puede navegar de forma amigable y puede ser utilizada para abrir, renombrar y borrar archivos. En la versión de navegador web de RStudio, la pestaña de archivos también ofrece una utilidad para subir los archivos de la máquina local al servidor. En archivos de RMarkdown y \pkg{knitr} también se puede ejecutar código en algún "chunk" del archivo o en todos los "chunks" del archivo. Cada una de estas características simplifica el intentar escribir código "en vivo" mientras se crea un documento que deja un historial del código.
+
+En la dirección inversa, el código del historial puede ser copiado de nuevo en la consola para ejecutarlo de nuevo (después de un poco de edición) o en una de las viñetas de edición, para la inclusión en un archivo.
+
+
+\subsection{La viñeta de Help(ayuda)}
+La viñeta de ayuda (\tab{Help}) es donde \RStudio\ despliega los archivos de ayuda de \R\. Se puede abrir un archivo de ayuda usando el operador \texttt{?} en la consola. Por ejemplo, el siguiente comando va mostrarnos el archivo de ayuda para la función de logaritmo.
+\begin{Schunk}
+\begin{Sinput}
+> ?log
+\end{Sinput}
+\end{Schunk}
+
+\subsection{La viñeta de Environment(entorno)}
+La viñeta de entorno (\pkg{Environment}) muestra los objetos disponibles para la consola. Estos están subdivididos en datos, valores (no son objetos de tipo conjunto de datos, ni objetos de tipo función) y funciones. El ícono de la escoba puede ser utilizado para remover todos los objetos del entorno, y es bueno hacer esto de vez en cuando, especialmente cuando se está ejecutando RStudio en el servidor o si decide salvar el entorno cuando cierra RStudio, puesto que en estos casos los objetos se pueden quedar en el entorno indefinidamente.
+
+\subsection{La viñeta de Plots(Gráficos)}
+Los gráficos creados en la consola son desplegados en la viñeta de gráficos (\tab{Plots}). Por ejemplo, los siguientes comandos despliegan el número de nacimientos en Estados Unidos cada día en 1978.
+\begin{Schunk}
+\begin{Sinput}
+> # Esto va hacer los gráficos de lattice disponibles en la sesión
+> # Así como el set de datos Births78
+> require(mosaic)
+> xyplot(births ~ dayofyear, data=Births78)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-012}
+En la viñeta de gráficos(\tab{Plots}), se puede navegar a gráficos anteriores y también exportar gráficos en varios formatos, después de interactivamente manipular las dimensiones.
+
+
+% this fixes bad spacing -- but I don't know why the spacing was bad
+%\bigskip
+\subsection{La viñeta de Packages(paquetes)}
+
+Mucha de la funcionalidad de \R\ está localizada en paquetes, muchos de los cuales se pueden obtener de la casa matriz llamada CRAN (Comprehensive R Archive Network). La viñeta de \tab{Packages} facilita instalar y cargar paquetes. También le permite buscar paquetes que han sido actualizados desde que usted los instaló.
+
+\chapter{Una variable cuantitativa}
+
+\section{Resúmenes numéricos}
+
+\R\ incluye comandos para resumir variables numéricamente. Estos incluyen la capacidad de calcular la media, la desviación estándar, la varianza, mediana, el mínimo, máximo el primer cuartil, el tercer cuartil, el rango intercuartil así como cuartiles arbitrarios. Esto lo ilustraremos usando la medida de síntomas depresivos (que toma valores entre 0 y 60, con notas mayores indicando mayores síntomas depresivos) del CESD (Center for Epidemiologic Studies--Depression).
+
+Para mejorar la legibilidad de las salidas, también vamos a elegir una cantidad de números predeterminados para desplegar el resultado de forma más razonable (vea \function{?options} para un mayor número de configuraciones posibles).
+
+\myindex{HELPrct dataset}%
+\Rindex{options()}%
+\Rindex{require()}%
+\Rindex{mosaic package}%
+\begin{Schunk}
+\begin{Sinput}
+> require(mosaic)
+> require(mosaicData)
+> options(digits=4)
+> mean(~ cesd, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+[1] 32.85
+\end{Soutput}
+\end{Schunk}
+
+\myindex{Start Teaching with R@\emph{Start Teaching with R}}%
+\myindex{Teaching with R@\emph{Teaching with R}}%
+\myindex{Start Modeling with R@\emph{Start Modeling with R}}%
+\myindex{Modeling with R@\emph{Modeling with R}}%
+Note que \function{mean}, dentro del paquete \pkg{mosaic} utiliza la notación de fórmula de los gráficos lattice comunes y los modelos lineales (e.g lm()). El paquete mosaic permite que muchas otras funciones utilicen la misma notación, la cual vamos a estar utilizando a lo largo de este documento.  
+\DiggingDeeper[-3cm]{Si usted no ha visto la notación de fórmula antes de este libro, \emph{Empiece a enseñar con R} lo presenta una detalladamente. \emph{Start Modeling with R}, otro libro, detalla la relación entre el proceso de modelaje y la notación de la fórmula. }
+
+\Rindex{with()}%
+\Rindex{mean()}%
+La misma salida puede ser creada utilizando los siguientes comandos (sin embargo, nosotros utilizaremos la version de MOSAIC cuando sea posible)
+\begin{Schunk}
+\begin{Sinput}
+> with(HELPrct, mean(cesd))
+\end{Sinput}
+\begin{Soutput}
+[1] 32.85
+\end{Soutput}
+\begin{Sinput}
+> mean(HELPrct$cesd)
+\end{Sinput}
+\begin{Soutput}
+[1] 32.85
+\end{Soutput}
+\end{Schunk}
+\Rindex{sd()}%
+\Rindex{var()}%
+La misma funcionalidad existe para otras estadísticas de resumen
+\begin{Schunk}
+\begin{Sinput}
+> sd(~ cesd, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+[1] 12.51
+\end{Soutput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> sd(~ cesd, data=HELPrct)^2
+\end{Sinput}
+\begin{Soutput}
+[1] 156.6
+\end{Soutput}
+\begin{Sinput}
+> var(~ cesd, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+[1] 156.6
+\end{Soutput}
+\end{Schunk}
+
+Es también muy sencillo calcular cuartiles de la distribución
+
+\myindex{quantiles}%
+\Rindex{median()}%
+\begin{Schunk}
+\begin{Sinput}
+> median(~ cesd, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+[1] 34
+\end{Soutput}
+\end{Schunk}
+
+Como predeterminado, la función \function{quantile} muestra los cuartiles, pero se le puede dar un vector de cuantiles a desplegar.
+
+\Rindex{quantile()}%
+\Caution{No todos los comandos han sido actualizados para utilizar la notación de fórmula. Para estas variables se debe acceder a los conjuntos de datos con la función \function{with}}
+\begin{Schunk}
+\begin{Sinput}
+> with(HELPrct, quantile(cesd))
+\end{Sinput}
+\begin{Soutput}
+  0%  25%  50%  75% 100% 
+   1   25   34   41   60 
+\end{Soutput}
+\begin{Sinput}
+> with(HELPrct, quantile(cesd, c(.025, .975)))
+\end{Sinput}
+\begin{Soutput}
+ 2.5% 97.5% 
+  6.3  55.0 
+\end{Soutput}
+\end{Schunk}
+
+\hfill
+
+\Rindex{favstats()}%
+Finalmente, la función \function{favstats} en el paquete \pkg{mosaic}, muestra un resumen conciso de estadísticas descriptivas útiles.
+\begin{Schunk}
+\begin{Sinput}
+> favstats(~ cesd, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+ min Q1 median Q3 max  mean    sd   n missing
+   1 25     34 41  60 32.85 12.51 453       0
+\end{Soutput}
+\end{Schunk}
+
+\section{Resúmenes gráficos}
+La función \function{histogram} es utilizada para crear un histograma. Aquí utilizamos la notación de fórmula (como se discutió en el libro \emph{Start Modeling with R}) para especificar que queremos un histograma de los puntajes del CESD
+
+\Rindex{histogram()}%
+\vspace{-4mm}
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\end{center}
+
+Podemos usar las opciones de \function{width} y \function{center} para controlar la ubicación y tamaño de las barras.
+
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd, width=5, center=2.5, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\end{center}
+
+
+\Rindex{tally()}%
+\Rindex{format option}%
+En el conjunto de datos \variable{HELPrct}, aproximadamente un cuarto de los sujetos son mujeres.  
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ sex, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+sex
+female   male 
+   107    346 
+\end{Soutput}
+\begin{Sinput}
+> tally(~ sex, format="percent", data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+sex
+female   male 
+ 23.62  76.38 
+\end{Soutput}
+\end{Schunk}
+
+Directamente vamos a restringir nuestra atención a únicamente los sujetos femeninos. Si vamos a hacer una gran cantidad de cosas con una parte de nuestro conjunto de datos,  lo más sencillo puede ser hacer un nuevo conjunto de datos conteniendo sólo los casos en los que estamos interesados. La función \function{filter()} en el paquete \pkg{dplyr} puede ser utilizada para generar una nueva tabla de datos que contiene solamente los hombres o las mujeres (observar la sección 13.5). Una vez que esto sea creado, la función \function{stem} es utilizada para crear un diagrama de tallo y hojas.
+\Caution{Note que el operador para igualdad utiliza \emph{dos} signos de igual.}
+\Rindex{stem()}%
+\Rindex{filter()}%
+\Rindex{dplyr package}%
+\begin{Schunk}
+\begin{Sinput}
+> female <- filter(HELPrct, sex=='female')
+> male <- filter(HELPrct, sex=='male')
+> with(female, stem(cesd))
+\end{Sinput}
+\begin{Soutput}
+  The decimal point is 1 digit(s) to the right of the |
+
+  0 | 3
+  0 | 567
+  1 | 3
+  1 | 555589999
+  2 | 123344
+  2 | 66889999
+  3 | 0000233334444
+  3 | 5556666777888899999
+  4 | 00011112222334
+  4 | 555666777889
+  5 | 011122222333444
+  5 | 67788
+  6 | 0
+\end{Soutput}
+\end{Schunk}
+
+\Rindex{dplyr package}%
+\Rindex{tidyr package}%
+
+Los subconjuntos de datos también pueden ser generadas y utilizadas "a medio camino" (esta vez lo veremos traslapando la densidad normal):
+\Rindex{fit option}%
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd, fit="normal",
+   data=filter(HELPrct, sex=='female'))  
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-women-cesd-hist}
+
+Alternativamente podemos hacer gráficos uno al lado del otro para comparar múltiples subconjuntos:
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd | sex, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-cesd-male-female}
+
+La estructura puede ser reacomodada
+\Rindex{layout option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd | sex, layout=c(1, 2), data=HELPrct)   
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-cesd-dotlayout}
+\end{center}
+
+Podemos controlar el número de barras de varias formas. Esto puede ser especificado mediante 
+el número total
+\Rindex{nint option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd, nint=20, data=female)   
+\end{Sinput}
+\end{Schunk}
+\end{center}
+El ancho de las barras puede ser especificado
+\Rindex{width option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ cesd, width=2, data=female)   
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-cesd-dotwidth}
+\end{center}
+
+La función \function{dotPlot} es utilizada para crear un gráfico de puntos de pequeños grupos de sujetos (mujeres indigentes). También demostramos como cambiamos el nombre del eje X.
+\Rindex{dotPlot()}%
+\begin{Schunk}
+\begin{Sinput}
+> dotPlot(~ cesd, xlab="Nota del CESD", 
+   data=filter(HELPrct, (sex=="female") & (homeless=="homeless")))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-cesd-dot4}
+
+
+\section{Curvas de densidad}
+
+\FoodForThought{Los gráficos de densidad también son sensibles a ciertas opciones. Si su gráfico de densidad es demasiado irregular o demasiado suavizado, intente cambiar el argumento adjust : más largo que 1 para gráficos demasiado suavizados, menos de 1 para gráficos sumamente irregulares.} Una desventaja de los histogramas es que pueden ser sensibles a la elección del número de barras. Otro tipo de gráficos a considerar es la curva de densidad.
+
+Aquí adornamos el gráfico de densidad con algunas adiciones para demostrar cómo se construye un gráfico para propósitos pedagógicos. Le agregamos algún texto, una función de densidad normal superimpuesta así como una línea vertical. Una variedad de tipos de líneas y colores pueden ser especificados, así como anchos.
+
+\DiggingDeeper{La función \function{plotFun} puede también utilizarse para anotar gráficos (ver sección 10.2.1)}
+\begin{center}
+\Rindex{densityplot()}%
+\Rindex{ladd()}%
+\Rindex{panel.mathdensity()}%
+\Rindex{panel.abline()}%
+\Rindex{col option}%
+\Rindex{grid.text()}%
+\Rindex{lty option}%
+\Rindex{lwd option}%
+\begin{Schunk}
+\begin{Sinput}
+> densityplot(~cesd, data=female);ladd(grid.text(x=0.2, y=0.8, 'solo mujeres'));ladd(panel.mathdensity(args=list(mean=mean(cesd), sd=sd(cesd)), col="red"), data=female);ladd(panel.abline(v=60, lty=2, lwd=2, col="grey"))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-dens1}
+\end{center}
+
+\section{Polígonos de frecuencia}
+\myindex{polygons}%
+
+Una tercera opción es un polígono de frecuencias, donde el gráfico es creado uniendo los puntos medios en la parte superior de las barras de un histograma.
+\Rindex{freqpolygon()}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> freqpolygon(~ cesd, data=female)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-poly}
+\end{center}
+
+\section{Distribuciones normales}
+
+\FoodForThought{\code{x} es de eXtra.}%
+La curva de densidad más famosa es la distribución normal. La función \function{xpnorm} despliega la probabilidad de que una variable aleatoria sea menor que el primer argumento, para una distribución normal con una media dada en el segundo argumento y con la desviación estándar de tercer argumento. Más información sobre las distribuciones de probabilidad se puede encontrar en la sección 11.
+\begin{Schunk}
+\begin{Sinput}
+> xpnorm(1.96, mean=0, sd=1)
+\end{Sinput}
+\begin{Soutput}
+If X ~ N(0, 1), then 
+
+	P(X <= 1.96) = P(Z <= 1.96) = 0.975
+	P(X >  1.96) = P(Z >  1.96) = 0.025
+
+[1] 0.975
+\end{Soutput}
+\end{Schunk}
+
+
+\section{Inferencia para una sola muestra}
+\label{sec:bootstrapsing}
+
+\Rindex{t.test()}%
+\Rindex{confint()}%
+
+Podemos calcular un intervalo de confianza para el 95\% de confianza para la media de puntuación del CESD para mujeres 
+
+usando la prueba t
+\begin{Schunk}
+\begin{Sinput}
+> t.test(~ cesd, data=female)
+\end{Sinput}
+\begin{Soutput}
+	One Sample t-test
+
+data:  female$cesd
+t = 29, df = 110, p-value <2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 34.39 39.38
+sample estimates:
+mean of x 
+    36.89 
+\end{Soutput}
+\begin{Sinput}
+> confint(t.test(~ cesd, data=female))
+\end{Sinput}
+\begin{Soutput}
+  mean of x lower upper level
+1     36.89 34.39 39.38  0.95
+\end{Soutput}
+\end{Schunk}
+
+\DiggingDeeper{More details and examples can be found in the 
+\pkg{mosaic} package Resampling Vignette.}
+\myindex{bootstrapping}%
+\myindex{resampling}%
+Sin embargo, esto también puede observarse usando bootstrap. 
+El estadístico que queremos remuestrear es la media
+\begin{Schunk}
+\begin{Sinput}
+> mean(~ cesd, data=female)
+\end{Sinput}
+\begin{Soutput}
+[1] 36.89
+\end{Soutput}
+\end{Schunk}
+
+One resampling trial can be carried out:
+\FoodForThought{Aquí se muestrea con remplazo de la tabla de datos original, creando una tabla de datos remuestreada con el mismo número de filas.}
+\Rindex{resample()}%
+\begin{Schunk}
+\begin{Sinput}
+> mean(~ cesd, data=resample(female))
+\end{Sinput}
+\begin{Soutput}
+[1] 37.7
+\end{Soutput}
+\end{Schunk}
+\FoodForThought{Aunque un único intento es de poco uso, es inteligente hacer a los estudiantes calcular para mostrarle que están (usualmente) consiguiendo un resultado diferente que el que se obtiene sin remuestreo}
+
+Otro generará un resultado diferente:
+\begin{Schunk}
+\begin{Sinput}
+> mean(~ cesd, data=resample(female))
+\end{Sinput}
+\begin{Soutput}
+[1] 34.93
+\end{Soutput}
+\end{Schunk}
+
+Ahora haremos 1000 remuestreos, guardando el resultado en un objeto llamado trials:
+called \texttt{trials}:
+\Rindex{do()}%
+\Rindex{qdata()}%
+\begin{Schunk}
+\begin{Sinput}
+> trials <- do(1000) * mean(~ cesd, data=resample(female))
+> head(trials, 3)
+\end{Sinput}
+\begin{Soutput}
+   mean
+1 36.68
+2 35.49
+3 35.90
+\end{Soutput}
+\begin{Sinput}
+> qdata(~ mean, c(.025, .975), data=trials)
+\end{Sinput}
+\begin{Soutput}
+      quantile     p
+2.5%     34.27 0.025
+97.5%    39.38 0.975
+\end{Soutput}
+\end{Schunk}
+
+
+\chapter{Una variable categóricas}
+\section{Resúmenes numéricos}
+
+\myindex{categorical variables}
+\myindex{contingency tables}
+\myindex{tables}
+
+\DiggingDeeper{El libro \emph{Empiece a enseñar con R} introduce la notación de fórmula utilizada alrededor de este libro. Vea también \emph{Empiece a enseñar con R} para conexiones al modelaje estadístico..}
+
+La función \function{tally} puede ser utilizada para calcular conteos, porcentajes y proporciones para variables categoricas.
+
+\Rindex{tally()}%
+\Rindex{margins option}%
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ homeless, data=HELPrct)      
+\end{Sinput}
+\begin{Soutput}
+homeless
+homeless   housed 
+     209      244 
+\end{Soutput}
+\begin{Sinput}
+> tally(~ homeless, margins=TRUE, data=HELPrct)      
+\end{Sinput}
+\begin{Soutput}
+homeless
+homeless   housed    Total 
+     209      244      453 
+\end{Soutput}
+\begin{Sinput}
+> tally(~ homeless, format="percent", data=HELPrct)      
+\end{Sinput}
+\begin{Soutput}
+homeless
+homeless   housed 
+   46.14    53.86 
+\end{Soutput}
+\begin{Sinput}
+> tally(~ homeless, format="proportion", data=HELPrct)  
+\end{Sinput}
+\begin{Soutput}
+homeless
+homeless   housed 
+  0.4614   0.5386 
+\end{Soutput}
+\end{Schunk}
+
+\section{La prueba binomial}
+
+\myindex{binomial test}%
+\Rindex{binom.test()}%
+Un intervalo de confianza exacto para la proporción (así como una prueba de hipótesis para que la proporción sea igual a un valor particular [predeterminado 0.5]) puede ser calculado usando la función \function{binom.test}. El estándar de \function{binom.test()} requiere que tabulemos
+\begin{Schunk}
+\begin{Sinput}
+> binom.test(209, 209 + 244)
+\end{Sinput}
+\begin{Soutput}
+data:  209 out of 209 + 244
+number of successes = 210, number of trials = 450, p-value =
+0.1
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.4147 0.5085
+sample estimates:
+probability of success 
+                0.4614 
+\end{Soutput}
+\end{Schunk}
+El paquete \pkg{mosaic} utiliza la notación de fórmula que evita la necesidad de pre-tabular los datos.
+\begin{Schunk}
+\begin{Sinput}
+> result <- binom.test(~ (homeless=="homeless"), data=HELPrct)
+> result
+\end{Sinput}
+\begin{Soutput}
+data:  HELPrct$(homeless == "homeless")  [with success = TRUE]
+number of successes = 210, number of trials = 450, p-value =
+0.1
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.4147 0.5085
+sample estimates:
+probability of success 
+                0.4614 
+\end{Soutput}
+\end{Schunk}
+
+Como es generalmente con este tipo de comandos, hay una cantidad de resultados disponibles del objeto devuelto por la función.
+\begin{Schunk}
+\begin{Sinput}
+> names(result)
+\end{Sinput}
+\begin{Soutput}
+[1] "statistic"   "parameter"   "p.value"     "conf.int"   
+[5] "estimate"    "null.value"  "alternative" "data.name"  
+\end{Soutput}
+\end{Schunk}
+Estos pueden ser extraídos usando el operador {\tt \$} o un extractor de la función. Por ejemplo, el usuario puede extraer el intervalo de confianza o el p-value.
+\Rindex{confint()}%
+\Rindex{pval()}%
+\Rindex{print()}%
+\begin{Schunk}
+\begin{Sinput}
+> result$statistic
+\end{Sinput}
+\begin{Soutput}
+number of successes 
+                209 
+\end{Soutput}
+\begin{Sinput}
+> confint(result)
+\end{Sinput}
+\begin{Soutput}
+  probability of success  lower  upper level
+1                 0.4614 0.4147 0.5085  0.95
+\end{Soutput}
+\begin{Sinput}
+> pval(result)
+\end{Sinput}
+\begin{Soutput}
+p.value 
+ 0.1101 
+\end{Soutput}
+\end{Schunk}
+\DiggingDeeper{La mayoría de objetos en R tiene un método de impresión o \function{print()}. Entonces cuando conseguimos el resultado, lo que hacemos es ver desplegado en la consola el \code{print(resultado)}. Por lo que puede haber una cantidad buena de información escondiéndose en el objeto mismo.
+En algunas situaciones, así como los gráficos, los objetos son devueltos \emph{invisiblemente}, entonces nada se imprime. Eso evita que tenga que ver una salida no deseada para consumo humano. Usted de todos modos puede asignar el objeto devuelto a una variable y procesarlo más tarde, incluso si nada aparece en la pantalla. Esto en ocasiones es útil para las funciones gráficas de \pkg{lattice}.}%
+
+\section{La prueba de la proporción}
+
+Un intervalo y prueba similar pueden ser calculados usando la función \function{prop.test()}. 
+\Rindex{prop.test()}%
+\Rindex{correct option}%
+Aquí está una cuenta del número de personas a cada uno de los dos niveles de la variable \variable{homeless}.
+
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ homeless, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+homeless
+homeless   housed 
+     209      244 
+\end{Soutput}
+\end{Schunk}
+
+La función de \function{prop.test()} va a llevar a cabo los cálculos de la prueba de la proporción y reporta el resultado.
+
+\hfill
+
+\begin{Schunk}
+\begin{Sinput}
+> prop.test(~ (homeless=="homeless"), correct=FALSE, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+	1-sample proportions test without continuity correction
+
+data:  HELPrct$(homeless == "homeless")  [with success = TRUE]
+X-squared = 2.7, df = 1, p-value = 0.1
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.4160 0.5074
+sample estimates:
+     p 
+0.4614 
+\end{Soutput}
+\end{Schunk}
+En esta declaración, \function{prop.test()} está examinando la variable homeless en la misma forma que \function{tally()} lo haría. \Pointer{Escribimos \code{homeless=="homeless"} para definir de forma no ambigua que proporción estamos considerando. Podríamos haber escrito también \code{homeless=="housed"}. }
+\function{prop.test} también puede trabajar directamente con conteos numéricos, de la forma que \function{binom.test()} lo hace.
+\InstructorNote{\function{prop.test()} calcula un estadístico Ji-cuadrado. La mayoría de textos introductorios usan un estadístico z, son matemáticamente equivalentes en terminos de las inferencias, pero tal vez necesite mostrarle esta discrepancia a los estudiantes}%
+\begin{Schunk}
+\begin{Sinput}
+> prop.test(209, 209 + 244, correct=FALSE)
+\end{Sinput}
+\begin{Soutput}
+	1-sample proportions test without continuity correction
+
+data:  209 out of 209 + 244
+X-squared = 2.7, df = 1, p-value = 0.1
+alternative hypothesis: true p is not equal to 0.5
+95 percent confidence interval:
+ 0.4160 0.5074
+sample estimates:
+     p 
+0.4614 
+\end{Soutput}
+\end{Schunk}
+
+\section{Bondad de ajuste}
+
+Una variedad de pruebas de bondad de ajuste pueden ser calculadas para una distribución dada. Para los datos de HELP, podemos probar la hipótesis nula de que la proporción de sujetos en cada grupo de abuso de sustancias es igual en la población original.
+
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ substance, format="percent", data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+substance
+alcohol cocaine  heroin 
+  39.07   33.55   27.37 
+\end{Soutput}
+\begin{Sinput}
+> observed <- tally(~ substance, data=HELPrct)
+> observed
+\end{Sinput}
+\begin{Soutput}
+substance
+alcohol cocaine  heroin 
+    177     152     124 
+\end{Soutput}
+\end{Schunk}
+
+\Caution[-1cm]{Además de las opción de \option{format}, hay una opción de incluir los marginales, para incluir el marginal de los totales en la tabla. El predeterminado en \function{tally()} es \option{margins=FALSE}. ¡Inténtelo!}
+\Rindex{chisq.test()}%
+\begin{Schunk}
+\begin{Sinput}
+> p <- c(1/3, 1/3, 1/3)   # equivalente a rep(1/3, 3)
+> chisq.test(observed, p=p)
+\end{Sinput}
+\begin{Soutput}
+	Chi-squared test for given probabilities
+
+data:  observed
+X-squared = 9.3, df = 2, p-value = 0.01
+\end{Soutput}
+\begin{Sinput}
+> total <- sum(observed); total
+\end{Sinput}
+\begin{Soutput}
+[1] 453
+\end{Soutput}
+\begin{Sinput}
+> expected <- total*p; expected
+\end{Sinput}
+\begin{Soutput}
+[1] 151 151 151
+\end{Soutput}
+\end{Schunk}
+
+También podemos calcular el estadístico $\chi^2$ como la función observada y los valores esperados.
+
+\Rindex{sum()}%
+\Rindex{pchisq()}%
+\begin{Schunk}
+\begin{Sinput}
+> chisq <- sum((observed - expected)^2/(expected)); chisq
+\end{Sinput}
+\begin{Soutput}
+[1] 9.311
+\end{Soutput}
+\begin{Sinput}
+> 1 - pchisq(chisq, df=2)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.009508
+\end{Soutput}
+\end{Schunk}
+\FoodForThought[-2cm]{La función \function{pchisq} calcula la probabilidad de que una variable aleatoria $\chi^2$ con \function{df()} grados de libertad es menor o igual al valor dado. Aquí calculamos el complemento para encontrar el área al derecho del valor observado del estadístico Chi-cuadrado.}%
+
+Puede ser útil consultar un gráfico del estadístico, donde el área sombreada representa el valor de la derecha del valor observado.
+
+\Rindex{plotDist()}%
+\begin{Schunk}
+\begin{Sinput}
+> plotDist("chisq", df=2, groups = x > 9.31, type="h")
+\end{Sinput}
+\end{Schunk}
+
+
+Alternativamente, el paquete \pkg{mosaic} ofrece una versión del \function{chisq.test()} con una salida "más rellena"
+\Rindex{xchisq.test()}%
+\begin{Schunk}
+\begin{Sinput}
+> xchisq.test(observed, p=p)
+\end{Sinput}
+\begin{Soutput}
+	Chi-squared test for given probabilities
+
+data:  x
+X-squared = 9.3, df = 2, p-value = 0.01
+
+  177      152      124   
+(151.00) (151.00) (151.00)
+[4.4768] [0.0066] [4.8278]
+< 2.116> < 0.081> <-2.197>
+     
+key:
+	observed
+	(expected)
+	[contribution to X-squared]
+	<Pearson residual>
+\end{Soutput}
+\end{Schunk}
+\FoodForThought[-1.5cm]{\code{x} en \function{xchisq.test} significa eXtra}
+
+\FoodForThought{Objetos en el espacio de trabajo son listados en la viñeta de {\sc Entorno (Environment)} en \RStudio. Si usted quiere limpiar un poco la lista, remueva los objetos que ya no neecesita con \function(rm()).}
+\begin{Schunk}
+\begin{Sinput}
+> # limpiar las variables que ya no son necesarias
+> rm(observed, p, total, chisq)  
+\end{Sinput}
+\end{Schunk}
+
+\chapter{Dos variables cuantitativas}
+
+\section{Gráficos de dispersión}
+\myindex{scatterplots}%
+\myindex{lowess}%
+\myindex{smoothers}%
+\myindex{linearity}%
+
+Siempre motivamos a nuestros estudiantes a iniciar cualquier análisis mediante la graficación de sus datos. Aquí presentamos un gráfico de dispersión de la CESD (una medida de síntomas depresivos, mayores puntuaciones indican mayor cantidad de síntomas) y el MCS (Puntuación del componente mental del SF-36, donde las puntuaciones mayores indican mejor funcionamiento) para los sujetos femeninos con una línea lowess (loess en español, una línea de regresión local), usando círculos como la figura para los puntos y una línea un poco más gruesa.
+
+\InstructorNote{La línea lowess puede ayudar a evaluar la linealidad de la relación. Esto es especificando en la función ambos puntos (usando 'p') y el suavizador lowess.}
+\Rindex{xyplot()}%
+\Rindex{pch option}%
+\Rindex{cex option}%
+\Rindex{lwd option}%
+\Rindex{type option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> require(mosaicData)
+> females <- filter(HELPrct, female==1)
+> xyplot(cesd ~ mcs, type=c("p","smooth"), pch=1, 
+   cex=0.6, lwd=3, data=females)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-HELPrct-xyplot}
+\end{center}
+\DiggingDeeper{El libro \emph{Start Modelling with R} da a mayor profundidad como se utiliza el lenguaje para modelar. \emph{Empiece a enseñar con R} también brinda una guía útil para entenderlo}
+
+Con esto es sencillo poder agregar algo más que símbolos en el gráfico de dispersión. En este ejemplo, el conjunto de datos de \dataframe{USArrest} puede ser utilizado para graficar la asociación entre los índices de asalto y asesinato, con el nombre del estado. Esto requiere una función de panel.
+\Rindex{function()}%
+\Rindex{panel.labels()}%
+\Rindex{panel.text()}%
+\Rindex{rownames()}%
+\begin{Schunk}
+\begin{Sinput}
+> panel.labels <- function(x, y, labels='x',...) { 
+   panel.text(x, y, labels, cex=0.4, ...)
+ }
+> xyplot(Murder ~ Assault, panel=panel.labels, 
+   labels=rownames(USArrests), data=USArrests)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-053}
+
+
+\vspace*{-1cm}
+
+\section{Correlación}
+
+
+Las correlaciones pueden ser calculadas para un par de variables o para una matriz de variables.
+\myindex{correlation}%
+\Rindex{cor()}%
+\begin{Schunk}
+\begin{Sinput}
+> cor(females$cesd, females$mcs)
+\end{Sinput}
+\begin{Soutput}
+[1] -0.6738
+\end{Soutput}
+\begin{Sinput}
+> smallHELP <- select(females, cesd, mcs, pcs)
+> cor(smallHELP)
+\end{Sinput}
+\begin{Soutput}
+        cesd     mcs     pcs
+cesd  1.0000 -0.6738 -0.3685
+mcs  -0.6738  1.0000  0.2664
+pcs  -0.3685  0.2664  1.0000
+\end{Soutput}
+\end{Schunk}
+\myindex{Pearson correlation}%
+\myindex{Spearman correlation}%
+
+Como predeterminado, la correlación de Pearson es la que se muestra. Otras variables (ejemplo, Spearman) pueden ser especificadas usando la opción de method
+\option{method} option.
+\begin{Schunk}
+\begin{Sinput}
+> cor(females$cesd, females$mcs, method="spearman", data=females)
+\end{Sinput}
+\begin{Soutput}
+[1] -0.6662
+\end{Soutput}
+\end{Schunk}
+
+\section{Pairs plots}
+\myindex{pairs plot}%
+\myindex{scatterplot matrix}%
+
+Los pares de gráficos (matrices de gráficos de dispersión) pueden ser calculados para cada par de un set de variables.
+\FoodForThought{El paquete \pkg{GGally} ofrece una opción para gráficos de pares más elaborados.}
+\Rindex{splom()}%
+\begin{Schunk}
+\begin{Sinput}
+> splom(smallHELP, cex=0.3)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-056}
+
+\section{Regresión lineal simple}
+
+\InstructorNote{Tenemos la tendencia a introducir la regresión lineal de manera pronta en nuestros cursos, como una técnica simplemente descriptiva.}
+\myindex{linear regression}%
+\myindex{regression}%
+
+Los modelos de regresión lineal simple son descritos en detalle en Start Modeling with R. Estos usan con la misma notación de fórmula introducida con anterioridad para resúmenes numéricos y gráficos, especificando la respuesta y los predictores. Aquí consideraremos ajustar el modelo \model{\variable{cesd}{\variable{mcs}}}
+
+
+\Rindex{lm()}%
+\Rindex{coef()}%
+\begin{Schunk}
+\begin{Sinput}
+> cesdmodel <- lm(cesd ~ mcs, data=females)
+> coef(cesdmodel)
+\end{Sinput}
+\begin{Soutput}
+(Intercept)         mcs 
+     57.349      -0.707 
+\end{Soutput}
+\end{Schunk}
+\InstructorNote{Es importante escoger buenos nombres para objetos de tipo modelo. Aquí la salida de \function{lm} es guardada como \code{cesdmodel}, que denota que es un modelo de regresión a las puntuaciones de síntomas de depresión}
+
+Para simplificar la salida, desactivamos la opción de desplegar las estrellas de significancia.
+
+\myindex{significance stars}%
+\Rindex{msummary()}%
+\Rindex{confint()}%
+\Rindex{rsquared()}%
+\Rindex{coef()}%
+\begin{Schunk}
+\begin{Sinput}
+> options(show.signif.stars=FALSE)
+> coef(cesdmodel)
+\end{Sinput}
+\begin{Soutput}
+(Intercept)         mcs 
+     57.349      -0.707 
+\end{Soutput}
+\begin{Sinput}
+> msummary(cesdmodel)
+\end{Sinput}
+\begin{Soutput}
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  57.3485     2.3806   24.09  < 2e-16
+mcs          -0.7070     0.0757   -9.34  1.8e-15
+
+Residual standard error: 9.66 on 105 degrees of freedom
+Multiple R-squared:  0.454,	Adjusted R-squared:  0.449 
+F-statistic: 87.3 on 1 and 105 DF,  p-value: 1.81e-15
+\end{Soutput}
+\begin{Sinput}
+> coef(summary(cesdmodel))
+\end{Sinput}
+\begin{Soutput}
+            Estimate Std. Error t value  Pr(>|t|)
+(Intercept)   57.349    2.38062  24.090 1.425e-44
+mcs           -0.707    0.07566  -9.344 1.813e-15
+\end{Soutput}
+\begin{Sinput}
+> confint(cesdmodel)
+\end{Sinput}
+\begin{Soutput}
+              2.5 % 97.5 %
+(Intercept) 52.6282 62.069
+mcs         -0.8571 -0.557
+\end{Soutput}
+\begin{Sinput}
+> rsquared(cesdmodel)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.454
+\end{Soutput}
+\end{Schunk}
+\Rindex{class()}%
+\begin{Schunk}
+\begin{Sinput}
+> class(cesdmodel)
+\end{Sinput}
+\begin{Soutput}
+[1] "lm"
+\end{Soutput}
+\end{Schunk}
+La salida de un \function{lm} es un objeto de modelo lineal. Hay unas cuantas funciones que pueden operar estos objetos, como se vio previamente con \function{coef}. La función \function{residuals} devuelve un vector de residuales
+\Rindex{residuals()}%
+\FoodForThought{La función \function{residuals} puede ser abreviada \function{resid}. Otra función útil es \function{fitted}, que muestra un vector de los valores predichos.}
+
+
+\Rindex{density option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ residuals(cesdmodel), density=TRUE)
+\end{Sinput}
+\end{Schunk}
+\end{center}
+\Rindex{qqmath()}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> qqmath(~ resid(cesdmodel))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-HELPrct-resid-qq}
+\end{center}
+\Rindex{alpha option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(resid(cesdmodel) ~ fitted(cesdmodel), 
+        type=c("p", "smooth", "r"), 
+        alpha=0.5, cex=0.3, pch=20)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-HELPrct-resid-plot}
+\end{center}
+
+La función \function{mplot} puede facilitar crear una variedad de gráficos útiles, incluyendo los gráficos de dispersión de residuales y ajustados, especificando la opción (\option{which=1}).
+\Rindex{mplot()}%
+\Rindex{which option}%
+\begin{Schunk}
+\begin{Sinput}
+> mplot(cesdmodel, which=1)
+\end{Sinput}
+\begin{Soutput}
+[[1]]
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-mplotc1}
+
+También puede generar un gráfico cuantilo-cuantilo para una distribución normal (\option{which=2}),
+\begin{Schunk}
+\begin{Sinput}
+> mplot(cesdmodel, which=2)
+\end{Sinput}
+\begin{Soutput}
+[[1]]
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-mplotc2}
+
+\myindex{scale versus location}%
+Un gráfico de escala y locación,
+\begin{Schunk}
+\begin{Sinput}
+> mplot(cesdmodel, which=3)
+\end{Sinput}
+\begin{Soutput}
+[[1]]
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-mplotc3}
+
+\myindex{Cook's distance}%
+Distancia de Cook por número de observación,
+\begin{Schunk}
+\begin{Sinput}
+> mplot(cesdmodel, which=4)
+\end{Sinput}
+\begin{Soutput}
+[[1]]
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-mplotc4}
+
+\myindex{leverage}%
+residuals vs.\,leverage,
+\begin{Schunk}
+\begin{Sinput}
+> mplot(cesdmodel, which=5)
+\end{Sinput}
+\begin{Soutput}
+[[1]]
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-mplotc5}
+
+
+\chapter{Dos variables categóricas}
+
+\section{Tablas de clasificación cruzada (o de contingencia)}
+\label{sec:cross}
+
+\myindex{cross classification tables}%
+\myindex{contingency tables}%
+\myindex{tables}%
+
+Las tablas de clasificaciones cruzadas (two-way o $R$ por $C$) pueden ser construidas para una (o más) variables categóricas. Aquí consideramos la tabla de contingencia para el status de homeless (sin casa por una o más noches en los últimos 6 meses o con casa) y sexo.
+
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ homeless + sex, margins=FALSE, data=HELPrct)     
+\end{Sinput}
+\begin{Soutput}
+          sex
+homeless   female male
+  homeless     40  169
+  housed       67  177
+\end{Soutput}
+\end{Schunk}
+
+También podemos calcular los porcentajes de columna.
+\Rindex{tally()}%
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ sex | homeless, margins=TRUE, format="percent", 
+   data=HELPrct)     
+\end{Sinput}
+\begin{Soutput}
+        homeless
+sex      homeless housed
+  female    19.14  27.46
+  male      80.86  72.54
+  Total    100.00 100.00
+\end{Soutput}
+\end{Schunk}
+
+Podemos calcular el radio de propensión (odds ratio) directamente de la tabla:
+\begin{Schunk}
+\begin{Sinput}
+> OR <- (40/169)/(67/177); OR
+\end{Sinput}
+\begin{Soutput}
+[1] 0.6253
+\end{Soutput}
+\end{Schunk}
+
+El paquete \pkg{mosaic} tiene una función que calcula el radio de propensión:
+\Rindex{oddsRatio()}%
+\begin{Schunk}
+\begin{Sinput}
+> oddsRatio(tally(~ (homeless=="housed") + sex, margins=FALSE, 
+   data=HELPrct)) 
+\end{Sinput}
+\begin{Soutput}
+[1] 0.6253
+\end{Soutput}
+\end{Schunk}
+
+La función \function{CrossTable} en el paquete \pkg{gmodels} también despliega una tabla de clasificación cruzada.
+
+\Rindex{CrossTable()}%
+\begin{Schunk}
+\begin{Sinput}
+> require(gmodels)
+> with(HELPrct, CrossTable(homeless, sex, 
+   prop.r=FALSE, prop.chisq=FALSE, prop.t=FALSE))
+\end{Sinput}
+\begin{Soutput}
+   Cell Contents
+|-------------------------|
+|                       N |
+|           N / Col Total |
+|-------------------------|
+
+ 
+Total Observations in Table:  453 
+
+ 
+             | sex 
+    homeless |    female |      male | Row Total | 
+-------------|-----------|-----------|-----------|
+    homeless |        40 |       169 |       209 | 
+             |     0.374 |     0.488 |           | 
+-------------|-----------|-----------|-----------|
+      housed |        67 |       177 |       244 | 
+             |     0.626 |     0.512 |           | 
+-------------|-----------|-----------|-----------|
+Column Total |       107 |       346 |       453 | 
+             |     0.236 |     0.764 |           | 
+-------------|-----------|-----------|-----------|
+\end{Soutput}
+\end{Schunk}
+
+Los resúmenes gráficos de las tablas de clasificación cruzada pueden ser útiles para visualizar asociaciones. Los gráficos de mosaic son un ejemplo, donde el total (todas las observaciones) es proporcional a uno.
+\Caution{El jurado está aún preocupado de la utilidad de los gráficos de mosaic (también conocidos como eikosograms) en cuanto a la presentación de gráficos con pocos datos. Hemos encontrado gran ayuda en ellos para mejorar el entendimiento de una tabla de contingencia de dos vías.\cite{Tufte:2001:Visual}}%
+Aquí, vemos como los hombres tienden a ser sobrepresentados entre los sujetos sin casa (como se representa en la línea horizontal, la cual es mayor para los sin casa que para los con casa)
+
+\FoodForThought{La función \function{mosaic()} en el paquete \pkg{vcd} también hace gráficos mosaic}
+\Rindex{mosaicplot()}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> mytab <- tally(~ homeless + sex, margins=FALSE, 
+   data=HELPrct)
+> mosaicplot(mytab)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-mosaicplot}
+\end{center}
+
+\section{Creando tablas de resumen de estadísticas}
+
+Las tablas pueden ser creadas para estadísticas de resumen usando la función \function{do}.
+
+\begin{Schunk}
+\begin{Sinput}
+> HELPtable <- rbind(
+   do(40)  * data.frame(sex="female", homeless="homeless"),
+   do(169) * data.frame(sex="male",   homeless="homeless"),
+   do(67)  * data.frame(sex="female", homeless="housed"),
+   do(177) * data.frame(sex="male",   homeless="housed")
+ )
+> tally(~ homeless + sex, data=HELPtable)
+\end{Sinput}
+\begin{Soutput}
+          sex
+homeless   female male
+  homeless     40  169
+  housed       67  177
+\end{Soutput}
+\end{Schunk}
+
+\section{Pruebas de ji-cuadrado}
+
+\Rindex{chisq.test()}%
+\begin{Schunk}
+\begin{Sinput}
+> chisq.test(tally(~ homeless + sex, margins=FALSE,
+   data=HELPrct), correct=FALSE)
+\end{Sinput}
+\begin{Soutput}
+	Pearson's Chi-squared test
+
+data:  tally(~homeless + sex, margins = FALSE, data = HELPrct)
+X-squared = 4.3, df = 1, p-value = 0.04
+\end{Soutput}
+\end{Schunk}
+
+Encontramos una asociación estadística significativa: es poco verosímil que observáramos una asociación así de fuerte si el estado de vivir en una casa y el sexo fueran independientes en la población
+
+Cuando los estudiantes descubren una asociación significativa, es importante que sean capaces de interpretar en el contexto del problema. La función \function{xchisq.test} proporciona detalles adicionales (observados, esperados, contribución al estadístico y residual) para ayudar en este proceso.
+\FoodForThought{\code{x} es de eXtra.}
+
+\Rindex{xchisq.test()}%
+\begin{Schunk}
+\begin{Sinput}
+> xchisq.test(tally(~homeless + sex, margins=FALSE,
+   data=HELPrct), correct=FALSE)
+\end{Sinput}
+\begin{Soutput}
+	Pearson's Chi-squared test
+
+data:  x
+X-squared = 4.3, df = 1, p-value = 0.04
+
+   40      169   
+( 49.37) (159.63)
+ [1.78]   [0.55] 
+<-1.33>  < 0.74> 
+   
+   67      177   
+( 57.63) (186.37)
+ [1.52]   [0.47] 
+< 1.23>  <-0.69> 
+   
+key:
+	observed
+	(expected)
+	[contribution to X-squared]
+	<Pearson residual>
+\end{Soutput}
+\end{Schunk}
+
+Aquí observamos que hay menos mujeres indigentes, y más hombres de los que se esperaría. 
+
+\section{Prueba exacta de Fisher}
+\myindex{Fisher's exact test}%
+
+Una prueba exacta de Fisher puede también ser calculada. Este cálculo está dirigido a tablas de 2 por 2. Existen opciones para solventar el problema del límite de tamaño para tablas más grandes (vea \function{?fisher.test()}).
+
+\DiggingDeeper{Note la diferencia en el estimado del radio de propensión del visto en la sección 6.1. La función \function{fisher.test} usa un estimador diferente (y un intervalo diferente en el perfil de la verosimilitud).}
+\Rindex{fisher.test()}%
+\begin{Schunk}
+\begin{Sinput}
+> fisher.test(tally(~homeless + sex, margins=FALSE,
+   data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+	Fisher's Exact Test for Count Data
+
+data:  tally(~homeless + sex, margins = FALSE, data = HELPrct)
+p-value = 0.05
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.3895 0.9968
+sample estimates:
+odds ratio 
+    0.6259 
+\end{Soutput}
+\end{Schunk}
+
+\chapter{Respuesta cuantitativa, predictor categórico}
+
+\section{Un predictor dicotomico: resúmenes gráficos y numéricos} 
+Aquí vamos a comparar las distribuciones de las puntuaciones de CESD por sexo. La función \function{mean()} puede usarse para calcular la media del puntaje de CESD separado para hombres y mujeres.
+\Rindex{mean()}%
+\begin{Schunk}
+\begin{Sinput}
+> mean(cesd ~ sex, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+female   male 
+ 36.89  31.60 
+\end{Soutput}
+\end{Schunk}
+\Rindex{favstats()}%
+La función \function{favstats()} puede mostrar más estadísticas por grupo.
+
+\begin{Schunk}
+\begin{Sinput}
+> favstats(cesd ~ sex, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+     sex min Q1 median   Q3 max  mean    sd   n missing
+1 female   3 29   38.0 46.5  60 36.89 13.02 107       0
+2   male   1 24   32.5 40.0  58 31.60 12.10 346       0
+\end{Soutput}
+\end{Schunk}
+
+
+Los diagramas de cajas son una presentación gráfica particularmente útil para comparar distribuciones. La función \function{bwplot} puede ser utilizada para desplegar los diagramas de cajas de los puntajes de \variable{CESD} separados por sexo. Vemos de ambos resúmenes, numérico y gráfico, que las mujeres tienden a tener un puntaje un poco mayor en el \variable{CESD} que los hombres.
+
+\FoodForThought[-3cm]{Aunque usualmente ponemos variables explicatorias alrededor del eje horizontal, en ocasiones el ajuste de la página la envia a otra orientación preferible en estos gráficos}
+%\vspace{-8mm}
+\Rindex{bwplot()}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> bwplot(sex ~ cesd, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-cesd-box}
+\end{center}
+
+Cuando los tamaños de muestra son pequeños, no hay razón para resumirlos con un diagrama de cajas puesto que \function{xyplot} puede manejar predictores categóricos. Incluso con 10-{20 observaciones en un grupo, un gráfico de dispersión es bastante entendible. Ajustar un valor del nivel de alpha ayuda a detectar observaciones múltiples con el mismo valor.
+\FoodForThought{Una vez, uno de nosotros vio a un biólogo presentar orgullosamente unos diagramas de caja de lado a lado. Pensando que esta era una victoria mayor, inocentemente se le preguntó cuántas observaciones había en cada grupo: "cuatro" respondió el biólogo.}
+\Rindex{xyplot()}%
+\Rindex{alpha option}%
+\Rindex{cex option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(sex ~ length, alpha=.6, cex=1.4, data=KidsFeet) 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-KidsFeet-xy}
+\end{center}
+
+\section{Un predictor dicotómico: t de dos muestras}
+
+La prueba de dos muestras de Student puede ser ejecutada sin (predeterminada) asumir o asumiendo una igualdad de varianza.
+\Rindex{t.test()}%
+\Rindex{var.equal option}%
+\begin{Schunk}
+\begin{Sinput}
+> t.test(cesd ~ sex, var.equal=FALSE, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+	Welch Two Sample t-test
+
+data:  cesd by sex
+t = 3.7, df = 170, p-value = 3e-04
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 2.493 8.087
+sample estimates:
+mean in group female   mean in group male 
+               36.89                31.60 
+\end{Soutput}
+\end{Schunk}
+Podemos ver que hay una diferencia significativa entre dos grupos.
+
+Podemos repetirla suponiendo igualdad de varianzas.
+\begin{Schunk}
+\begin{Sinput}
+> t.test(cesd ~ sex, var.equal=TRUE, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+	Two Sample t-test
+
+data:  cesd by sex
+t = 3.9, df = 450, p-value = 1e-04
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 2.610 7.969
+sample estimates:
+mean in group female   mean in group male 
+               36.89                31.60 
+\end{Soutput}
+\end{Schunk}
+
+Los grupos pueden ser comparados también utilizando la función \function{lm()} (también bajo el supuesto de igualdad). El comando de mosaic \function{msummary()} ofrece una versión un poco más tersa de la salida típica de \function{summary()}
+\Rindex{msummary()}%
+\Rindex{summary()}%
+\begin{Schunk}
+\begin{Sinput}
+> msummary(lm(cesd ~ sex, data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)    36.89       1.19   30.96  < 2e-16
+sexmale        -5.29       1.36   -3.88  0.00012
+
+Residual standard error: 12.3 on 451 degrees of freedom
+Multiple R-squared:  0.0323,	Adjusted R-squared:  0.0302 
+F-statistic: 15.1 on 1 and 451 DF,  p-value: 0.00012
+\end{Soutput}
+\end{Schunk}
+
+\FoodForThought[1cm]{La función \function{lm()} es parte de una estructura más flexible de modelaje, mientras el \function{t.test()} es fundamentalmente una calle sin salida. \function{lm()} usa el supuesto de la igualdad de varianza. Vea el libro, \emph{Start Modeling in R} para más detalles. .}%
+
+
+\section{Prueba de 2 grupos no paramétrica}
+
+La misma conclusión puede ser obtenida usando una prueba no parametrica (suma de rangos de Wilcoxon).
+
+\Rindex{wilcox.test()}%
+\begin{Schunk}
+\begin{Sinput}
+> wilcox.test(cesd ~ sex, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+	Wilcoxon rank sum test with continuity correction
+
+data:  cesd by sex
+W = 23000, p-value = 1e-04
+alternative hypothesis: true location shift is not equal to 0
+\end{Soutput}
+\end{Schunk}
+
+
+\section{La prueba con la permutación}
+\myindex{resampling}%
+\myindex{permutation test}%
+
+
+Aquí, extendemos los métodos introducidos en la sección 3.6 para llevar a cabo una prueba de dos colas comparando las edades por género. Primero, calculamos la diferencia observada en las medias
+\Rindex{diffmean()}%
+\Rindex{shuffle()}%
+\begin{Schunk}
+\begin{Sinput}
+> mean(age ~ sex, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+female   male 
+ 36.25  35.47 
+\end{Soutput}
+\begin{Sinput}
+> test.stat <- diffmean(age ~ sex, data=HELPrct)
+> test.stat
+\end{Sinput}
+\begin{Soutput}
+diffmean 
+ -0.7841 
+\end{Soutput}
+\end{Schunk}
+Podemos calcular el mismo estadístico después de mezclar los niveles de los grupos:
+\begin{Schunk}
+\begin{Sinput}
+> do(1) * diffmean(age ~ shuffle(sex), data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+  diffmean
+1   0.2682
+\end{Soutput}
+\begin{Sinput}
+> do(1) * diffmean(age ~ shuffle(sex), data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+  diffmean
+1  0.03568
+\end{Soutput}
+\begin{Sinput}
+> do(3) * diffmean(age ~ shuffle(sex), data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+  diffmean
+1  -0.5149
+2  -0.6128
+3   0.3049
+\end{Soutput}
+\end{Schunk}
+
+\DiggingDeeper{Más detalles pueden ser encontrados en el paquete \pkg{mosaic}, Resampling vignette}
+\Rindex{xlim option}%
+\Rindex{groups option}%
+\begin{Schunk}
+\begin{Sinput}
+> rtest.stats <- do(500) * diffmean(age ~ shuffle(sex), 
+   data=HELPrct)
+> head(rtest.stats, 3)
+\end{Sinput}
+\begin{Soutput}
+  diffmean
+1 -0.14786
+2  0.31711
+3  0.04792
+\end{Soutput}
+\begin{Sinput}
+> favstats(~ diffmean, data=rtest.stats)
+\end{Sinput}
+\begin{Soutput}
+    min      Q1  median     Q3   max    mean     sd   n missing
+ -2.204 -0.5272 0.06015 0.6475 2.299 0.05017 0.8714 500       0
+\end{Soutput}
+\begin{Sinput}
+> histogram(~ diffmean, n=40, xlim=c(-6, 6),
+   groups=diffmean >= test.stat, pch=16, cex=.8, 
+   data=rtest.stats)
+> ladd(panel.abline(v=test.stat, lwd=3, col="red"))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-permute-HELPrct}
+
+Aquí no vemos mucha evidencia que contradiga la hipotesis nula de que los hombres y las mujeres tienen la misma media de edad en la población.
+
+\section{Análisis de varianza de una vía}
+\myindex{one-way ANOVA}%
+\myindex{analysis of variance}%
+
+Las primeras comparaciones fueron entre dos grupos. Podemos también considerar probar las diferencias entre tres o más grupos usando un ANOVA de una vía. Aquí vamos a comparar los puntajes de \variable{CESD} por sustancia primaria de abuso (heroína, cocaína o alcohol) con una línea en lugar de un punto para indicar la mediana.
+
+\Rindex{bwplot()}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> bwplot(cesd ~ substance, pch="|", data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-cesd-oneway}
+\end{center}
+
+
+
+\begin{Schunk}
+\begin{Sinput}
+> mean(cesd ~ substance, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+alcohol cocaine  heroin 
+  34.37   29.42   34.87 
+\end{Soutput}
+\end{Schunk}
+\Rindex{aov()}%
+\begin{Schunk}
+\begin{Sinput}
+> anovamod <- aov(cesd ~ substance, data=HELPrct)
+> summary(anovamod)
+\end{Sinput}
+\begin{Soutput}
+             Df Sum Sq Mean Sq F value  Pr(>F)
+substance     2   2704    1352    8.94 0.00016
+Residuals   450  68084     151                
+\end{Soutput}
+\end{Schunk}
+Aunque las puntuaciones todavía altas (puntajes de 16 o más son generalmente considerados como síntomas "severos"), el grupo envuelto en cocaína tiende a tener los puntajes más bajos que aquellos cuya sustancia primaria es el alcohol o la heroína.
+\begin{Schunk}
+\begin{Sinput}
+> modintercept <- lm(cesd ~ 1, data=HELPrct)
+> modsubstance <- lm(cesd ~ substance, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+
+El comando \function{anova()} puede resumir los modelos.
+\Rindex{anova()}%
+\begin{Schunk}
+\begin{Sinput}
+> anova(modsubstance)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: cesd
+           Df Sum Sq Mean Sq F value  Pr(>F)
+substance   2   2704    1352    8.94 0.00016
+Residuals 450  68084     151                
+\end{Soutput}
+\end{Schunk}
+
+En este caso los resultados son idénticos (puesto que solo tenemos un predictor, con 2 grados de libertad)
+
+La función \function{anova()} puede también ser utilizada para formalmente comparar dos modelos (anidados).
+\myindex{model comparison}%
+\begin{Schunk}
+\begin{Sinput}
+> anova(modintercept, modsubstance)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Model 1: cesd ~ 1
+Model 2: cesd ~ substance
+  Res.Df   RSS Df Sum of Sq    F  Pr(>F)
+1    452 70788                          
+2    450 68084  2      2704 8.94 0.00016
+\end{Soutput}
+\end{Schunk}
+
+
+\section{Las diferencias significativas honestas de Tukey}
+\myindex{Tukey's HSD}%
+\myindex{honest significant differences}%
+\myindex{multiple comparisons}%
+
+Hay una variedad de procedimientos de comparaciones múltiples que pueden ser utilizados después de ajustar el modelo ANOVA. Una de estas son las Diferencias significativas honestas de Tukey (HSD por las siglas en inglés). Otras opciones están disponibles dentro del paquete \pkg{multcomp}.
+
+\begin{Schunk}
+\begin{Sinput}
+> favstats(cesd ~ substance, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+  substance min Q1 median Q3 max  mean    sd   n missing
+1   alcohol   4 26     36 42  58 34.37 12.05 177       0
+2   cocaine   1 19     30 39  60 29.42 13.40 152       0
+3    heroin   4 28     35 43  56 34.87 11.20 124       0
+\end{Soutput}
+\end{Schunk}
+\Rindex{TukeyHSD()}%
+\Rindex{factor()}%
+\Rindex{levels option}%
+\Rindex{labels option}%
+\Rindex{mutate()}%
+\Rindex{lm()}%
+\begin{Schunk}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, subgrp = factor(substance, 
+   levels=c("alcohol", "cocaine", "heroin"),
+   labels=c("A", "C", "H")))
+> mod <- lm(cesd ~ subgrp, data=HELPrct)
+> HELPHSD <- TukeyHSD(mod, "subgrp")
+> HELPHSD
+\end{Sinput}
+\begin{Soutput}
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = x)
+
+$subgrp
+       diff    lwr    upr  p adj
+C-A -4.9518 -8.150 -1.753 0.0009
+H-A  0.4981 -2.889  3.885 0.9362
+H-C  5.4499  1.950  8.950 0.0008
+\end{Soutput}
+\end{Schunk}
+\Rindex{mplot()}%
+\begin{Schunk}
+\begin{Sinput}
+> mplot(HELPHSD)
+\end{Sinput}
+\end{Schunk}
+
+De nuevo, podemos ver que el grupo de cocaína tiene significativamente menores puntajes de CESD que cualquiera de los otros grupos.
+
+\chapter{Respuesta categórica, predicto cuantitativo}
+\section{Respuesta categórica, predictor cuantitativo}
+\myindex{logistic regression}%
+
+La regresión logística está disponible en R usando la función \function{glm}, la cual permite una variedad de funciones de enlace y formas de distribuciones para modelos lineales generalizados, incluyendo la regresión logística.
+\FoodForThought[-1cm]{La función \function{glm()} tiene el argumento \option{family}, el cual puede tomar la opción \option{link}(función de enlace). La función de enlace logit está predeterminada en link para la familia binomial, entonces no necesitamos especificarlo aquí. La forma más completa de uso sería \code{family=binomial(link=logit)}.}.}%
+\Rindex{glm()}%
+\Rindex{family option}%
+\Rindex{exp()}%
+\Rindex{msummary()}%
+\begin{Schunk}
+\begin{Sinput}
+> logitmod <- glm(homeless ~ age + female, family=binomial, 
+   data=HELPrct)
+> msummary(logitmod)
+\end{Sinput}
+\begin{Soutput}
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)
+(Intercept)   0.8926     0.4537    1.97    0.049
+age          -0.0239     0.0124   -1.92    0.055
+female        0.4920     0.2282    2.16    0.031
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 625.28  on 452  degrees of freedom
+Residual deviance: 617.19  on 450  degrees of freedom
+AIC: 623.2
+
+Number of Fisher Scoring iterations: 4
+\end{Soutput}
+\begin{Sinput}
+> exp(coef(logitmod))
+\end{Sinput}
+\begin{Soutput}
+(Intercept)         age      female 
+     2.4415      0.9764      1.6355 
+\end{Soutput}
+\begin{Sinput}
+> exp(confint(logitmod))
+\end{Sinput}
+\begin{Soutput}
+             2.5 % 97.5 %
+(Intercept) 1.0081  5.988
+age         0.9527  1.000
+female      1.0501  2.574
+\end{Soutput}
+\end{Schunk}
+
+Podemos comparar dos modelos (para una prueba de múltiples grados de libertad). Por ejemplo, podríamos estar interesados en la asociación del estado de indigencia (homeless) y la edad para cada uno de los tres grupos de sustancia.
+\Rindex{anova()}%
+\Rindex{test option}%
+\begin{Schunk}
+\begin{Sinput}
+> mymodsubage <- glm((homeless=="homeless") ~ age + substance, 
+   family=binomial, data=HELPrct)
+> mymodage <- glm((homeless=="homeless") ~ age, family=binomial, 
+   data=HELPrct)
+> msummary(mymodsubage)
+\end{Sinput}
+\begin{Soutput}
+Coefficients:
+                 Estimate Std. Error z value Pr(>|z|)
+(Intercept)       -0.0509     0.5164   -0.10   0.9215
+age                0.0100     0.0129    0.77   0.4399
+substancecocaine  -0.7496     0.2303   -3.25   0.0011
+substanceheroin   -0.7780     0.2469   -3.15   0.0016
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 625.28  on 452  degrees of freedom
+Residual deviance: 607.62  on 449  degrees of freedom
+AIC: 615.6
+
+Number of Fisher Scoring iterations: 4
+\end{Soutput}
+\begin{Sinput}
+> exp(coef(mymodsubage))
+\end{Sinput}
+\begin{Soutput}
+     (Intercept)              age substancecocaine  substanceheroin 
+          0.9504           1.0101           0.4725           0.4593 
+\end{Soutput}
+\begin{Sinput}
+> anova(mymodage, mymodsubage, test="Chisq")
+\end{Sinput}
+\begin{Soutput}
+Analysis of Deviance Table
+
+Model 1: (homeless == "homeless") ~ age
+Model 2: (homeless == "homeless") ~ age + substance
+  Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+1       451        622                     
+2       449        608  2     14.3  0.00078
+\end{Soutput}
+\end{Schunk}
+Observamos que los grupos que consumen cocaína y heroína son significativamente menos probables a estar sin casa que aquellos sujetos envueltos en el alcohol, después de controlar la edad. (Un resultado similar se ve considerando solamente el status de si tiene vivienda y la sustancia).
+
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ homeless | substance, format="percent", margins=TRUE, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+          substance
+homeless   alcohol cocaine heroin
+  homeless   58.19   38.82  37.90
+  housed     41.81   61.18  62.10
+  Total     100.00  100.00 100.00
+\end{Soutput}
+\end{Schunk}
+
+
+\chapter{Resulados de análisis de supervivencia}
+\myindex{survival analysis}%
+\myindex{failure time analysis}%
+\myindex{time to event analysis}%
+Una extensiva cantidad de herramientas para análisis de sobrevivencia (tiempo a un evento) está disponible en el paquete \pkg{survival}
+
+\section{Diagrama de Kaplan-Meier}
+
+\myindex{Kaplan-Meier plot}%
+\Rindex{survfit()}%
+\Rindex{Surv()}%
+\Rindex{conf.int option}%
+\Rindex{xlab option}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> require(survival)
+> fit <- survfit(Surv(dayslink, linkstatus) ~ treat, 
+   data=HELPrct)
+> plot(fit, conf.int=FALSE, lty=1:2, lwd=2, 
+   xlab="tiempo (en días)", ylab="P(no ligados)")
+> legend(20, 0.4, legend=c("Control", "Tratamiento"), 
+   lty=c(1,2), lwd=2)
+> title("Producto-Límite de los estimados de sobrevivencia(tiempo ligado)")
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-help-km}
+\end{center}
+
+Vemos que los sujetos en el tratamiento (Health Evaluation and Linkage to Primary Care clinic) tuvieron significativamente más probabilidad de acoplarse al cuidado primario (menos probabilidad  a "sobrevivir") que el grupo control (cuidado normal)
+\section{Modelo de riesgos proporcionales de Cox}
+\myindex{Cox proportional hazards model}%
+\myindex{proportional hazards model}%
+\Rindex{coxph()}%
+
+\begin{Schunk}
+\begin{Sinput}
+> require(survival)
+> summary(coxph(Surv(dayslink, linkstatus) ~ age + substance, 
+   data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+Call:
+coxph(formula = Surv(dayslink, linkstatus) ~ age + substance, 
+    data = HELPrct)
+
+  n= 431, number of events= 163 
+   (22 observations deleted due to missingness)
+
+                     coef exp(coef) se(coef)     z Pr(>|z|)
+age               0.00893   1.00897  0.01026  0.87     0.38
+substancecocaine  0.18045   1.19775  0.18100  1.00     0.32
+substanceheroin  -0.28970   0.74849  0.21725 -1.33     0.18
+
+                 exp(coef) exp(-coef) lower .95 upper .95
+age                  1.009      0.991     0.989      1.03
+substancecocaine     1.198      0.835     0.840      1.71
+substanceheroin      0.748      1.336     0.489      1.15
+
+Concordance= 0.55  (se = 0.023 )
+Rsquare= 0.014   (max possible= 0.988 )
+Likelihood ratio test= 6.11  on 3 df,   p=0.106
+Wald test            = 5.84  on 3 df,   p=0.12
+Score (logrank) test = 5.91  on 3 df,   p=0.116
+\end{Soutput}
+\end{Schunk}
+
+Ni la edad ni el grupo de sustancia fueron significativamente asociados a estar en cuidado primario.
+
+\chapter{Más de dos variables}
+\section{Análisis de varianza (ANOVA) de dos (o más) vías}
+
+Podemos ajustar un modelo ANOVA de dos o más vías, con o sin interacción, usando la misma sintaxis de modelaje.
+\Rindex{median()}%
+\Rindex{bwplot()}%
+\Rindex{factor()}%
+\Rindex{mutate()}%
+\Rindex{aov()}%
+\begin{Schunk}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, subgrp = factor(substance,
+   levels=c("alcohol", "cocaine", "heroin"),
+   labels=c("A", "C", "H")))
+> median(cesd ~ substance | sex, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+alcohol.female cocaine.female  heroin.female   alcohol.male 
+          40.0           35.0           39.0           33.0 
+  cocaine.male    heroin.male         female           male 
+          29.0           34.5           38.0           32.5 
+\end{Soutput}
+\begin{Sinput}
+> bwplot(cesd ~ subgrp | sex, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> summary(aov(cesd ~ substance + sex, data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+             Df Sum Sq Mean Sq F value  Pr(>F)
+substance     2   2704    1352    9.27 0.00011
+sex           1   2569    2569   17.61 3.3e-05
+Residuals   449  65515     146                
+\end{Soutput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> summary(aov(cesd ~ substance * sex, data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+               Df Sum Sq Mean Sq F value  Pr(>F)
+substance       2   2704    1352    9.25 0.00012
+sex             1   2569    2569   17.57 3.3e-05
+substance:sex   2    146      73    0.50 0.60752
+Residuals     447  65369     146                
+\end{Soutput}
+\end{Schunk}
+Hay poca evidencia de interacción, aunque hay efectos principales significativos en los términos de la sustancia(\variable{substace}) y el sexo(\variable{sex}).
+
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(cesd ~ substance, groups=sex, lwd=2,
+   auto.key=list(columns=2, lines=TRUE, points=FALSE), 
+   type='a', data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-help-interaction}
+\Rindex{auto.key option}%
+
+
+\section{Regresión múltiple}
+\myindex{multiple regression}%
+\myindex{multivariate relationships}%
+
+La regresión múltiple es una extensión lógica de comandos previamente señalados, donde algunos predictores adicionales son agregados. Esto permite a los estudiantes intentar desenvolver relaciones multivariadas. 
+
+\InstructorNote[-2cm]{Tenemos la tendencia introducir la regresión lineal múltiple de forma temprana en nuestros cursos como una técnica puramente descriptiva, después regularmente volvemos a esta. La motivación para esto se encuentra descrita en  detalle en el volumen acompañante \emph{Start modelling with R}}
+
+Aquí consideramos un modelo (de pendientes paralelas) para los síntomas depresivos como función del Puntaje del componente mental (MCS), edad (en años) y sexo del sujeto.
+
+\myindex{msummary()}%
+\begin{Schunk}
+\begin{Sinput}
+> lmnointeract <- lm(cesd ~ mcs + age + sex, data=HELPrct)
+> msummary(lmnointeract)
+\end{Sinput}
+\begin{Soutput}
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  53.8303     2.3617   22.79   <2e-16
+mcs          -0.6548     0.0336  -19.50   <2e-16
+age           0.0553     0.0556    1.00   0.3200
+sexmale      -2.8993     1.0137   -2.86   0.0044
+
+Residual standard error: 9.09 on 449 degrees of freedom
+Multiple R-squared:  0.476,	Adjusted R-squared:  0.473 
+F-statistic:  136 on 3 and 449 DF,  p-value: <2e-16
+\end{Soutput}
+\end{Schunk}
+\myindex{anova()}%
+\myindex{interactions}%
+También podemos ajustar un modelo que incluye una interacción entre MCS y sexo.
+\begin{Schunk}
+\begin{Sinput}
+> lminteract <- lm(cesd ~ mcs + age + sex + mcs:sex, data=HELPrct)
+> msummary(lminteract)
+\end{Sinput}
+\begin{Soutput}
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  55.3906     2.9903   18.52   <2e-16
+mcs          -0.7082     0.0712   -9.95   <2e-16
+age           0.0549     0.0556    0.99    0.324
+sexmale      -4.9421     2.6055   -1.90    0.058
+mcs:sexmale   0.0687     0.0807    0.85    0.395
+
+Residual standard error: 9.09 on 448 degrees of freedom
+Multiple R-squared:  0.477,	Adjusted R-squared:  0.472 
+F-statistic:  102 on 4 and 448 DF,  p-value: <2e-16
+\end{Soutput}
+\begin{Sinput}
+> anova(lminteract)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: cesd
+           Df Sum Sq Mean Sq F value Pr(>F)
+mcs         1  32918   32918  398.27 <2e-16
+age         1    107     107    1.29 0.2563
+sex         1    676     676    8.18 0.0044
+mcs:sex     1     60      60    0.72 0.3952
+Residuals 448  37028      83               
+\end{Soutput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> anova(lmnointeract, lminteract)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Model 1: cesd ~ mcs + age + sex
+Model 2: cesd ~ mcs + age + sex + mcs:sex
+  Res.Df   RSS Df Sum of Sq    F Pr(>F)
+1    449 37088                         
+2    448 37028  1      59.9 0.72    0.4
+\end{Soutput}
+\end{Schunk}
+
+There is little evidence for an interaction effect, so we drop
+this from the model.
+
+\subsection{Visualizar los resultados de la regresión}
+
+\label{sec:plotFun}
+\Rindex{plotFun()}%
+\Rindex{makeFun()}%
+Las funciones \function{makeFun()} y \function{plotFun()} del paquete \pkg{mosaic} pueden ser utilizadas para desplegar los valores predichos de un modelo de regresión. Por ejemplo, podríamos desplegar los valores de CESD predichos para un rango de valores de MCS (puntuación del componente mental) en un sujeto hipotético, hombre de 36 años y en un sujeto hipotético mujer con la misma edad en el cual se utiliza un modelo pendientes paralelas (sin interacción).
+\begin{Schunk}
+\begin{Sinput}
+> lmfunction <- makeFun(lmnointeract)
+\end{Sinput}
+\end{Schunk}
+
+\Rindex{xyplot()}%
+\Rindex{auto.key option}%
+\Rindex{ylab option}%
+\Rindex{groups option}%
+\Rindex{add option}%
+Ahora podemos graficar los valores predichos separadamente para sujetos masculinos y femeninos sobre valores del rango de MCS (puntaje del componente mental), junto con los datos observados de aquellos de 36 años..  
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(cesd ~ mcs, groups=sex, auto.key=TRUE, 
+   data=filter(HELPrct, age==36))
+> plotFun(lmfunction(mcs, age=36, sex="male") ~ mcs, 
+   xlim=c(0, 60), lwd=2, ylab="predicted CESD", add=TRUE)
+> plotFun(lmfunction(mcs, age=36, sex="female") ~ mcs, 
+   xlim=c(0, 60), lty=2, lwd=3, add=TRUE)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-plotFUN}
+
+
+\subsection{Gráficos de coeficientes}
+
+\myindex{coefficient plots}%
+Es en ocasiones útil utilizar un gráfico de coeficientes para un modelo de regresión múltiple (junto con sus intervalos de confianza asociados)
+
+\Rindex{mplot()}%
+\begin{Schunk}
+\begin{Sinput}
+> mplot(lmnointeract, rows=-1, which=7)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-112}
+
+\FoodForThought[-4cm]{Los puntos más oscuros indican que los coeficientes de la regresión donde el intervalo de confianza al 95\% no incluye el valor de 0 de la hipótesis nula}
+
+\Caution{Sea cuidadoso cuando ajusta la regresión con modelos con valores perdidos (ver también sección 13.11)}
+
+\subsection{Diagnósticos de residuales}
+\myindex{residual diagnostics}
+\myindex{regression diagnostics}
+
+Es sencillo realizar algunos diagnósticos de residuales para este modelo. Empezamos por agregar los valores ajustados y los residuales al conjunto de datos.
+\FoodForThought[-1cm]{La función \function{mplot()} también puede ser utilizada para crear estos gráficos.}
+\Rindex{resid()}%
+\Rindex{fitted()}%
+\Rindex{abs()}%
+\InstructorNote{Aquí agregamos dos nuevas variables en un conjunto de datos existente. Es usualmente una buena práctica dar a los nuevos conjuntos de datos un nuevo nombre.}
+\begin{Schunk}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, 
+   residuals = resid(lmnointeract), 
+   pred = fitted(lmnointeract))
+\end{Sinput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> histogram(~ residuals, xlab="residuals", fit="normal", 
+   data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-114}
+
+Podemos identificar que en el subconjunto de observaciones hay residuales extremadamente grandes.
+
+\Rindex{abs()}%
+\begin{Schunk}
+\begin{Sinput}
+> filter(HELPrct, abs(residuals) > 25)
+\end{Sinput}
+\begin{Soutput}
+  age anysubstatus anysub cesd d1 daysanysub dayslink drugrisk e2b
+1  43            0     no   16 15        191      414        0  NA
+2  27           NA   <NA>   40  1         NA      365        3   2
+  female  sex g1b homeless i1 i2  id indtot linkstatus link   mcs
+1      0 male  no homeless 24 36  44     41          0   no 15.86
+2      0 male  no homeless 18 18 420     37          0   no 57.49
+    pcs pss_fr racegrp satreat sexrisk substance treat subgrp
+1 71.39      3   white      no       7   cocaine   yes      C
+2 37.75      8   white     yes       3    heroin    no      H
+  residuals  pred
+1    -26.92 42.92
+2     25.22 14.78
+\end{Soutput}
+\end{Schunk}
+
+\Rindex{cex option}%
+\Rindex{type option}%
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(residuals ~ pred, ylab="residuals", cex=0.3,
+   xlab="predicted values", main="predicted vs. residuals",
+   type=c("p", "r", "smooth"), data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-116}
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(residuals ~ mcs, xlab="mental component score", 
+   ylab="residuals", cex=0.3,
+   type=c("p", "r", "smooth"), data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-117}
+
+El supuesto de normalidad, linealidad y homoscedasticidad parece razonable aquí.
+\begin{problem}
+El conjunto de datos \dataframe{RailTrail} dentro del paquete \pkg{mosaic}, incluye un conteo de cruces de un camino en Northampton, Massachusetts para 90 días en 2005. Las autoridades de la ciudad están interesadas en entender el uso de la red de caminos, y como cambia en función de la temperatura y el día de la semana. Describa la distribución de la variable \variable{avgtemp}
+en terminos de su centro, dispersión y forma.
+\begin{Schunk}
+\begin{Sinput}
+> favstats(~ avgtemp, data=RailTrail)
+\end{Sinput}
+\begin{Soutput}
+ min    Q1 median   Q3 max  mean    sd  n missing
+  33 48.62  55.25 64.5  84 57.43 11.33 90       0
+\end{Soutput}
+\begin{Sinput}
+> densityplot(~ avgtemp, xlab="Average daily temp (degrees F)", 
+   data=RailTrail)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-118}
+\end{problem}
+\begin{problem}
+El conjunto de datos de \dataframe{RailTrail} también incluye una variable llamada \variable{cloudcover}. Describa la distribución de esta variable de la misma forma anterior.
+\end{problem}
+\begin{problem}
+El conjunto de datos \dataframe{RailTrail} brinda datos sobre el conteo diario de cruces, llamado \variable{volume}. Describa la distribución de la variable de la misma forma anterior..
+\end{problem}
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> favstats(~ volume, data=RailTrail)
+\end{Sinput}
+\begin{Soutput}
+ min    Q1 median    Q3 max  mean    sd  n missing
+ 129 291.5    373 451.2 736 375.4 127.5 90       0
+\end{Soutput}
+\begin{Sinput}
+> densityplot(~ volume, xlab="# of crossings", data=RailTrail)
+> filter(RailTrail, volume > 700)
+\end{Sinput}
+\begin{Soutput}
+  hightemp lowtemp avgtemp spring summer fall cloudcover precip
+1       77      52    64.5      1      0    0          5      0
+  volume weekday
+1    736       0
+\end{Soutput}
+\end{Schunk}
+The distribution of daily crossings is approximately normally
+distributed with mean 375 crossings  and standard deviation of 127 crossings.
+There is one outlier with 736 crossings which occurred on a Monday holiday in the spring
+(Memorial Day).  
+\end{solution}
+\begin{problem}
+El conjunto de datos \dataframe{RailTrail} también contiene un indicador de si el día fue un día entre semana (\variable{weekday==1}), o un fin de semana/día libre (\variable{weekday==0}). Utilice \function{tally()} para describir la distribución de esta variable categorica. ¿Qué porcentaje de días son fines de semana/días libres?
+\end{problem}
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ weekday, data=RailTrail)
+\end{Sinput}
+\begin{Soutput}
+weekday
+ 0  1 
+28 62 
+\end{Soutput}
+\begin{Sinput}
+> tally(~ weekday, format="percent", data=RailTrail)
+\end{Sinput}
+\begin{Soutput}
+weekday
+    0     1 
+31.11 68.89 
+\end{Soutput}
+\end{Schunk}
+Just over 30\% of the days are weekends or holidays.
+\end{solution}
+\begin{problem}
+Use diagramas de caja que se encuentren uno al lado del otro para comparar la distribución de \variable{volume} por el tipo de día en el conjunto de datos \dataframe{RailTrail}. Pista: va necesitar transformar la variable numéricos en un factor variable usando as.factor() o usar la opción {\tt horizontal=FALSE}. ¿Qué concluye?
+\end{problem}
+\begin{problem}
+Use gráficos de densidad traslapados para comprar la distribución de volume por tipo de día en el conjunto de datos RailTrail. 
+¿Qué concluye?
+\end{problem}
+\begin{problem}
+Cree un gráfico de dispersión de \variable{volume} en función de \variable{avgtemp} usando el conjunto de datos de \dataframe{RailTrail}, junto con la línea de regresión y un suavizador de gráfico de dispersión (curva de regresión local). ¿Qué observa en esta relación? 
+\end{problem}
+\begin{problem}
+Usando el conjunto de datos de \dataframe{RailTrail}, ajuste un modelo de regresión multiple para \variable{volume} como función de \variable{cloudcover}, \variable{avgtemp}, \variable{weekdays} y la interacción entre el tipo de día y la temperatura promedio. ¿Hay evidencia para mantener la interacción con un nivel de significancia de $\alpha=0.05$ \variable{avgtemp}, 
+\variable{weekday} and the interaction
+\end{problem}
+\begin{problem}
+Use la función \function{makeFun()} para calcular el número predicho de cruces en un día de la semana con una temperatura promedio de 60 grados y sin nubes. Verifique este cálculo usando los coefficientes del modelo.
+\begin{Schunk}
+\begin{Sinput}
+> fm <- lm(volume~cloudcover+avgtemp+weekday+weekday:avgtemp, data=RailTrail)
+\end{Sinput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> coef(fm)
+\end{Sinput}
+\begin{Soutput}
+     (Intercept)       cloudcover          avgtemp         weekday1 
+         378.834          -17.198            2.313         -321.116 
+avgtemp:weekday1 
+           4.727 
+\end{Soutput}
+\end{Schunk}
+\end{problem}
+
+\begin{problem}
+ Use \function{makeFun()} y \function{plotFun()} para desplegar los valores predichos para el número de cruces en días de la semana y en fines de semana/días libres para temperatures promedio entre 30 y 80 grados en días nubosos (\variable{cloudcover=10}) 
+\end{problem}
+\begin{problem}
+Usando un modelo de regresión múltiple, genere un histograma (con una curva de densidad normal sobre él) para evaluar la normalidad de los residuales.
+\end{problem}
+\begin{problem}
+Usando un modelo de regresión múltiple, genere un histograma (con una curva de densidad normal sobre él) para evaluar la normalidad de los residuales.
+\end{problem}
+\begin{problem}
+Usando el mismo modelo, genere un gráfico de dispersión de los residuales contra los valores predichos y comente la linealidad del modelo y el supuesto de igualdad de varianza.
+\end{problem}
+
+
+\chapter{Distribuciones de probabilidad \&\ variables aleatorias}
+\label{sec:DiscreteDistributions}
+\label{sec:probability}
+\myindex{random variables}%
+
+\R\ puede calcular números relacionados a distribuciones de todo tipo. Está también dirigido a generar muestras aleatorias de estas distribuciones, que pueden ser utilizadas para simulación y exploración.
+\begin{Schunk}
+\begin{Sinput}
+> xpnorm(1.96, mean=0, sd=1)    # P(Z < 1.96)
+\end{Sinput}
+\begin{Soutput}
+If X ~ N(0, 1), then 
+
+	P(X <= 1.96) = P(Z <= 1.96) = 0.975
+	P(X >  1.96) = P(Z >  1.96) = 0.025
+
+[1] 0.975
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-probdist}
+\Rindex{qnorm()}%
+\Rindex{dnorm()}%
+\Rindex{pnorm()}%
+\Rindex{xpnorm()}%
+\Rindex{rnorm()}%
+\Rindex{integrate()}%
+\begin{Schunk}
+\begin{Sinput}
+> # valor que satisface P(Z < z) = 0.975
+> qnorm(.975, mean=0, sd=1)   
+\end{Sinput}
+\begin{Soutput}
+[1] 1.96
+\end{Soutput}
+\begin{Sinput}
+> integrate(dnorm, -Inf, 0)   # P(Z < 0)
+\end{Sinput}
+\begin{Soutput}
+0.5 with absolute error < 4.7e-05
+\end{Soutput}
+\end{Schunk}
+
+Una exposición similar es disponible para la distribución F
+
+\begin{Schunk}
+\begin{Sinput}
+> xpf(3, df1=4, df2=20)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.9568
+\end{Soutput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-125}
+La siguiente tabla muestra los nombres de base para las distribuciones de probabilidad disponibles en la base de \R\. Estas funciones pueden tener el prefijo por {\tt d}  para encontrar la función de densidad de la distribución, {\tt p} para encontrar la distribución acumulada, {\tt q} para encontrar cuantilos y {\tt r} para generar resultados aleatorios. Por ejemplo, para encontrar la función de densidad de una variable aleatoria, use el comando \function{dexp()}. La función \function{qDIST()} es el inverso de la función \function{pDIST()}, para un nombre base dado el nombre de tipo DIST. 
+\begin{center}
+\begin{tabular}{|c|c|c|} \hline
+Distribución    & Nombre de base                 \\ \hline
+Beta            &  {\tt beta}        \\
+binomial        &  {\tt binom}    \\
+Cauchy          &  {\tt cauchy}   \\
+chi-square      &  {\tt chisq}    \\
+exponential     &  {\tt exp}      \\
+F               &  {\tt f}        \\
+gamma           &  {\tt gamma}    \\
+geometrica      &  {\tt geom}     \\
+hypergeometrica &  {\tt hyper}    \\
+logistica       &  {\tt logis}    \\
+lognormal       &  {\tt lnorm}    \\
+binomial negativa &  {\tt nbinom} \\
+normal         &  {\tt norm}      \\
+Poisson        &  {\tt pois}      \\
+T de Student   &  {\tt t}        \\
+Uniforme       &  {\tt unif}     \\
+Weibull        &  {\tt weibull}   \\ \hline
+\end{tabular}
+\end{center}
+\DiggingDeeper{El \function{fitdistr()} dentro del paquete \pkg{MASS} facilita la estimación de los parámetros para muchas distribuciones}
+La funcion \function{plotDist()} puede ser utilizada para desplegar gráficos de varias maneras.
+\Rindex{plotDist()}%
+\begin{Schunk}
+\begin{Sinput}
+> plotDist('norm', mean=100, sd=10, kind='cdf')
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-126}
+\begin{Schunk}
+\begin{Sinput}
+> plotDist('exp', kind='histogram', xlab="x")
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-127}
+Note que esto ajusta el parametro del rango a 1 y la isguiente función hace lo mismo:
+\begin{Schunk}
+\begin{Sinput}
+> plotDist('exp', rate=1, kind='histogram', xlab="x")
+\end{Sinput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> plotDist('binom', size=25, prob=0.25, xlim=c(-1,26))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-129}
+
+Distribuciones múltiples pueden ser incluidas en el mismo gráfico.
+\Rindex{groups option}%
+\Rindex{type option}%
+\Rindex{under option}%
+\Rindex{lwd option}%
+\Rindex{pch option}%
+\begin{Schunk}
+\begin{Sinput}
+> plotDist("binom", size=100, prob=.3, col="black", lwd=3, pch=16)
+> plotDist("norm", mean=30, sd=sqrt(100 * .3 * .7), 
+   groups = abs(x - 30) > 6 , type="h", under=TRUE)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-130}
+
+La función \function{plotFun()} puede ser utilizada para graficar una función arbitraria (en este caso una variable aleatoria exponencial).
+
+\Rindex{makeFun()}%
+\Rindex{rexp()}%
+\Rindex{plotFun()}%
+\Rindex{histogram()}%
+\Rindex{width option}%
+\Rindex{center option}%
+\Rindex{add option}%
+\begin{Schunk}
+\begin{Sinput}
+> f <- makeFun(2*exp(-2*x) ~ x)   # exponential with rate parameter 2
+> x <- rexp(1000, rate=2)
+> histogram(~ x, width=0.2, center=0.1)
+> plotFun(f(x) ~ x, col="red", lwd=2, add=TRUE)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{MOSAIC-StudentGuide-131}
+\begin{problem}
+Genere una muestra de 1000 variables aleatorias exponenciales con el parámetro igual a 2, calcule la media de estas variables.
+\end{problem}
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> x <- rexp(1000, rate=2)
+> mean(x)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5177
+\end{Soutput}
+\end{Schunk}
+\end{solution}
+
+\begin{problem}
+Encuentre la mediana de la variable aleatoria X, si esta se distribuye exponencialmente con un parámetro igual a 10.
+\end{problem}
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> qexp(.5, rate=10)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.06931
+\end{Soutput}
+\end{Schunk}
+\end{solution}
+
+\chapter{Cálculos de Potencia}
+\vspace*{-.7cm}
+Aunque no es generalmente un tema de trato fundamental en los cursos introductorios, los cálculos de potencia y tamaño de muestra ayudan a reforzar ideas clave de estadística. En esta sección, podremos explorar cómo R puede ser utilizado para llevar a cabo cálculos de potencia, usando un abordaje analítico. Consideramos un problema simple con dos pruebas de hipótesis (la prueba t y la prueba de signos) con comparaciones de una cola.
+
+Vamos a comparar la potencia de la prueba de signos y la potencia de la prueba basada en la teoría normal (prueba t de una cola con una muestra) asumiendo que $\sigma$ es conocido. 
+Sea $X_1, ..., X_{25}$ una variables aleatorias independientes distribuidas $N(0.3, 1)$ (esto es un alterno para el que deseamos calcular la potencia). Considere probar la hipotesis nula $H_0: \mu=0$ contra $H_A: \mu>0$, con una nivel de significancia de $\alpha=.05$. 
+
+
+\section{Prueba de signos}
+
+Empezamos por calcular el error Tipo I para la prueba de signos. Aquí, queremos rechazar que el número de valores positivos es grande. Bajo la hipótesis nula, esto se distribuye como una variable aleatoria binomial, con n=25 intentos y p=0.5 probabilidad de valores positivos. Consideremos valores entre 15 y 19.
+
+\begin{Schunk}
+\begin{Sinput}
+> xvals <- 15:19
+> probs <- 1 - pbinom(xvals, size=25, prob=0.5)
+> cbind(xvals, probs)
+\end{Sinput}
+\begin{Soutput}
+     xvals    probs
+[1,]    15 0.114761
+[2,]    16 0.053876
+[3,]    17 0.021643
+[4,]    18 0.007317
+[5,]    19 0.002039
+\end{Soutput}
+\begin{Sinput}
+> qbinom(.95, size=25, prob=0.5)
+\end{Sinput}
+\begin{Soutput}
+[1] 17
+\end{Soutput}
+\end{Schunk}
+Entonces, vemos que si decidimos rechazar la hipotesis cuando el número de valores positivos es de 17 o mayor, vamos a tener un nivel de $\alpha$ de \code{round(1-pbinom(16, 25, 0.5), 3)}, lo cual está cerca del valor nominal en el problema.
+
+Calculamos la potencia de la prueba de signos como se muestra. La probabilidad de que $X_i > 0$, dado que $H_A$ es cierta es dada por:
+\begin{Schunk}
+\begin{Sinput}
+> 1 - pnorm(0, mean=0.3, sd=1)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.6179
+\end{Soutput}
+\end{Schunk}
+Esto lo podemos ver gráficamente usando el comando:
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> xpnorm(0, mean=0.3, sd=1, lower.tail=FALSE)
+\end{Sinput}
+\begin{Soutput}
+If X ~ N(0.3, 1), then 
+
+	P(X <= 0) = P(Z <= -0.3) = 0.3821
+	P(X >  0) = P(Z >  -0.3) = 0.6179
+
+[1] 0.6179
+\end{Soutput}
+\end{Schunk}
+\end{center}
+La potencia basada en que la hipótesis alternativa es igual a la probabilidad de conseguir 17 o más valores positivos, dado que $p=0.6179$, es la siguiente
+
+\Rindex{pbinom()}%
+\begin{Schunk}
+\begin{Sinput}
+> 1 - pbinom(16, size=25, prob=0.6179)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.3378
+\end{Soutput}
+\end{Schunk}
+La potencia es modesta.
+
+\section{Prueba t}
+
+Después, calculamos la potencia de la prueba basada en la teoría normal. Para seguir la comparación justa, vamos a poner nuestro $\alpha$ en un nivel igual a 0.05388
+
+\begin{Schunk}
+\begin{Sinput}
+> alpha <- 1-pbinom(16, size=25, prob=0.5); alpha
+\end{Sinput}
+\begin{Soutput}
+[1] 0.05388
+\end{Soutput}
+\end{Schunk}
+
+Primero encontramos la región de rechazo. 
+\begin{Schunk}
+\begin{Sinput}
+> n <- 25; sigma <- 1 # given
+> stderr <- sigma/sqrt(n)
+> zstar <- qnorm(1-alpha, mean=0, sd=1)
+> zstar
+\end{Sinput}
+\begin{Soutput}
+[1] 1.608
+\end{Soutput}
+\begin{Sinput}
+> crit <- zstar*stderr
+> crit
+\end{Sinput}
+\begin{Soutput}
+[1] 0.3217
+\end{Soutput}
+\end{Schunk}
+
+
+Entonces, rechazamos por las medias observadas, mayores a 0.322.  
+
+Para calcular la potencia de esta prueba de una cola, debemos encontrar la probabilidad de la hipótesis alternativa a su punto límite de la derecha
+
+\begin{Schunk}
+\begin{Sinput}
+> power <- 1 - pnorm(crit, mean=0.3, sd=stderr)
+> power
+\end{Sinput}
+\begin{Soutput}
+[1] 0.4568
+\end{Soutput}
+\end{Schunk}
+
+La potencia de la prueba basada en la teoría normal es de 0.322. Para dar una revisión (o para futuros cálculos de este tipo) podemos usar la función \function{power.t.test()}
+\begin{Schunk}
+\begin{Sinput}
+> power.t.test(n=25, delta=.3, sd=1, sig.level=alpha, alternative="one.sided",
+ type="one.sample")$power
+\end{Sinput}
+\begin{Soutput}
+[1] 0.4408
+\end{Soutput}
+\end{Schunk}
+
+Esta forma analítica (de aproximación basada en la fórmula) permite un estimado similar al valor que calculamos directamente.
+
+Sobre todo, vemos que la prueba t tiene una mayor potencia que la prueba de signos, en especial si los datos son verdaderamente normales.  \FoodForThought{Calcular la potencia empíricamente demuestra el poder que tienen las simulaciones}
+\begin{problem}
+\label{prob:power1}%
+Encuentre la potencia de una prueba t de dos colas con dos muestras donde ambas distribuciones son aproximadamente distribuidas normalmente con la misma desviación estándar, pero el grupo difiere en un 50\% de la desviación estándar. Asuma que hay 25 observaciones por grupo y un nivel de significancia de 0.0538760721683502
+
+\end{problem}
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> n
+\end{Sinput}
+\begin{Soutput}
+[1] 100
+\end{Soutput}
+\begin{Sinput}
+> alpha
+\end{Sinput}
+\begin{Soutput}
+[1] 0.01
+\end{Soutput}
+\begin{Sinput}
+> power.t.test(n=n, delta=.5, sd=1, sig.level=alpha)
+\end{Sinput}
+\begin{Soutput}
+     Two-sample t test power calculation 
+
+              n = 100
+          delta = 0.5
+             sd = 1
+      sig.level = 0.01
+          power = 0.8238
+    alternative = two.sided
+
+NOTE: n is number in *each* group
+\end{Soutput}
+\end{Schunk}
+\end{solution}
+\begin{problem}
+Encuentre el tamaño de muestra necesario para tener un 90\% de potencia para una prueba t de dos grupos donde la diferencia entre las medias es el 25\% de la desviación estándar en los grupos (con un $\alpha$ de 0.05).
+\end{problem}
+\begin{solution}
+\begin{Schunk}
+\begin{Sinput}
+> power.t.test(delta=.25, sd=1, sig.level=alpha, power=0.90)
+\end{Sinput}
+\begin{Soutput}
+     Two-sample t test power calculation 
+
+              n = 477.8
+          delta = 0.25
+             sd = 1
+      sig.level = 0.01
+          power = 0.9
+    alternative = two.sided
+
+NOTE: n is number in *each* group
+\end{Soutput}
+\end{Schunk}
+\end{solution}
+
+\chapter{Manejo de datos}
+
+\label{sec:manipulatingData}%
+\myindex{data management}%
+\myindex{thinking with data}%
+
+\FoodForThought{El libro  \emph{Empiece a enseñar con R} caracteriza una extensiva sección en manejo de datos, incluyendo el uso de la función read.file() para carga datos en R y RStudio}
+
+\vspace*{-1cm}
+El manejo de datos es una capacidad clave para permitir a los estudiantes (e instructores) a "computar con los datos" o como Diane Lambert de Google ha manifestado, "pensar con los datos". Tendemos a mantener el manejo de datos de los estudiantes en un mínimo durante la parte temprana de los cursos introductorios de estadística, después gradualmente introducimos temas como sean necesarios. Para cursos donde los estudiantes llevan a cabo proyectos sustantivos, el manejo de datos es más importante. Este capítulo describe algunas tareas clave en el manejo de datos.
+\myindex{read.file()}%
+
+\FoodForThought{nombre para un conjunto de datos en R).
+Los paquetes \pkg{dplyr} y \pkg{tidyr} brindan una elegante herramienta para el manejo de datos y facilitan la habilidad de los estudiantes a computar con los datos. Hadley Wickham, autor de los paquetes, sugiere que hay seis expresiones (o verbos) implementados dentro de estos paquetes que permiten una larga lista de tareas sean realizadas. Filtrar (mantener filas con criterios de emparejamiento), seleccionar (elegir columnas por nombre), ordenar (reordenar filas), mutar (agregar nuevas variables), resumir (reducir las variables a valores) y agrupar por (colapsar grupos). Vea url{http://www.amherst.edu/~nhorton/precursors}  para más detalles y recursos.
+}
+
+\section{Inspección de dataframes}
+\myindex{inspecting dataframes}%
+\myindex{dataframes!inspecting}%
+La función \function{inspect()} puede ser útil describiendo las variables del dataframe (el nombre para un conjunto de datos en R).
+\Rindex{inspect()}%
+\begin{Schunk}
+\begin{Sinput}
+> inspect(iris)
+\end{Sinput}
+\begin{Soutput}
+categorical variables:  
+     name  class levels   n missing
+1 Species factor      3 150       0
+                                   distribution
+1 setosa (33.3%), versicolor (33.3%) ...       
+
+quantitative variables:  
+          name   class min  Q1 median  Q3 max  mean     sd   n
+1 Sepal.Length numeric 4.3 5.1   5.80 6.4 7.9 5.843 0.8281 150
+2  Sepal.Width numeric 2.0 2.8   3.00 3.3 4.4 3.057 0.4359 150
+3 Petal.Length numeric 1.0 1.6   4.35 5.1 6.9 3.758 1.7653 150
+4  Petal.Width numeric 0.1 0.3   1.30 1.8 2.5 1.199 0.7622 150
+  missing
+1       0
+2       0
+3       0
+4       0
+\end{Soutput}
+\end{Schunk}
+El dataframe \dataframe{iris} incluye una variable categórica y cuatro variables cuantitativas
+
+
+\section{Agregar nuevas variables a un dataframe}
+\myindex{dataframe}%
+Podemos agregar variables adicionales a un dataframe existente usando \function{mutate()}. Pero primero debemos crear una versión más pequeña del conjunto de datos \dataframe{iris}.
+
+\Rindex{select()}%
+\myindex{iris dataset}%
+\begin{Schunk}
+\begin{Sinput}
+> irisSmall <- select(iris, Species, Sepal.Length)
+\end{Sinput}
+\end{Schunk}
+
+\myindex{adding variables}%
+\Rindex{mutate()}%
+\Rindex{cut()}%
+\begin{Schunk}
+\begin{Sinput}
+> # cortar pedazos de los datos en cajas
+> irisSmall <- mutate(irisSmall, 
+   Length = cut(Sepal.Length, breaks=4:8))    
+\end{Sinput}
+\end{Schunk}
+
+\myindex{pipe operator}%
+\Rindex{\%>\%}%
+Comandos múltiples pueden ser encadenados usando el operador {\tt \%>\%} (pipa):
+\begin{Schunk}
+\begin{Sinput}
+> irisSmall <- iris %>%
+   select(Species, Sepal.Length) %>%
+   mutate(Length = cut(Sepal.Length, breaks=4:8))
+\end{Sinput}
+\end{Schunk}
+Note que en este uso el primer argumento de \function{select} es la primera variable (como lo hereda de los datos de la pipa anterior).
+
+
+\FoodForThought[1cm]{La función \function{cut()} tiene la opción de etiqueta que puede ser utilizada para especificar más nombres para describir los grupos}
+\begin{Schunk}
+\begin{Sinput}
+> head(irisSmall)
+\end{Sinput}
+\begin{Soutput}
+  Species Sepal.Length Length
+1  setosa          5.1  (5,6]
+2  setosa          4.9  (4,5]
+3  setosa          4.7  (4,5]
+4  setosa          4.6  (4,5]
+5  setosa          5.0  (4,5]
+6  setosa          5.4  (5,6]
+\end{Soutput}
+\end{Schunk}
+\Rindex{head()}%
+\myindex{display first few rows}%
+
+\myindex{CPS85 dataset}%
+El conjunto de datos \dataframe{CPS85} contiene datos de una Encuesta Actual de Población (Actual en 1985, eso es). Dos de las variables en este conjunto de datos son edad y educ. Podemos estimar el número de años que el trabajador ha estado en la fuerza de trabajo desde que completó la educación, asumiendo que ha estado en la fuerza de trabajo desde que completó su educación y que su edad en la graduación es 6 años más que el número de años de educación obtenida. Podemos agregar esto como una nueva variable en el conjunto de datos usando \function{mutate()}
+\myindex{CPS85 dataset}%
+\Rindex{mutate()}%
+\begin{Schunk}
+\begin{Sinput}
+> CPS85 <- mutate(CPS85, workforce.years = age - 6 - educ)
+> favstats(~ workforce.years, data=CPS85)
+\end{Sinput}
+\begin{Soutput}
+ min Q1 median Q3 max  mean    sd   n missing
+  -4  8     15 26  55 17.81 12.39 534       0
+\end{Soutput}
+\end{Schunk}
+De hecho, esto es lo que se hizo para todos excepto uno de los casos para crear la variable \variable{exper} que está ya en los datos de \dataframe{CPS85}.
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ (exper - workforce.years), data=CPS85)
+\end{Sinput}
+\begin{Soutput}
+(exper - workforce.years)
+  0   4 
+533   1 
+\end{Soutput}
+\end{Schunk}
+
+\section{Desechando variables}
+\myindex{dropping variables}%
+\Rindex{filter()}%
+\Rindex{select option}%
+Puesto que ya tenemos la variable \variable{exper}, no hay una verdadera razón para dejarnos nuestra nueva variable. 
+Desechémosla. Note una utilización inteligente del signo de menos
+
+\begin{Schunk}
+\begin{Sinput}
+> names(CPS85)
+\end{Sinput}
+\begin{Soutput}
+ [1] "wage"            "educ"            "race"           
+ [4] "sex"             "hispanic"        "south"          
+ [7] "married"         "exper"           "union"          
+[10] "age"             "sector"          "workforce.years"
+\end{Soutput}
+\begin{Sinput}
+> CPS1 <- select(CPS85, select = -matches("workforce.years"))
+> names(CPS1)
+\end{Sinput}
+\begin{Soutput}
+ [1] "wage"     "educ"     "race"     "sex"      "hispanic" "south"   
+ [7] "married"  "exper"    "union"    "age"      "sector"  
+\end{Soutput}
+\end{Schunk}
+
+Cualquier número de variables puede ser descartado o mantenido de una manera similar.
+\begin{Schunk}
+\begin{Sinput}
+> CPS1 <- select(CPS85, select = -matches("workforce.years|exper"))
+\end{Sinput}
+\end{Schunk}
+
+
+\section{Renombrando variables}
+\myindex{renaming variables}%
+\Rindex{rename()}%
+\Rindex{row.names()}%
+La columna de nombres (variables) de un conjunto de datos puede ser cambiada usando la función \function{rename()} en el paquete \pkg{dplyr}.
+\begin{Schunk}
+\begin{Sinput}
+> names(CPS85)
+\end{Sinput}
+\begin{Soutput}
+ [1] "wage"            "educ"            "race"           
+ [4] "sex"             "hispanic"        "south"          
+ [7] "married"         "exper"           "union"          
+[10] "age"             "sector"          "workforce.years"
+\end{Soutput}
+\begin{Sinput}
+> CPSnew = rename(CPS85, workforce=workforce.years)
+> names(CPSnew)
+\end{Sinput}
+\begin{Soutput}
+ [1] "wage"      "educ"      "race"      "sex"       "hispanic" 
+ [6] "south"     "married"   "exper"     "union"     "age"      
+[11] "sector"    "workforce"
+\end{Soutput}
+\end{Schunk}
+
+Los nombres de las filas pueden ser cambiados con una indicación simple, usando \function{row.names()}.
+
+\Rindex{names()}%
+\myindex{faithful dataset}%
+El conjunto de datos \dataframe{faithful} (en el paquete \pkg{datasets}, que está siempre disponible) tiene nombres muy poco desafortunados.
+\FoodForThought{Es una buena idea establecer prácticas de elección de nombres de variables desde el primer día.}
+\begin{Schunk}
+\begin{Sinput}
+> names(faithful)
+\end{Sinput}
+\begin{Soutput}
+[1] "eruptions" "waiting"  
+\end{Soutput}
+\end{Schunk}
+
+Las medidas son la duración de una erupción y el tiempo hasta la erupción subsecuente, entonces, demos a estar unos mejores nombres.
+\begin{Schunk}
+\begin{Sinput}
+> faithful <- rename(faithful, 
+   duration = eruptions, 
+   time.til.next=waiting)
+> names(faithful)
+\end{Sinput}
+\begin{Soutput}
+[1] "duration"      "time.til.next"
+\end{Soutput}
+\end{Schunk}
+\myindex{faithful dataset}%
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> xyplot(time.til.next ~ duration, alpha=0.5, data=faithful)
+\end{Sinput}
+\end{Schunk}
+\end{center}
+Si la variable que contiene el conjunto de datos es modificada o utilizada para almacenar un objeto diferente, los datos originales del paquete pueden ser recuperados usando \function{data()}.
+\Rindex{data()}%
+\begin{Schunk}
+\begin{Sinput}
+> data(faithful)
+> head(faithful, 3)
+\end{Sinput}
+\begin{Soutput}
+  eruptions waiting
+1     3.600      79
+2     1.800      54
+3     3.333      74
+\end{Soutput}
+\end{Schunk}
+
+\begin{problem}
+Usando el conjunto de datos \dataframe{faithful}, haga un gráfico de dispersión de la duración de la erupción contra el tiempo desde la erupción pasada.
+\end{problem}
+
+
+\section{Creando subconjuntos de datos}
+\myindex{creating subsets}%
+\myindex{subsetting dataframes}%
+\myindex{dataframes!subsetting}%
+\label{sec:subsets}
+Podemos también usar \function{filter()} para reducir el tamaño del conjunto de datos seleccionando sólo algunas filas.
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> data(faithful)
+> names(faithful) <- c('duration', 'time.til.next')
+> # any logical can be used to create subsets
+> faithfulLong <- filter(faithful, duration > 3)        
+> xyplot( time.til.next ~ duration, data=faithfulLong )
+\end{Sinput}
+\end{Schunk}
+\end{center}
+
+
+\section{Ordenar dataframes}
+\myindex{sorting dataframes}%
+\myindex{dataframes!sorting}%
+\Rindex{arrange()}%
+
+Los conjuntos de datos pueden ser ordenados usando la función \function{arrange()}.
+\begin{Schunk}
+\begin{Sinput}
+> head(faithful, 3)
+\end{Sinput}
+\begin{Soutput}
+  duration time.til.next
+1    3.600            79
+2    1.800            54
+3    3.333            74
+\end{Soutput}
+\begin{Sinput}
+> sorted <- arrange(faithful, duration)
+> head(sorted, 3)
+\end{Sinput}
+\begin{Soutput}
+  duration time.til.next
+1    1.600            52
+2    1.667            64
+3    1.700            59
+\end{Soutput}
+\end{Schunk}
+\Caution{usualmente es mejor hacer conjuntos de datos nuevos en lugar de modificar el original}
+
+
+
+
+\section{Uniendo conjuntos de datos}
+\myindex{merging dataframes}%
+\myindex{dataframes!merging}%
+
+El conjunto de datos \dataframe{fusion1} en el paquete \pkg{fastR} contiene información del genotipo para la SNP (Polimorfismo de nucleotido simple) en el gen \variable{TCF7L2}. El conjunto de datos pheno contiene fenotipos (incluyendo diabetes tipo 2 en estado caso/control) para un grupo de individuos con intersecciones. Podemos unir estos y explorar la asociación entre genotipos y fenotipos usando \verb!merge()!.
+
+\Rindex{arrange()}%
+\begin{Schunk}
+\begin{Sinput}
+> require(fastR)
+> require(dplyr)
+> fusion1 <- arrange(fusion1, id)
+> head(fusion1, 3)
+\end{Sinput}
+\begin{Soutput}
+    id     marker markerID allele1 allele2 genotype Adose Cdose Gdose Tdose
+1 1002 RS12255372        1       3       3       GG     0     0     2     0
+2 1009 RS12255372        1       3       3       GG     0     0     2     0
+3 1012 RS12255372        1       3       3       GG     0     0     2     0
+\end{Soutput}
+\begin{Sinput}
+> head(pheno, 3)
+\end{Sinput}
+\begin{Soutput}
+    id     t2d   bmi sex   age smoker chol waist weight height    whr sbp dbp
+1 1002    case 32.86   F 70.76 former 4.57 112.0   85.6  161.4 0.9868 135  77
+2 1009    case 27.39   F 53.92  never 7.32  93.5   77.4  168.1 0.9397 158  88
+3 1012 control 30.47   M 53.86 former 5.02 104.0   94.6  176.2 0.9327 143  89
+\end{Soutput}
+\end{Schunk}
+
+\Rindex{arrange()}%
+\Rindex{all.x option}%
+\Rindex{by.x option}%
+\begin{Schunk}
+\begin{Sinput}
+> require(tidyr)
+> fusion1m <- inner_join(fusion1, pheno, by='id')
+> head(fusion1m, 3)
+\end{Sinput}
+\begin{Soutput}
+    id     marker markerID allele1 allele2 genotype Adose Cdose Gdose Tdose     t2d   bmi
+1 1002 RS12255372        1       3       3       GG     0     0     2     0    case 32.86
+2 1009 RS12255372        1       3       3       GG     0     0     2     0    case 27.39
+3 1012 RS12255372        1       3       3       GG     0     0     2     0 control 30.47
+  sex   age smoker chol waist weight height    whr sbp dbp
+1   F 70.76 former 4.57 112.0   85.6  161.4 0.9868 135  77
+2   F 53.92  never 7.32  93.5   77.4  168.1 0.9397 158  88
+3   M 53.86 former 5.02 104.0   94.6  176.2 0.9327 143  89
+\end{Soutput}
+\end{Schunk}
+\Rindex{tidyr package}%
+
+\myindex{fusion1 dataset}%
+Ahora estamos listos para iniciar nuestro análisis
+\begin{Schunk}
+\begin{Sinput}
+> tally(~t2d + genotype, data=fusion1m)
+\end{Sinput}
+\begin{Soutput}
+         genotype
+t2d        GG  GT  TT
+  case    737 375  48
+  control 835 309  27
+\end{Soutput}
+\end{Schunk}
+
+\begin{problem}
+En el conjunto de datos \dataframe{fusion2} en el paquete fastR contiene genotipos para otro SNP. Una \dataframe{fusion1}, \dataframe{fusion2} y \dataframe{pheno} en un solo conjunto de datos. 
+
+Note que fusion1, fusion2 tienen las mismas columnas.
+\begin{Schunk}
+\begin{Sinput}
+> names(fusion1)
+\end{Sinput}
+\begin{Soutput}
+ [1] "id"       "marker"   "markerID" "allele1"  "allele2"  "genotype" "Adose"   
+ [8] "Cdose"    "Gdose"    "Tdose"   
+\end{Soutput}
+\begin{Sinput}
+> names(fusion2)
+\end{Sinput}
+\begin{Soutput}
+ [1] "id"       "marker"   "markerID" "allele1"  "allele2"  "genotype" "Adose"   
+ [8] "Cdose"    "Gdose"    "Tdose"   
+\end{Soutput}
+\end{Schunk}
+Usted tal vez quiere usar argumentos \option{suffixes} a \function{merge()} o renombrar las variables después de que las haya terminado de unirlos para hacer el conjunto de datos resultante más fácil de navegar. 
+Ordene su conjunto de datos eliminando columnas que son redundantes o que no desea tener en su conjunto de datos final.
+\end{problem}
+
+\section{Tajando y cortando}
+\myindex{reshaping dataframes}%
+\myindex{dataframes!reshaping}%
+\myindex{transforming dataframes}%
+\myindex{transposing dataframes}%
+The \pkg{tidyr} package provides a flexible way to change the arrangement of data.  
+El paquete \pkg{tidyr} provee una forma flexible para cambiar el ordenamiento de los datos. Fue diseñado para convertir entre largas y amplias versiones de series de datos de series de tiempo y sus argumentos son nombrados con eso en mente.
+\FoodForThought{Las viñetas que acompañan a los paquetes \pkg{tidyr} y \pkg{dplyr} se caracterizan por tener una cantidad de ejemplos útiles de manipulación de datos común}
+
+Una situación común es cuando queremos convertir de una forma amplia a una forma larga por cambios en la perspectiva de lo que la unidad de observación es. Por ejemplo en los datos \dataframe{traffic}, cada fila es un año y los se da en cada una los datos para diferentes estados.
+
+\begin{Schunk}
+\begin{Sinput}
+> traffic
+\end{Sinput}
+\begin{Soutput}
+  year cn.deaths   ny   cn   ma   ri
+1 1951       265 13.9 13.0 10.2  8.0
+2 1952       230 13.8 10.8 10.0  8.5
+3 1953       275 14.4 12.8 11.0  8.5
+4 1954       240 13.0 10.8 10.5  7.5
+5 1955       325 13.5 14.0 11.8 10.0
+6 1956       280 13.4 12.1 11.0  8.2
+7 1957       273 13.3 11.9 10.2  9.4
+8 1958       248 13.0 10.1 11.8  8.6
+9 1959       245 12.9 10.0 11.0  9.0
+\end{Soutput}
+\end{Schunk}
+Podemos darle un nuevo formato a esto de tal forma que cada fila contenga una medida para un solo estado en un solo año
+
+\Rindex{gather()}%
+\begin{Schunk}
+\begin{Sinput}
+> longTraffic <- traffic %>% 
+   gather(state, deathRate, ny:ri) 
+> head(longTraffic)
+\end{Sinput}
+\begin{Soutput}
+  year cn.deaths state deathRate
+1 1951       265    ny      13.9
+2 1952       230    ny      13.8
+3 1953       275    ny      14.4
+4 1954       240    ny      13.0
+5 1955       325    ny      13.5
+6 1956       280    ny      13.4
+\end{Soutput}
+\end{Schunk}
+
+También podemos darle formato de otra forma, en esta ocasión, teniendo todos los datos para un estado en una fila del conjunto de datos.
+\begin{Schunk}
+\begin{Sinput}
+> stateTraffic <- longTraffic %>% 
+   select(year, deathRate, state) %>%
+   mutate(year=paste("deathRate.", year, sep="")) %>%
+   spread(year, deathRate)
+> stateTraffic
+\end{Sinput}
+\begin{Soutput}
+  state deathRate.1951 deathRate.1952 deathRate.1953 deathRate.1954 deathRate.1955
+1    cn           13.0           10.8           12.8           10.8           14.0
+2    ma           10.2           10.0           11.0           10.5           11.8
+3    ny           13.9           13.8           14.4           13.0           13.5
+4    ri            8.0            8.5            8.5            7.5           10.0
+  deathRate.1956 deathRate.1957 deathRate.1958 deathRate.1959
+1           12.1           11.9           10.1           10.0
+2           11.0           10.2           11.8           11.0
+3           13.4           13.3           13.0           12.9
+4            8.2            9.4            8.6            9.0
+\end{Soutput}
+\end{Schunk}
+\Rindex{spread()}%
+\Rindex{select()}%
+\Rindex{mutate()}%
+\Rindex{paste()}%
+
+\section{Creación de variables derivadas}
+\myindex{derived variables}
+
+Existen varias funciones que ayuda a facilitar la creación o recodificación de variables
+
+\subsection{Creando variables categóricas de una variable cuantitativa}
+
+De forma siguiente vamos a mostrar como crear una variable categórica de 3 niveles con cortes en 20 y 40 para la escala del CESD (que tiene un rango de 0 a 60)
+
+\Rindex{cut()}%
+\Rindex{mutate()}%
+\Rindex{include.lowest option}%
+\Rindex{breaks option}%
+\begin{Schunk}
+\begin{Sinput}
+> favstats(~ cesd, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+ min Q1 median Q3 max  mean    sd   n missing
+   1 25     34 41  60 32.85 12.51 453       0
+\end{Soutput}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, cesdcut = cut(cesd, 
+   breaks=c(0, 20, 40, 60), include.lowest=TRUE))
+> bwplot(cesd ~ cesdcut, data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+\Rindex{ntiles()}%
+\FoodForThought{La función \function{ntiles} puede automatizar la creación de grupos en este aspecto}
+
+Puede ser preferible darle mejor nombre a las etiquetas.
+\begin{Schunk}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, cesdcut = cut(cesd, 
+   labels=c("low", "medium", "high"),
+   breaks=c(0, 20, 40, 60), include.lowest=TRUE))
+> bwplot(cesd ~ cesdcut, pch="|", data=HELPrct)
+\end{Sinput}
+\end{Schunk}
+
+La función \function{derivedFactor} es incluso más general y puede ser utilizada para este propósito.
+
+\Rindex{derivedFactor()}%
+\begin{Schunk}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, 
+   anothercut = derivedFactor(
+     low = cesd >= 0 & cesd <= 20,
+     medium = cesd > 20 & cesd <= 40,
+     high = cesd > 40))
+\end{Sinput}
+\end{Schunk}
+
+
+\subsection{Reordenando factores}
+\myindex{reordering factors}%
+\myindex{factor reordering}%
+\Rindex{relevel()}%
+\Rindex{mutate()}%
+\Rindex{coef()}%
+\Rindex{tally()}%
+Como predeterminado R utiliza el primer nivel en el orden lexicográfico como grupo de referencia para el modelaje. Esto puede ser anulado usando la función relevel (ver también reorder()).
+\begin{Schunk}
+\begin{Sinput}
+> tally(~ substance, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+substance
+alcohol cocaine  heroin 
+    177     152     124 
+\end{Soutput}
+\begin{Sinput}
+> coef(lm(cesd ~ substance, data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+     (Intercept) substancecocaine  substanceheroin 
+         34.3729          -4.9518           0.4981 
+\end{Soutput}
+\begin{Sinput}
+> HELPrct <- mutate(HELPrct, subnew = relevel(substance, 
+   ref="heroin"))
+> coef(lm(cesd ~ subnew, data=HELPrct))
+\end{Sinput}
+\begin{Soutput}
+  (Intercept) subnewalcohol subnewcocaine 
+      34.8710       -0.4981       -5.4499 
+\end{Soutput}
+\end{Schunk}
+
+\section{Estadísticas agrupadas}
+\label{sec:groupby}
+
+\myindex{group-wise statistics}%
+\Rindex{select()}%
+
+A veces puede ser útil calcular estadísticas de resumen por grupo, y agregar estas en un conjunto de datos. La función group_by() en el paquete dplyr facilita este proceso. Aquí demostramos cómo agregar una variable que contiene la media de la edad de los sujetos por grupo de sustancia.
+
+\Rindex{favstats()}%
+\Rindex{group\_by()}%
+\Rindex{left\_join()}%
+\Rindex{summarise()}%
+\Rindex{nrow()}%
+\begin{Schunk}
+\begin{Sinput}
+> favstats(age ~ substance, data=HELPrct)
+\end{Sinput}
+\begin{Soutput}
+  substance min Q1 median    Q3 max  mean    sd   n missing
+1   alcohol  20 33   38.0 43.00  58 38.20 7.652 177       0
+2   cocaine  23 30   33.5 37.25  60 34.49 6.693 152       0
+3    heroin  19 27   33.0 39.00  55 33.44 7.986 124       0
+\end{Soutput}
+\begin{Sinput}
+> ageGroup <- HELPrct %>% 
+   group_by(substance) %>%
+   summarise(agebygroup = mean(age))
+> ageGroup
+\end{Sinput}
+\begin{Soutput}
+# A tibble: 3 x 2
+  substance agebygroup
+     <fctr>      <dbl>
+1   alcohol      38.20
+2   cocaine      34.49
+3    heroin      33.44
+\end{Soutput}
+\begin{Sinput}
+> nrow(ageGroup)
+\end{Sinput}
+\begin{Soutput}
+[1] 3
+\end{Soutput}
+\begin{Sinput}
+> nrow(HELPrct)
+\end{Sinput}
+\begin{Soutput}
+[1] 453
+\end{Soutput}
+\begin{Sinput}
+> HELPmerged <- left_join(ageGroup, HELPrct, by="substance") 
+> favstats(agebygroup ~ substance, data=HELPmerged)
+\end{Sinput}
+\begin{Soutput}
+  substance   min    Q1 median    Q3   max  mean sd   n missing
+1   alcohol 38.20 38.20  38.20 38.20 38.20 38.20  0 177       0
+2   cocaine 34.49 34.49  34.49 34.49 34.49 34.49  0 152       0
+3    heroin 33.44 33.44  33.44 33.44 33.44 33.44  0 124       0
+\end{Soutput}
+\begin{Sinput}
+> nrow(HELPmerged)
+\end{Sinput}
+\begin{Soutput}
+[1] 453
+\end{Soutput}
+\end{Schunk}
+
+
+\section{Contabilizando datos perdidos}
+\label{sec:miss}
+
+\myindex{missing data}%
+\myindex{incomplete data}%
+\Rindex{select()}%
+\Rindex{dim()}%
+\Rindex{NA character}%
+Los valores perdidos salen a flote en casi todas las investigaciones en el mundo real. \R utiliza el símbolo \variable{NA} como un indicador de datos faltantes. El conjunto de datos \dataframe{HELPmiss} dentro del paquete \pkg{mosaicData} incluye todos los n=470 sujetos ligados a la investigación de base (incluyendo el n=17 de sujetos con algunos datos faltantes que no fueron incluidos en \dataframe{HELPrct}).  
+\myindex{HELPmiss dataset}%
+\begin{Schunk}
+\begin{Sinput}
+> smaller <- select(HELPmiss, cesd, drugrisk, indtot, mcs, pcs, 
+   substance)
+> dim(smaller)
+\end{Sinput}
+\begin{Soutput}
+[1] 470   6
+\end{Soutput}
+\begin{Sinput}
+> summary(smaller)
+\end{Sinput}
+\begin{Soutput}
+      cesd         drugrisk         indtot          mcs             pcs      
+ Min.   : 1.0   Min.   : 0.00   Min.   : 4.0   Min.   : 6.76   Min.   :14.1  
+ 1st Qu.:25.0   1st Qu.: 0.00   1st Qu.:32.0   1st Qu.:21.66   1st Qu.:40.4  
+ Median :34.0   Median : 0.00   Median :37.5   Median :28.56   Median :48.9  
+ Mean   :32.9   Mean   : 1.87   Mean   :35.7   Mean   :31.55   Mean   :48.1  
+ 3rd Qu.:41.0   3rd Qu.: 1.00   3rd Qu.:41.0   3rd Qu.:40.64   3rd Qu.:57.0  
+ Max.   :60.0   Max.   :21.00   Max.   :45.0   Max.   :62.18   Max.   :74.8  
+                NA's   :2       NA's   :14     NA's   :2       NA's   :2     
+   substance  
+ alcohol:185  
+ cocaine:156  
+ heroin :128  
+ missing:  1  
+\end{Soutput}
+\end{Schunk}
+
+De los 470 sujetos en las 6 variables del conjunto de datos, solamente \variable{drugsrisk}, \variable{indtot}, \variable{mcs} y \variable{pcs} tienen valores faltantes
+
+\Rindex{with()}%
+\Rindex{na.omit()}%
+\Rindex{favstats()}%
+\Rindex{is.na()}%
+\Rindex{sum()}%
+\Rindex{nrow()}%
+\Rindex{ncol()}%
+\begin{Schunk}
+\begin{Sinput}
+> favstats(~ mcs, data=smaller)
+\end{Sinput}
+\begin{Soutput}
+   min    Q1 median    Q3   max  mean    sd   n missing
+ 6.763 21.66  28.56 40.64 62.18 31.55 12.78 468       2
+\end{Soutput}
+\begin{Sinput}
+> with(smaller, sum(is.na(mcs)))
+\end{Sinput}
+\begin{Soutput}
+[1] 2
+\end{Soutput}
+\begin{Sinput}
+> nomiss <- na.omit(smaller)
+> dim(nomiss)
+\end{Sinput}
+\begin{Soutput}
+[1] 453   6
+\end{Soutput}
+\begin{Sinput}
+> nrow(nomiss)
+\end{Sinput}
+\begin{Soutput}
+[1] 453
+\end{Soutput}
+\begin{Sinput}
+> ncol(nomiss)
+\end{Sinput}
+\begin{Soutput}
+[1] 6
+\end{Soutput}
+\begin{Sinput}
+> favstats(~ mcs, data=nomiss)
+\end{Sinput}
+\begin{Soutput}
+   min    Q1 median    Q3   max mean    sd   n missing
+ 6.763 21.79   28.6 40.94 62.18 31.7 12.82 453       0
+\end{Soutput}
+\end{Schunk}
+
+Alternativamente, podemos generar el mismo conjunto de datos usando condiciones lógicas.
+\begin{Schunk}
+\begin{Sinput}
+> nomiss <- filter(smaller, 
+   (!is.na(mcs) & !is.na(indtot) & !is.na(drugrisk)))
+> dim(nomiss)
+\end{Sinput}
+\begin{Soutput}
+[1] 453   6
+\end{Soutput}
+\end{Schunk}
+
+
+\chapter{Health Evaluation (HELP) Study}
+
+\label{sec:help}
+
+\myindex{HELP study}%
+\myindex{Health Evaluation and Linkage to Primary Care study}%
+Muchos de los ejemplos en esta guía utilizaron datos del estudio HELP, una prueba clínica aleatorizada para pacientes en edad adulta, hospitalizados, reclutados de una unidad de desintoxicación. Los pacientes sin médico de cuidados primarios fueron aleatorizados para recibir evaluación multidisciplinaria y una pequeña intervención motivacional o cuidado usual, con la meta de unirlos al cuidado médico primario. Los fondos para el estudio HELP fueron previstos por el Instituto Nacional sobre Abuso de Alcohol y Alcoholismo (R01-AA10870, Samet PI) y el Instituto Nacional sobre Abuso de Droga (R01-DA10019, Samet PI). Los detalles de la prueba aleatorizada así como los resultados de análisis adicionales han sido publicados\cite{same:lars:hort:2003,lieb:save:2002,kert:hort:frie:2003}.
+
+Los sujetos elegibles eran adultos, que hablaran inglés o español, que reportaran el alcohol, la heroína o la cocaína como su droga de preferencia, que residieran en la proximidad de la clínica de cuidado primario a la cual sería referido, o si fuera el caso que no tuviera casa. Pacientes que tuvieran relaciones establecidas con el cuidado primario que planeaban continuar en estos programas, demencia significativa, planes específicos de dejar el área de Boston lo cual obstruiría la participación en la investigación, fallo en proveer información de contacto para rastreo o embarazo fueron excluidos.
+
+Los sujetos fueron entrevistados en una línea de base durante su estadía en el programa de desintoxicación y se realizaron entrevistas de seguimiento cada 6 meses por 2 años. Variables continuas, conteos, variables discretas, predictores de tiempo de sobrevivencia y otros resultados fueron recolectados en cada una de estas cinco ocasiones. La Comisión Revisora Institucional del Centro Médico de la Universidad de Boston aprobó todos los aspectos del estudio, incluyendo la creación de conjuntos de datos sin identificación. Medidas de protección adicional fue asegurada por emisión de un Certificado de Confidencialidad del Departamento de Salud y Servicios Humanos.
+
+
+El paquete \pkg{mosaicData} contiene algunas formas del conjunto de datos \dataframe{HELP} sin identificación. Nos vamos a concentrar en HELPrct que contiene 27 variables de 453 sujetos con un mínimo de datos faltantes. Las variables incluidas en el conjunto de datos de HELP son descritas en la Tabla 14.1. Más información puede ser encontrada en: http://www.amherst.edu/~nhorton/r2. Una copia de los instrumentos de estudio puede ser encontrada en: http://www.amherts.edu/~nhorton/help 
+\begin{longtable}{|p{2.1cm}|p{6.8cm}|p{3.5cm}|}
+\caption{Descripción de las variables en el Conjunto de datos \dataframe{HELprct}}
+\label{tab:helpvars} \\
+\hline
+Variable & Descripción(valores) &	Nota \\ \hline
+\variable{age} & Edad de referencia(en años) (rango 19--60) & \\ \hline
+\variable{anysub} & Uso de cualquier sustancia post desintoxicación & vea también \variable{daysanysub}
+\\ \hline
+\variable{cesd} & Escala del Centro de Estudios Epidemiológicos en Depresión (rango de 0--60, puntajes mayores indican mayores síntomas depresivos) & \\ \hline
+\variable{d1} & Cuántas veces ha sido hospitalizado por problemas médicos(en toda la vida) (rango 0-100)  & \\ \hline
+\variable{daysanysub} & Tiempo (en días) después del primer uso de cualquier sustancia post-desintoxicación (rango 0--268) & vea también \variable{anysubstatus} \\ \hline
+\variable{dayslink} & Tiempo (en días) de asociación al cuidado primario(rango 0--456)  & vea también \variable{linkstatus}
+\\ \hline
+\variable{drugrisk} & Puntaje sobre riesgo a drogas del Risk-Assessment Baterry (RAB) (rango 0--21)  & vea también \variable{sexrisk}
+\\ \hline
+\variable{e2b} & Número de veces en los últimos 6 meses que ha entrado a un programa de desintoxicación (rango 1--21)  & \\ \hline
+\variable{female} & Género del entrevistado (0=hombre, 1=mujer)  &
+\\ \hline
+\variable{g1b} & Experimentó pensamientos serios de suicidio (últimos 30 días, valores 0=no, 1=sí)  &
+\\ \hline
+\variable{homeless} & Ha dormido 1 o más noches en la calle o un albergue en los últimos 6 meses(0=no, 1=sí) & 
+\\ \hline
+\variable{i1} & Número promedio de bebidas (en unidades estándar, consumidas por día(en los últimos 30 días, rango 0-184) & vea también \variable{i2}
+\\ \hline
+\variable{i2} & Máximo número de bebidas (en unidades estándar) consumidas por día (en los últimos 30 días, rango 0--184) & vea también \variable{i1}
+\\ \hline
+\variable{id} & Identificador del sujeto (1--470) &
+\\ \hline
+\variable{indtot} & Puntaje total en el Inventorio de Consecuencias del uso de drogas (rango 4--45)  &
+\\ \hline
+\variable{linkstatus} & Asociación post-desintoxicación al cuidado primario (0=no, 1=sí)  & vea también \variable{dayslink}
+\\ \hline
+\variable{mcs} & Puntaje del Componente Mental SF-36 (rango 14-75, puntajes altos son preferibles)  & vea también \variable{pcs}
+\\ \hline
+\variable{pcs} & Puntaje del Componente Físico SF-36(rango 14-75, puntajes altos son preferibles)  & see also \variable{mcs}
+\\ \hline
+\variable{pss\_fr} & Apoyo social percibido (amigos, rango 0-14) & 
+\\ \hline
+\variable{racegrp} & Raza/etnia (negro, blanco, hispano u otro)  &  \\ \hline
+\variable{satreat} &Cualquier tratamiento de abuso de sustancias de BSAS al inicio (0=no, 1=sí)  &  \\ \hline
+\variable{sex} & Sexo del entrevistado (hombre o mujer)  & \\ \hline
+\variable{sexrisk} & Risk-Assessment Battery (RAB) sex risk score  (range 0--21)  & ver también \variable{drugrisk}
+\\ \hline
+\variable{substance} & Principal sustancia de abuso (alcohol, cocaína, heroína) &
+\\ \hline
+\variable{treat} & Aleatorización del grupo(Aleatorizado a una clínica HELP, no o sí) & 
+\\ \hline
+\end{longtable}
+\noindent
+Notas: El rango se provee para las variables continuas.
+
+
+
+\chapter{Ejercicios y problemas}
+
+La primera parte del número del ejercicio dice de qué capítulo viene.
+
+\shipoutProblems
+
+
+%\backmatter
+
+\bibliographystyle{alpha}
+\bibliography{../include/USCOTS}
+
+\printindex
+
+\end{document}

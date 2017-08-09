@@ -1,0 +1,331 @@
+\begin{theindex}
+
+  \item \texttt  {\%>\%}, \hyperpage{100}
+
+  \indexspace
+
+  \item \texttt  {abs()}, \hyperpage{83, 84}
+  \item \texttt  {add option}, \hyperpage{82}, \hyperpage{92}
+  \item adding variables, \hyperpage{100}
+  \item \texttt  {all.x option}, \hyperpage{104}
+  \item \texttt  {alpha option}, \hyperpage{50}, \hyperpage{62}
+  \item analysis of variance, \hyperpage{66}
+  \item anova(), \hyperpage{81}
+  \item \texttt  {anova()}, \hyperpage{67}, \hyperpage{72}
+  \item \texttt  {aov()}, \hyperpage{67}, \hyperpage{79}
+  \item \texttt  {arrange()}, \hyperpage{103, 104}
+  \item \texttt  {auto.key option}, \hyperpage{80}, \hyperpage{82}
+
+  \indexspace
+
+  \item \texttt  {binom.test()}, \hyperpage{39}
+  \item binomial test, \hyperpage{39}
+  \item bootstrapping, \hyperpage{36}
+  \item \texttt  {breaks option}, \hyperpage{106}
+  \item \texttt  {bwplot()}, \hyperpage{61}, \hyperpage{66}, 
+		\hyperpage{79}
+  \item \texttt  {by.x option}, \hyperpage{104}
+
+  \indexspace
+
+  \item categorical variables, \hyperpage{39}
+  \item \texttt  {center option}, \hyperpage{92}
+  \item \texttt  {cex option}, \hyperpage{45}, \hyperpage{62}, 
+		\hyperpage{84}
+  \item \texttt  {chisq.test()}, \hyperpage{42}, \hyperpage{58}
+  \item \texttt  {class()}, \hyperpage{49}
+  \item \texttt  {coef()}, \hyperpage{48}, \hyperpage{107}
+  \item coefficient plots, \hyperpage{83}
+  \item \texttt  {col option}, \hyperpage{33}
+  \item \texttt  {conf.int option}, \hyperpage{75}
+  \item \texttt  {confint()}, \hyperpage{35}, \hyperpage{40}, 
+		\hyperpage{48}
+  \item contingency tables, \hyperpage{39}, \hyperpage{55}
+  \item Cook's distance, \hyperpage{52}
+  \item \texttt  {cor()}, \hyperpage{47}
+  \item \texttt  {correct option}, \hyperpage{41}
+  \item correlation, \hyperpage{47}
+  \item Cox proportional hazards model, \hyperpage{76}
+  \item \texttt  {coxph()}, \hyperpage{76}
+  \item CPS85 dataset, \hyperpage{100, 101}
+  \item creating subsets, \hyperpage{103}
+  \item cross classification tables, \hyperpage{55}
+  \item \texttt  {CrossTable()}, \hyperpage{56}
+  \item \texttt  {cut()}, \hyperpage{100}, \hyperpage{106}
+
+  \indexspace
+
+  \item data management, \hyperpage{99}
+  \item \texttt  {data()}, \hyperpage{102}
+  \item dataframe, \hyperpage{100}
+  \item dataframes
+    \subitem inspecting, \hyperpage{99}
+    \subitem merging, \hyperpage{103}
+    \subitem reshaping, \hyperpage{105}
+    \subitem sorting, \hyperpage{103}
+    \subitem subsetting, \hyperpage{103}
+  \item \texttt  {density option}, \hyperpage{49}
+  \item \texttt  {densityplot()}, \hyperpage{33}
+  \item derived variables, \hyperpage{106}
+  \item \texttt  {derivedFactor()}, \hyperpage{107}
+  \item \texttt  {diffmean()}, \hyperpage{65}
+  \item \texttt  {dim()}, \hyperpage{108}
+  \item display first few rows, \hyperpage{100}
+  \item \texttt  {dnorm()}, \hyperpage{88}
+  \item \texttt  {do()}, \hyperpage{36}
+  \item \texttt  {dotPlot()}, \hyperpage{32}
+  \item \texttt  {dplyr package}, \hyperpage{29, 30}
+  \item dropping variables, \hyperpage{101}
+
+  \indexspace
+
+  \item \texttt  {exp()}, \hyperpage{71}
+
+  \indexspace
+
+  \item factor reordering, \hyperpage{107}
+  \item \texttt  {factor()}, \hyperpage{68}, \hyperpage{79}
+  \item failure time analysis, \hyperpage{75}
+  \item faithful dataset, \hyperpage{102}
+  \item \texttt  {family option}, \hyperpage{71}
+  \item \texttt  {favstats()}, \hyperpage{28}, \hyperpage{61}, 
+		\hyperpage{107}, \hyperpage{109}
+  \item \texttt  {filter()}, \hyperpage{29}, \hyperpage{101}
+  \item Fisher's exact test, \hyperpage{59}
+  \item \texttt  {fisher.test()}, \hyperpage{59}
+  \item \texttt  {fit option}, \hyperpage{30}
+  \item \texttt  {fitted()}, \hyperpage{83}
+  \item \texttt  {format option}, \hyperpage{29}
+  \item \texttt  {freqpolygon()}, \hyperpage{34}
+  \item \texttt  {function()}, \hyperpage{46}
+  \item fusion1 dataset, \hyperpage{104}
+
+  \indexspace
+
+  \item \texttt  {gather()}, \hyperpage{105}
+  \item \texttt  {glm()}, \hyperpage{71}
+  \item \texttt  {grid.text()}, \hyperpage{33}
+  \item group-wise statistics, \hyperpage{107}
+  \item \texttt  {group\_by()}, \hyperpage{107}
+  \item \texttt  {groups option}, \hyperpage{65}, \hyperpage{82}, 
+		\hyperpage{91}
+
+  \indexspace
+
+  \item \texttt  {head()}, \hyperpage{100}
+  \item Health Evaluation and Linkage to Primary Care study, 
+		\hyperpage{111}
+  \item HELP study, \hyperpage{111}
+  \item HELPmiss dataset, \hyperpage{108}
+  \item HELPrct dataset, \hyperpage{27}
+  \item \texttt  {histogram()}, \hyperpage{29}, \hyperpage{92}
+  \item honest significant differences, \hyperpage{68}
+
+  \indexspace
+
+  \item \texttt  {include.lowest option}, \hyperpage{106}
+  \item incomplete data, \hyperpage{108}
+  \item \texttt  {inspect()}, \hyperpage{99}
+  \item inspecting dataframes, \hyperpage{99}
+  \item \texttt  {install.packages()}, \hyperpage{14}
+  \item installing packages, \hyperpage{14}
+  \item \texttt  {integrate()}, \hyperpage{88}
+  \item interactions, \hyperpage{81}
+  \item iris dataset, \hyperpage{100}
+  \item \texttt  {is.na()}, \hyperpage{109}
+
+  \indexspace
+
+  \item Kaplan-Meier plot, \hyperpage{75}
+  \item knitr, \hyperpage{14}
+
+  \indexspace
+
+  \item \texttt  {labels option}, \hyperpage{68}
+  \item \texttt  {ladd()}, \hyperpage{33}
+  \item \texttt  {layout option}, \hyperpage{31}
+  \item \texttt  {left\_join()}, \hyperpage{107}
+  \item \texttt  {levels option}, \hyperpage{68}
+  \item leverage, \hyperpage{52}
+  \item linear regression, \hyperpage{48}
+  \item linearity, \hyperpage{45}
+  \item \texttt  {lm()}, \hyperpage{48}, \hyperpage{68}
+  \item loading packages, \hyperpage{14}
+  \item logistic regression, \hyperpage{71}
+  \item lowess, \hyperpage{45}
+  \item \texttt  {lty option}, \hyperpage{33}
+  \item \texttt  {lwd option}, \hyperpage{33}, \hyperpage{45}, 
+		\hyperpage{91}
+
+  \indexspace
+
+  \item \texttt  {makeFun()}, \hyperpage{82}, \hyperpage{92}
+  \item \texttt  {margins option}, \hyperpage{39}
+  \item markdown, \hyperpage{14}
+  \item \texttt  {mean()}, \hyperpage{27}, \hyperpage{61}
+  \item \texttt  {median()}, \hyperpage{28}, \hyperpage{79}
+  \item merging dataframes, \hyperpage{103}
+  \item missing data, \hyperpage{108}
+  \item model comparison, \hyperpage{68}
+  \item \emph  {Modeling with R}, \hyperpage{27}
+  \item \texttt  {mosaic package}, \hyperpage{27}
+  \item \texttt  {mosaicplot()}, \hyperpage{56}
+  \item \texttt  {mplot()}, \hyperpage{50}, \hyperpage{69}, 
+		\hyperpage{83}
+  \item msummary(), \hyperpage{80}
+  \item \texttt  {msummary()}, \hyperpage{48}, \hyperpage{64}, 
+		\hyperpage{71}
+  \item multiple comparisons, \hyperpage{68}
+  \item multiple regression, \hyperpage{80}
+  \item multivariate relationships, \hyperpage{80}
+  \item \texttt  {mutate()}, \hyperpage{68}, \hyperpage{79}, 
+		\hyperpage{100, 101}, \hyperpage{106, 107}
+
+  \indexspace
+
+  \item \texttt  {NA character}, \hyperpage{108}
+  \item \texttt  {na.omit()}, \hyperpage{109}
+  \item \texttt  {names()}, \hyperpage{102}
+  \item \texttt  {ncol()}, \hyperpage{109}
+  \item \texttt  {nint option}, \hyperpage{31}
+  \item \texttt  {nrow()}, \hyperpage{107}, \hyperpage{109}
+  \item \texttt  {ntiles()}, \hyperpage{106}
+
+  \indexspace
+
+  \item \texttt  {oddsRatio()}, \hyperpage{56}
+  \item one-way ANOVA, \hyperpage{66}
+  \item \texttt  {options()}, \hyperpage{27}
+
+  \indexspace
+
+  \item pairs plot, \hyperpage{48}
+  \item \texttt  {panel.abline()}, \hyperpage{33}
+  \item \texttt  {panel.labels()}, \hyperpage{46}
+  \item \texttt  {panel.mathdensity()}, \hyperpage{33}
+  \item \texttt  {panel.text()}, \hyperpage{46}
+  \item \texttt  {paste()}, \hyperpage{106}
+  \item \texttt  {pbinom()}, \hyperpage{96}
+  \item \texttt  {pch option}, \hyperpage{45}, \hyperpage{91}
+  \item \texttt  {pchisq()}, \hyperpage{43}
+  \item Pearson correlation, \hyperpage{47}
+  \item permutation test, \hyperpage{64}
+  \item pipe operator, \hyperpage{100}
+  \item \texttt  {plotDist()}, \hyperpage{43}, \hyperpage{90}
+  \item \texttt  {plotFun()}, \hyperpage{82}, \hyperpage{92}
+  \item \texttt  {pnorm()}, \hyperpage{88}
+  \item polygons, \hyperpage{34}
+  \item \texttt  {print()}, \hyperpage{40}
+  \item \texttt  {prop.test()}, \hyperpage{41}
+  \item proportional hazards model, \hyperpage{76}
+  \item \texttt  {pval()}, \hyperpage{40}
+
+  \indexspace
+
+  \item \texttt  {qdata()}, \hyperpage{36}
+  \item \texttt  {qnorm()}, \hyperpage{88}
+  \item \texttt  {qqmath()}, \hyperpage{49}
+  \item \texttt  {quantile()}, \hyperpage{28}
+  \item quantiles, \hyperpage{28}
+
+  \indexspace
+
+  \item random variables, \hyperpage{87}
+  \item read.file(), \hyperpage{99}
+  \item regression, \hyperpage{48}
+  \item regression diagnostics, \hyperpage{83}
+  \item \texttt  {relevel()}, \hyperpage{107}
+  \item \texttt  {rename()}, \hyperpage{102}
+  \item renaming variables, \hyperpage{102}
+  \item reordering factors, \hyperpage{107}
+  \item reproducible analysis, \hyperpage{14}
+  \item \texttt  {require()}, \hyperpage{14}, \hyperpage{27}
+  \item \texttt  {resample()}, \hyperpage{36}
+  \item resampling, \hyperpage{36}, \hyperpage{64}
+  \item reshaping dataframes, \hyperpage{105}
+  \item \texttt  {resid()}, \hyperpage{83}
+  \item residual diagnostics, \hyperpage{83}
+  \item \texttt  {residuals()}, \hyperpage{49}
+  \item \texttt  {rexp()}, \hyperpage{92}
+  \item \texttt  {rnorm()}, \hyperpage{88}
+  \item \texttt  {row.names()}, \hyperpage{102}
+  \item \texttt  {rownames()}, \hyperpage{46}
+  \item \texttt  {rsquared()}, \hyperpage{48}
+  \item \texttt  {RStudio.Version()}, \hyperpage{19}
+
+  \indexspace
+
+  \item scale versus location, \hyperpage{51}
+  \item scatterplot matrix, \hyperpage{48}
+  \item scatterplots, \hyperpage{45}
+  \item \texttt  {sd()}, \hyperpage{28}
+  \item \texttt  {select option}, \hyperpage{101}
+  \item \texttt  {select()}, \hyperpage{100}, \hyperpage{106--108}
+  \item \texttt  {sessionInfo()}, \hyperpage{19}
+  \item \texttt  {shuffle()}, \hyperpage{65}
+  \item significance stars, \hyperpage{48}
+  \item smoothers, \hyperpage{45}
+  \item sorting dataframes, \hyperpage{103}
+  \item Spearman correlation, \hyperpage{47}
+  \item \texttt  {splom()}, \hyperpage{48}
+  \item \texttt  {spread()}, \hyperpage{106}
+  \item \emph  {Start Modeling with R}, \hyperpage{27}
+  \item \emph  {Start Teaching with R}, \hyperpage{27}
+  \item \texttt  {stem()}, \hyperpage{29}
+  \item subsetting dataframes, \hyperpage{103}
+  \item \texttt  {sum()}, \hyperpage{43}, \hyperpage{109}
+  \item \texttt  {summarise()}, \hyperpage{107}
+  \item \texttt  {summary()}, \hyperpage{64}
+  \item \texttt  {Surv()}, \hyperpage{75}
+  \item \texttt  {survfit()}, \hyperpage{75}
+  \item survival analysis, \hyperpage{75}
+
+  \indexspace
+
+  \item \texttt  {t.test()}, \hyperpage{35}, \hyperpage{63}
+  \item tables, \hyperpage{39}, \hyperpage{55}
+  \item \texttt  {tally()}, \hyperpage{29}, \hyperpage{39}, 
+		\hyperpage{55}, \hyperpage{107}
+  \item \emph  {Teaching with R}, \hyperpage{27}
+  \item \texttt  {test option}, \hyperpage{72}
+  \item thinking with data, \hyperpage{99}
+  \item \texttt  {tidyr package}, \hyperpage{30}, \hyperpage{104}
+  \item time to event analysis, \hyperpage{75}
+  \item transforming dataframes, \hyperpage{105}
+  \item transposing dataframes, \hyperpage{105}
+  \item Tukey's HSD, \hyperpage{68}
+  \item \texttt  {TukeyHSD()}, \hyperpage{68}
+  \item \texttt  {type option}, \hyperpage{45}, \hyperpage{84}, 
+		\hyperpage{91}
+
+  \indexspace
+
+  \item \texttt  {under option}, \hyperpage{91}
+
+  \indexspace
+
+  \item \texttt  {var()}, \hyperpage{28}
+  \item \texttt  {var.equal option}, \hyperpage{63}
+  \item vignettes, \hyperpage{13}
+
+  \indexspace
+
+  \item \texttt  {which option}, \hyperpage{50}
+  \item \texttt  {width option}, \hyperpage{32}, \hyperpage{92}
+  \item \texttt  {wilcox.test()}, \hyperpage{64}
+  \item \texttt  {with()}, \hyperpage{27}, \hyperpage{109}
+
+  \indexspace
+
+  \item \texttt  {xchisq.test()}, \hyperpage{43}, \hyperpage{58}
+  \item \texttt  {xlab option}, \hyperpage{75}
+  \item \texttt  {xlim option}, \hyperpage{65}
+  \item \texttt  {xpnorm()}, \hyperpage{88}
+  \item \texttt  {xyplot()}, \hyperpage{45}, \hyperpage{62}, 
+		\hyperpage{82}
+
+  \indexspace
+
+  \item \texttt  {ylab option}, \hyperpage{82}
+
+\end{theindex}
