@@ -1,0 +1,12 @@
+base
+knitr
+MASS
+lattice
+dplyr
+ggplot2
+ggformula
+mosaicData
+mosaic
+vcd
+evaluate
+bindrcpp
