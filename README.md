@@ -1,5 +1,6 @@
 # MOSAIC-LittleBooks-Spanish
 Translation of the MOSAIC Little Books
+
 Traducción de los libros de MOSAIC
 
 Aquí está un intento de traducción de los manuales MOSAIC. La guía de estudiantes está en la carpeta StudentsGuide.
