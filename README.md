@@ -18,7 +18,7 @@ Kudos to Nicholas Horton and Agustín Gómez for the support in this project.
 
 Agradecimientos a Nicholas Horton y Agustín Gómez por la ayuda en este proyecto.
 
-Also a big thank you to the Observatory of Development of the University of Costa Rica and the Statistics School.
+Also a thanks to the Observatory of Development of the University of Costa Rica and the Statistics School.
 
 También un gran agradecimiento al Observatorio del Desarrollo de la Universidad de Costa Rica y la Escuela de Estadística.
 
